@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>hexo初始化基础配置文件解析 | Jane&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="_config.yml网站的配置信息，可以配置大部分参数。 站点设置   参数 描述    title 网站标题   subtitle 网站副标题   description 网站描述   keywords 网站关键词   author 作者名称   language 使用语言   timezone 网站时区   网址设置12345678910111213141516171819202122232">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo初始化基础配置文件解析">
+<meta property="og:url" content="http://example.com/2022/08/25/hexo/%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/index.html">
+<meta property="og:site_name" content="Jane&#39;s Blog">
+<meta property="og:description" content="_config.yml网站的配置信息，可以配置大部分参数。 站点设置   参数 描述    title 网站标题   subtitle 网站副标题   description 网站描述   keywords 网站关键词   author 作者名称   language 使用语言   timezone 网站时区   网址设置12345678910111213141516171819202122232">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-08-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-25T03:11:13.596Z">
+<meta property="article:author" content="彤～">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Jane&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jane&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-hexo/基础配置文件解析" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/08/25/hexo/%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/" class="article-date">
+  <time datetime="2022-08-24T16:00:00.000Z" itemprop="datePublished">2022-08-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      hexo初始化基础配置文件解析
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="config-yml"><a href="#config-yml" class="headerlink" title="_config.yml"></a>_config.yml</h2><p>网站的配置信息，可以配置大部分参数。</p>
+<h3 id="站点设置"><a href="#站点设置" class="headerlink" title="站点设置"></a>站点设置</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>title</td>
+<td>网站标题</td>
+</tr>
+<tr>
+<td>subtitle</td>
+<td>网站副标题</td>
+</tr>
+<tr>
+<td>description</td>
+<td>网站描述</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>网站关键词</td>
+</tr>
+<tr>
+<td>author</td>
+<td>作者名称</td>
+</tr>
+<tr>
+<td>language</td>
+<td>使用语言</td>
+</tr>
+<tr>
+<td>timezone</td>
+<td>网站时区</td>
+</tr>
+</tbody></table>
+<h3 id="网址设置"><a href="#网址设置" class="headerlink" title="网址设置"></a>网址设置</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"># Hexo Configuration</span><br><span class="line">## Docs<span class="punctuation">:</span> https<span class="punctuation">:</span><span class="comment">//hexo.io/docs/configuration.html</span></span><br><span class="line">## Source<span class="punctuation">:</span> https<span class="punctuation">:</span><span class="comment">//github.com/hexojs/hexo/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># URL</span><br><span class="line">## Set your site url here. For example<span class="punctuation">,</span> if you use GitHub Page<span class="punctuation">,</span> set url as &#x27;https<span class="punctuation">:</span><span class="comment">//username.github.io/project&#x27;</span></span><br><span class="line">url<span class="punctuation">:</span> http<span class="punctuation">:</span><span class="comment">//example.com</span></span><br><span class="line">permalink<span class="punctuation">:</span> <span class="punctuation">:</span>year/<span class="punctuation">:</span>month/<span class="punctuation">:</span>day/<span class="punctuation">:</span>title/</span><br><span class="line">permalink_defaults<span class="punctuation">:</span></span><br><span class="line">pretty_urls<span class="punctuation">:</span></span><br><span class="line">  trailing_index<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span> # Set to <span class="literal"><span class="keyword">false</span></span> to remove trailing &#x27;index.html&#x27; from permalinks</span><br><span class="line">  trailing_html<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span> # Set to <span class="literal"><span class="keyword">false</span></span> to remove trailing &#x27;.html&#x27; from permalinks</span><br><span class="line"></span><br><span class="line"># Directory</span><br><span class="line">source_dir<span class="punctuation">:</span> source</span><br><span class="line">public_dir<span class="punctuation">:</span> public</span><br><span class="line">tag_dir<span class="punctuation">:</span> tags</span><br><span class="line">archive_dir<span class="punctuation">:</span> archives</span><br><span class="line">category_dir<span class="punctuation">:</span> categories</span><br><span class="line">code_dir<span class="punctuation">:</span> downloads/code</span><br><span class="line">i18n_dir<span class="punctuation">:</span> <span class="punctuation">:</span>lang</span><br><span class="line">skip_render<span class="punctuation">:</span></span><br><span class="line"></span><br><span class="line"># Writing</span><br><span class="line">new_post_name<span class="punctuation">:</span> <span class="punctuation">:</span>title.md # File name of new posts</span><br><span class="line">default_layout<span class="punctuation">:</span> post</span><br><span class="line">titlecase<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span> # Transform title into titlecase</span><br><span class="line">external_link<span class="punctuation">:</span></span><br><span class="line">  enable<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span> # Open external links in new tab</span><br><span class="line">  field<span class="punctuation">:</span> site # Apply to the whole site</span><br><span class="line">  exclude<span class="punctuation">:</span> &#x27;&#x27;</span><br><span class="line">filename_case<span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">render_drafts<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line">post_asset_folder<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line">relative_link<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line">future<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">highlight<span class="punctuation">:</span></span><br><span class="line">  enable<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">  line_number<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">  auto_detect<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line">  tab_replace<span class="punctuation">:</span> &#x27;&#x27;</span><br><span class="line">  wrap<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">  hljs<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line">prismjs<span class="punctuation">:</span></span><br><span class="line">  enable<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line">  preprocess<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">  line_number<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">  tab_replace<span class="punctuation">:</span> &#x27;&#x27;</span><br><span class="line"></span><br><span class="line"># Home page setting</span><br><span class="line"># path<span class="punctuation">:</span> Root path for your blogs index page. (default = &#x27;&#x27;)</span><br><span class="line"># per_page<span class="punctuation">:</span> Posts displayed per page. (<span class="number">0</span> = disable pagination)</span><br><span class="line"># order_by<span class="punctuation">:</span> Posts order. (Order by date descending by default)</span><br><span class="line">index_generator<span class="punctuation">:</span></span><br><span class="line">  path<span class="punctuation">:</span> &#x27;&#x27;</span><br><span class="line">  per_page<span class="punctuation">:</span> <span class="number">10</span></span><br><span class="line">  order_by<span class="punctuation">:</span> -date</span><br><span class="line"></span><br><span class="line"># Category &amp; Tag</span><br><span class="line">default_category<span class="punctuation">:</span> uncategorized</span><br><span class="line">category_map<span class="punctuation">:</span></span><br><span class="line">tag_map<span class="punctuation">:</span></span><br><span class="line"></span><br><span class="line"># Metadata elements</span><br><span class="line">## https<span class="punctuation">:</span><span class="comment">//developer.mozilla.org/en-US/docs/Web/HTML/Element/meta</span></span><br><span class="line">meta_generator<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line"></span><br><span class="line"># Date / Time format</span><br><span class="line">## Hexo uses Moment.js to parse and display date</span><br><span class="line">## You can customize the date format as defined in</span><br><span class="line">## http<span class="punctuation">:</span><span class="comment">//momentjs.com/docs/#/displaying/format/</span></span><br><span class="line">date_format<span class="punctuation">:</span> YYYY-MM-DD</span><br><span class="line">time_format<span class="punctuation">:</span> HH<span class="punctuation">:</span>mm<span class="punctuation">:</span>ss</span><br><span class="line">## updated_option supports &#x27;mtime&#x27;<span class="punctuation">,</span> &#x27;date&#x27;<span class="punctuation">,</span> &#x27;empty&#x27;</span><br><span class="line">updated_option<span class="punctuation">:</span> &#x27;mtime&#x27;</span><br><span class="line"></span><br><span class="line"># Pagination</span><br><span class="line">## Set per_page to <span class="number">0</span> to disable pagination</span><br><span class="line">per_page<span class="punctuation">:</span> <span class="number">10</span></span><br><span class="line">pagination_dir<span class="punctuation">:</span> page</span><br><span class="line"></span><br><span class="line"># Include / Exclude file(s)</span><br><span class="line">## include<span class="punctuation">:</span>/exclude<span class="punctuation">:</span> options only apply to the &#x27;source/&#x27; folder</span><br><span class="line">include<span class="punctuation">:</span></span><br><span class="line">exclude<span class="punctuation">:</span></span><br><span class="line">ignore<span class="punctuation">:</span></span><br><span class="line"></span><br><span class="line"># Extensions</span><br><span class="line">## Plugins<span class="punctuation">:</span> https<span class="punctuation">:</span><span class="comment">//hexo.io/plugins/</span></span><br><span class="line">## Themes<span class="punctuation">:</span> https<span class="punctuation">:</span><span class="comment">//hexo.io/themes/</span></span><br><span class="line">theme<span class="punctuation">:</span> landscape</span><br><span class="line"></span><br><span class="line"># Deployment</span><br><span class="line">## Docs<span class="punctuation">:</span> https<span class="punctuation">:</span><span class="comment">//hexo.io/docs/one-command-deployment</span></span><br><span class="line">deploy<span class="punctuation">:</span></span><br><span class="line">  type<span class="punctuation">:</span> &#x27;&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h2><p>应用程序信息</p>
+<h2 id="scaffolds"><a href="#scaffolds" class="headerlink" title="scaffolds"></a>scaffolds</h2><p>模板文件夹，当新建文章的时候会根据该模板建立文件。默认是post模板(可以自己添加模板内容)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@root:~/Desktop/Blog$ ls scaffolds/</span><br><span class="line">draft.md  page.md  post.md</span><br><span class="line">ubuntu@root:~/Desktop/Blog$ cat scaffolds/post.md </span><br><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">tags:</span><br><span class="line">---</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="source"><a href="#source" class="headerlink" title="source"></a>source</h2><p>资源文件夹是用来存放用户资源的地方。</p>
+<p>HTML和MarkDown文件会被解析并放到public文件夹，而其他文件会被拷贝过去</p>
+<h2 id="themes"><a href="#themes" class="headerlink" title="themes"></a>themes</h2><p>主题文件夹。根据该主题来生成静态页面。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/08/25/hexo/%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/" data-id="cl7pyik1s000jildo5z324qaf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/08/25/openEuler/%E5%AE%89%E8%A3%85%E5%8F%8A%E6%A6%82%E8%BF%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          openEuler安装及基本概念
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/08/24/ComponentInstallation/ccache%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ccache安装及使用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/09/06/go%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/%E4%BA%92%E6%96%A5%E9%94%81-sync.Mutex/">互斥锁-sync.Mutex</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/06/go%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">单例模式</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/05/go%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/context/">context源码学习</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/03/go%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E5%AE%9E%E6%88%98/">日志收集实战</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/03/go%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/%E8%A1%A8%E5%8D%95/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 彤～<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

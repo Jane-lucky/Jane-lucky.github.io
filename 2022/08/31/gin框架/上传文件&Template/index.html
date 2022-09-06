@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>上传文件&amp;&amp;Template | Jane&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="HTML模板123456789r.LoadHTMLGlob(&quot;templates&#x2F;*&quot;)stu1 :&#x3D; &amp;Student&amp;#123;Name: &quot;Geektutu&quot;, Age: 20&amp;#125;stu2 :&#x3D; &amp;Student&amp;#123;Name: &quot;Jack&quot;, Age: 22&amp;#125;r.GET(&quot;&#x2F;arr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="上传文件&amp;&amp;Template">
+<meta property="og:url" content="http://example.com/2022/08/31/gin%E6%A1%86%E6%9E%B6/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6&Template/index.html">
+<meta property="og:site_name" content="Jane&#39;s Blog">
+<meta property="og:description" content="HTML模板123456789r.LoadHTMLGlob(&quot;templates&#x2F;*&quot;)stu1 :&#x3D; &amp;Student&amp;#123;Name: &quot;Geektutu&quot;, Age: 20&amp;#125;stu2 :&#x3D; &amp;Student&amp;#123;Name: &quot;Jack&quot;, Age: 22&amp;#125;r.GET(&quot;&#x2F;arr">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-08-31T02:23:09.189Z">
+<meta property="article:modified_time" content="2022-08-31T03:28:28.087Z">
+<meta property="article:author" content="彤～">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Jane&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jane&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-gin框架/上传文件&amp;Template" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/08/31/gin%E6%A1%86%E6%9E%B6/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6&Template/" class="article-date">
+  <time datetime="2022-08-31T02:23:09.189Z" itemprop="datePublished">2022-08-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      上传文件&amp;&amp;Template
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="HTML模板"><a href="#HTML模板" class="headerlink" title="HTML模板"></a>HTML模板</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">r.LoadHTMLGlob(<span class="string">&quot;templates/*&quot;</span>)</span><br><span class="line">stu1 := &amp;Student&#123;Name: <span class="string">&quot;Geektutu&quot;</span>, Age: <span class="number">20</span>&#125;</span><br><span class="line">stu2 := &amp;Student&#123;Name: <span class="string">&quot;Jack&quot;</span>, Age: <span class="number">22</span>&#125;</span><br><span class="line">r.GET(<span class="string">&quot;/arr&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">	c.HTML(http.StatusOK, <span class="string">&quot;arr.tmpl&quot;</span>, gin.H&#123;</span><br><span class="line">		<span class="string">&quot;title&quot;</span>:  <span class="string">&quot;World&quot;</span>,</span><br><span class="line">		<span class="string">&quot;stuArr&quot;</span>: [<span class="number">2</span>]*Student&#123;stu1, stu2&#125;,</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- templates/arr.tmpl --&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;p&gt;hello, &#123;&#123;.title&#125;&#125;&lt;/p&gt;</span><br><span class="line">    &#123;&#123;range $index, $ele := .stuArr &#125;&#125;</span><br><span class="line">    &lt;p&gt;&#123;&#123; $index &#125;&#125;: &#123;&#123; $ele.Name &#125;&#125; is &#123;&#123; $ele.Age &#125;&#125; years old&lt;/p&gt;</span><br><span class="line">    &#123;&#123; end &#125;&#125;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@root:~/Pictures$ curl http://localhost:8080/arr</span><br><span class="line"></span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;p&gt;hello, World&lt;/p&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;p&gt;0: Geektutu is 20 years old&lt;/p&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;p&gt;1: Jack is 22 years old&lt;/p&gt;</span><br><span class="line">    </span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><h3 id="单文件上传"><a href="#单文件上传" class="headerlink" title="单文件上传"></a>单文件上传</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">r.POST(<span class="string">&quot;/upload&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">	file, err := c.FormFile(<span class="string">&quot;upload&quot;</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		c.String(http.StatusBadRequest, <span class="string">&quot;请求失败&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	filename := file.Filename</span><br><span class="line">	fmt.Println(<span class="string">&quot;文件名:&quot;</span>, filename)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//保存到本地服务器</span></span><br><span class="line">	<span class="keyword">if</span> err := c.SaveUploadedFile(file, filename); err != <span class="literal">nil</span> &#123;</span><br><span class="line">		c.String(http.StatusBadRequest, <span class="string">&quot;保存失败 Error:%s&quot;</span>, err.Error())</span><br><span class="line">	&#125;</span><br><span class="line">	c.String(http.StatusOK, <span class="string">&quot;上传成功&quot;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>测试： </p>
+<p>curl -X POST <a target="_blank" rel="noopener" href="http://localhost:8080/upload">http://localhost:8080/upload</a> -F “upload=@文件目录地址” -H “Content-Type: multipart/form-data”<br>上传成功</p>
+<h3 id="多文件上传"><a href="#多文件上传" class="headerlink" title="多文件上传"></a>多文件上传</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">r.POST(<span class="string">&quot;/uploads&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">	form, err := c.MultipartForm()</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		c.String(http.StatusBadRequest, <span class="string">&quot;请求失败&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	files := form.File[<span class="string">&quot;uploads[]&quot;</span>]</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> _, file := <span class="keyword">range</span> files &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;文件名：&quot;</span>, file)</span><br><span class="line">		<span class="keyword">if</span> err := c.SaveUploadedFile(file, file.Filename); err != <span class="literal">nil</span> &#123;</span><br><span class="line">			c.String(http.StatusBadRequest, <span class="string">&quot;保存失败 Error:%s&quot;</span>, err.Error())</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	c.String(http.StatusOK, <span class="string">&quot;上传成功&quot;</span>)</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>测试：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@root:~/Pictures$ curl -X POST http://localhost:8080/uploads -F &quot;upload[]=@/home/ubuntu/Pictures/Screenshot from 2022-08-25 10-26-07.png&quot;  -F &quot;upload[]=@/home/ubuntu/Pictures/Screenshot from 2022-08-25 10-26-38.png&quot; -H &quot;Content-Type: multipart/form-data&quot;</span><br><span class="line">上传成功</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/08/31/gin%E6%A1%86%E6%9E%B6/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6&Template/" data-id="cl7pyik0q0008ildogp6hbucd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/08/31/gin%E6%A1%86%E6%9E%B6/%E4%B8%AD%E9%97%B4%E4%BB%B6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          middleware——中间件
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/08/29/gin%E6%A1%86%E6%9E%B6/%E7%AC%AC%E4%B8%80%E4%B8%AAgin%E7%A8%8B%E5%BA%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">第一个gin程序</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/09/06/go%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/%E4%BA%92%E6%96%A5%E9%94%81-sync.Mutex/">互斥锁-sync.Mutex</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/06/go%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">单例模式</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/05/go%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/context/">context源码学习</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/03/go%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E5%AE%9E%E6%88%98/">日志收集实战</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/03/go%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/%E8%A1%A8%E5%8D%95/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 彤～<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>middleware——中间件 | Jane&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="middleware概念中间件处理处理程序是简单的http.Handler,它包装另一个http.Handler 作请求的一些预处理和或后处理，被称为中间件。 每个中间件只处理一件事情，完成后将其传递给另一个中间件或者最终处理程序，可以做到程序的解耦，减少程序的冗余和降低代码复用率。 应用常见的用例：请求如之记录、header操纵、http请求认证和Responseriter劫持等等。  记录对服">
+<meta property="og:type" content="article">
+<meta property="og:title" content="middleware——中间件">
+<meta property="og:url" content="http://example.com/2022/08/31/gin%E6%A1%86%E6%9E%B6/%E4%B8%AD%E9%97%B4%E4%BB%B6/index.html">
+<meta property="og:site_name" content="Jane&#39;s Blog">
+<meta property="og:description" content="middleware概念中间件处理处理程序是简单的http.Handler,它包装另一个http.Handler 作请求的一些预处理和或后处理，被称为中间件。 每个中间件只处理一件事情，完成后将其传递给另一个中间件或者最终处理程序，可以做到程序的解耦，减少程序的冗余和降低代码复用率。 应用常见的用例：请求如之记录、header操纵、http请求认证和Responseriter劫持等等。  记录对服">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-08-31T03:32:06.093Z">
+<meta property="article:modified_time" content="2022-09-01T01:56:46.321Z">
+<meta property="article:author" content="彤～">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Jane&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jane&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-gin框架/中间件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/08/31/gin%E6%A1%86%E6%9E%B6/%E4%B8%AD%E9%97%B4%E4%BB%B6/" class="article-date">
+  <time datetime="2022-08-31T03:32:06.093Z" itemprop="datePublished">2022-08-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      middleware——中间件
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="middleware"><a href="#middleware" class="headerlink" title="middleware"></a>middleware</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>中间件处理处理程序是简单的http.Handler,它包装另一个http.Handler</p>
+<p>作请求的一些预处理和或后处理，被称为中间件。</p>
+<p>每个中间件只处理一件事情，完成后将其传递给另一个中间件或者最终处理程序，可以做到程序的解耦，减少程序的冗余和降低代码复用率。</p>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><p>常见的用例：请求如之记录、header操纵、http请求认证和Responseriter劫持等等。</p>
+<ul>
+<li>记录对服务器发送的请求</li>
+<li>处理服务器响应</li>
+<li>请求和处理之间做一个权限认证工作</li>
+<li>远程调用</li>
+<li>安全</li>
+</ul>
+<h2 id="example"><a href="#example" class="headerlink" title="example"></a>example</h2><h3 id="单中间件"><a href="#单中间件" class="headerlink" title="单中间件"></a>单中间件</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;log&quot;</span></span><br><span class="line">	<span class="string">&quot;net/http&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">//&quot;github.com/gin-gonic/gin&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">logging</span><span class="params">(f http.HandlerFunc)</span></span> http.HandlerFunc &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">func</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">		log.Println(r.URL.Path)</span><br><span class="line">		f(w, r)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">foo</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">	fmt.Fprintln(w, <span class="string">&quot;foo&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">bar</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">	fmt.Fprintln(w, <span class="string">&quot;bar&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">loggingMiddleWare</span><span class="params">(next http.Handler)</span></span> http.Handler &#123;</span><br><span class="line">	<span class="keyword">return</span> http.HandlerFunc(<span class="function"><span class="keyword">func</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">		log.Println(r.URL.Path)</span><br><span class="line">		next.ServeHTTP(w, r)</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	http.Handle(<span class="string">&quot;/foo&quot;</span>, loggingMiddleWare(http.HandlerFunc(foo)))</span><br><span class="line">	http.Handle(<span class="string">&quot;/bar&quot;</span>, loggingMiddleWare(http.HandlerFunc(bar)))</span><br><span class="line">	<span class="comment">//http.HandleFunc(&quot;/foo&quot;, logging(foo))</span></span><br><span class="line">	<span class="comment">//http.HandleFunc(&quot;/bar&quot;, logging(bar))</span></span><br><span class="line">	http.ListenAndServe(<span class="string">&quot;:8080&quot;</span>, <span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="多中间件"><a href="#多中间件" class="headerlink" title="多中间件"></a>多中间件</h3><p>中间件将方法作为参数之一，包装并返回一个新的方法服务器，定义一种新的MiddlWare，容易将多个中间件连接起来</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;log&quot;</span></span><br><span class="line">	<span class="string">&quot;net/http&quot;</span></span><br><span class="line">	<span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">//&quot;github.com/gin-gonic/gin&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MiddleWare <span class="function"><span class="keyword">func</span><span class="params">(http.HandlerFunc)</span></span> http.HandlerFunc</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MiddleWare1 <span class="function"><span class="keyword">func</span><span class="params">(http.Handler)</span></span> http.Handler</span><br><span class="line"></span><br><span class="line"><span class="comment">//日志打印</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">logging</span><span class="params">()</span></span> MiddleWare1 &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">func</span><span class="params">(h http.Handler)</span></span> http.Handler &#123;</span><br><span class="line">		<span class="keyword">return</span> http.HandlerFunc(<span class="function"><span class="keyword">func</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">			start := time.Now()</span><br><span class="line">			<span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">				log.Println(r.URL.Path)</span><br><span class="line">				time.Since(start)</span><br><span class="line">			&#125;()</span><br><span class="line">			h.ServeHTTP(w, r)</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">method</span><span class="params">(m <span class="type">string</span>)</span></span> MiddleWare1 &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">func</span><span class="params">(h http.Handler)</span></span> http.Handler &#123;</span><br><span class="line">		<span class="keyword">return</span> http.HandlerFunc(<span class="function"><span class="keyword">func</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">			<span class="keyword">if</span> r.Method != m &#123;</span><br><span class="line">				http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)</span><br><span class="line">			&#125;</span><br><span class="line">			h.ServeHTTP(w, r)</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">chain1</span><span class="params">(f http.Handler, middlewares ...MiddleWare1)</span></span> http.Handler &#123;</span><br><span class="line">	<span class="keyword">for</span> _, m := <span class="keyword">range</span> middlewares &#123;</span><br><span class="line">		f = m(f)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> f</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Logging</span><span class="params">()</span></span> MiddleWare &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">func</span><span class="params">(hf http.HandlerFunc)</span></span> http.HandlerFunc &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="function"><span class="keyword">func</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">			start := time.Now()</span><br><span class="line"></span><br><span class="line">			<span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">				log.Println(r.URL.Path)</span><br><span class="line">				time.Since(start)</span><br><span class="line">			&#125;()</span><br><span class="line">			hf(w, r)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Method</span><span class="params">(m <span class="type">string</span>)</span></span> MiddleWare &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">func</span><span class="params">(hf http.HandlerFunc)</span></span> http.HandlerFunc &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="function"><span class="keyword">func</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">			<span class="keyword">if</span> r.Method != m &#123;</span><br><span class="line">				http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)</span><br><span class="line">			&#125;</span><br><span class="line">			hf(w, r)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">chain</span><span class="params">(f http.HandlerFunc, middlewares ...MiddleWare)</span></span> http.HandlerFunc &#123;</span><br><span class="line">	<span class="keyword">for</span> _, m := <span class="keyword">range</span> middlewares &#123;</span><br><span class="line">		f = m(f)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> f</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Hello</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">	fmt.Fprintln(w, <span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	http.Handle(<span class="string">&quot;/test&quot;</span>, chain1(http.HandlerFunc(Hello), method(<span class="string">&quot;GET&quot;</span>), logging()))</span><br><span class="line">	http.HandleFunc(<span class="string">&quot;/&quot;</span>, chain(Hello, Method(<span class="string">&quot;GET&quot;</span>), Logging()))</span><br><span class="line">	http.ListenAndServe(<span class="string">&quot;:8080&quot;</span>, <span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="gin中间件"><a href="#gin中间件" class="headerlink" title="gin中间件"></a>gin中间件</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">r:=gin.Default()<span class="comment">//创建带有默认的中间件路由（包含logger和recovery）</span></span><br><span class="line">r:=gin.<span class="built_in">new</span>()<span class="comment">//创建没有中间件的路由</span></span><br></pre></td></tr></table></figure>
+
+<p>两种中间件方式，后续展示第二种</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">	&quot;log&quot;</span><br><span class="line">	&quot;time&quot;</span><br><span class="line"></span><br><span class="line">	&quot;github.com/gin-gonic/gin&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">//&quot;github.com/gin-gonic/gin&quot;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">自定义日志中间件第一种方式-----请求之前</span><br><span class="line">自定义日志中间件第一种方式-----请求之后</span><br><span class="line">2022/08/31 15:40:57 12345</span><br><span class="line">2022/08/31 15:40:57 64.542µs</span><br><span class="line">2022/08/31 15:40:57 200</span><br><span class="line">**/</span><br><span class="line">func Logger() gin.HandlerFunc &#123;</span><br><span class="line">	return func(ctx *gin.Context) &#123;</span><br><span class="line">		t := time.Now()</span><br><span class="line">		fmt.Println(&quot;自定义日志中间件第一种方式-----请求之前&quot;)</span><br><span class="line">		//在gin上下文定义一个变量</span><br><span class="line">		ctx.Set(&quot;example&quot;, &quot;12345&quot;)</span><br><span class="line">		//请求之前</span><br><span class="line">		ctx.Next()</span><br><span class="line">		fmt.Println(&quot;自定义日志中间件第一种方式-----请求之后&quot;)</span><br><span class="line">		//计算整个请求过程</span><br><span class="line">		latency := time.Since(t)</span><br><span class="line">		log.Print(latency)</span><br><span class="line"></span><br><span class="line">		//请求状态打印</span><br><span class="line">		status := ctx.Writer.Status()</span><br><span class="line">		log.Println(status)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">自定义日志中间件第二种方式-----请求之前</span><br><span class="line">自定义日志中间件第二种方式-----请求之后</span><br><span class="line">2022/08/31 15:40:17 12345</span><br><span class="line">2022/08/31 15:40:17 60.112µs</span><br><span class="line">2022/08/31 15:40:17 200</span><br><span class="line">**/</span><br><span class="line">func Logger1(c *gin.Context) &#123;</span><br><span class="line">	t := time.Now()</span><br><span class="line">	fmt.Println(&quot;自定义日志中间件第二种方式-----请求之前&quot;)</span><br><span class="line">	//在gin上下文定义一个变量</span><br><span class="line">	c.Set(&quot;example&quot;, &quot;12345&quot;)</span><br><span class="line">	//请求之前</span><br><span class="line">	c.Next()</span><br><span class="line">	fmt.Println(&quot;自定义日志中间件第二种方式-----请求之后&quot;)</span><br><span class="line">	//计算整个请求过程</span><br><span class="line">	latency := time.Since(t)</span><br><span class="line">	log.Print(latency)</span><br><span class="line"></span><br><span class="line">	//请求状态打印</span><br><span class="line">	status := c.Writer.Status()</span><br><span class="line">	log.Println(status)</span><br><span class="line">&#125;</span><br><span class="line">func main() &#123;</span><br><span class="line">	r := gin.New()</span><br><span class="line">	r.Use(Logger())</span><br><span class="line">	//r.Use(Logger1)</span><br><span class="line">	r.GET(&quot;/test&quot;, func(ctx *gin.Context) &#123;</span><br><span class="line">		exam := ctx.MustGet(&quot;example&quot;).(string)</span><br><span class="line">		log.Println(exam)</span><br><span class="line">	&#125;)</span><br><span class="line">	r.Run()</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>路由器中间件</strong></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line">	<span class="string">&quot;github.com/gin-gonic/gin&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">RouterMiddle1</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;路由中间1&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">RouterMiddle2</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;路由中间2&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">onRouterMiddleHandle</span><span class="params">()</span></span> gin.HandlerFunc &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">func</span><span class="params">(ctx *gin.Context)</span></span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;业务处理&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	r := gin.New()</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	路由中间1</span></span><br><span class="line"><span class="comment">	路由中间2</span></span><br><span class="line"><span class="comment">	业务处理</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	r.GET(<span class="string">&quot;/onRouterMiddle&quot;</span>, RouterMiddle1, RouterMiddle2, onRouterMiddleHandle())</span><br><span class="line">	r.Run()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>路由组中间件</strong></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line">	<span class="string">&quot;github.com/gin-gonic/gin&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">//路由组中间件</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GroupRouterGoodsMiddle1</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;goods路由组中间件1&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GroupRouterGoodsMiddle2</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;goods路由组中间件2&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GroupRouterOrdersMiddle1</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;Orders路由组中间件1&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GroupRouterOrdersMiddle2</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;Orders路由组中间件2&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	r := gin.New()</span><br><span class="line">	r.Use(gin.Logger())</span><br><span class="line"></span><br><span class="line">    <span class="comment">//curl 127.0.0.1:8080/goods/add</span></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    goods路由组中间件1</span></span><br><span class="line"><span class="comment">	goods路由组中间件2</span></span><br><span class="line"><span class="comment">	/goods/add</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">	goodsGroup := r.Group(<span class="string">&quot;/goods&quot;</span>, GroupRouterGoodsMiddle1, GroupRouterGoodsMiddle2)</span><br><span class="line">	&#123;</span><br><span class="line">		goodsGroup.GET(<span class="string">&quot;/add&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(ctx *gin.Context)</span></span> &#123;</span><br><span class="line">			fmt.Println(<span class="string">&quot;/goods/add&quot;</span>)</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;</span><br><span class="line">    r.Group(<span class="string">&quot;/goods&quot;</span>, GroupRouterGoodsMiddle1, GroupRouterGoodsMiddle2).GET(<span class="string">&quot;/add&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(ctx *gin.Context)</span></span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;/goods/add&quot;</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//curl 127.0.0.1:8080/goods/add</span></span><br><span class="line">    <span class="comment">//控制台结果：/goods/add</span></span><br><span class="line">	r.Group(<span class="string">&quot;/goods&quot;</span>, GroupRouterGoodsMiddle1, GroupRouterGoodsMiddle2)</span><br><span class="line">	r.GET(<span class="string">&quot;/goods/add&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(ctx *gin.Context)</span></span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;/goods/add&quot;</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">	orderGroup := r.Group(<span class="string">&quot;/order&quot;</span>)</span><br><span class="line">	orderGroup.Use(GroupRouterOrdersMiddle1, GroupRouterOrdersMiddle2)</span><br><span class="line">	&#123;</span><br><span class="line">		orderGroup.GET(<span class="string">&quot;/add&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(ctx *gin.Context)</span></span> &#123;</span><br><span class="line">			fmt.Println(<span class="string">&quot;/order/add&quot;</span>)</span><br><span class="line">		&#125;)</span><br><span class="line"></span><br><span class="line">		orderGroup.GET(<span class="string">&quot;/del&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(ctx *gin.Context)</span></span> &#123;</span><br><span class="line">			fmt.Println(<span class="string">&quot;/order/del&quot;</span>)</span><br><span class="line">		&#125;)</span><br><span class="line"></span><br><span class="line">		<span class="comment">//嵌套</span></span><br><span class="line">		testGroup := orderGroup.Group(<span class="string">&quot;/test&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(ctx *gin.Context)</span></span> &#123;</span><br><span class="line">			fmt.Println(<span class="string">&quot;/order/test下的中间件&quot;</span>)</span><br><span class="line">		&#125;)</span><br><span class="line"></span><br><span class="line">		testGroup.GET(<span class="string">&quot;/test1&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(ctx *gin.Context)</span></span> &#123;</span><br><span class="line">			fmt.Println(<span class="string">&quot;/order/test/test1下的函数&quot;</span>)</span><br><span class="line">		&#125;)</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	r.Run()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>结论：</strong> 全局中间件 &gt; 路由组中间件 &gt; 路由中间件<br> 全局中间件最先执行</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/08/31/gin%E6%A1%86%E6%9E%B6/%E4%B8%AD%E9%97%B4%E4%BB%B6/" data-id="cl7pyik0r0009ildo952m0n7m" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/09/01/go%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/http%E8%AF%A6%E8%A7%A3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/08/31/gin%E6%A1%86%E6%9E%B6/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6&Template/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">上传文件&amp;&amp;Template</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/09/06/go%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/%E4%BA%92%E6%96%A5%E9%94%81-sync.Mutex/">互斥锁-sync.Mutex</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/06/go%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">单例模式</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/05/go%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/context/">context源码学习</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/03/go%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E5%AE%9E%E6%88%98/">日志收集实战</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/03/go%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/%E8%A1%A8%E5%8D%95/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 彤～<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
