@@ -64,67 +64,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-gin框架/第一个gin程序" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2022/08/29/gin%E6%A1%86%E6%9E%B6/%E7%AC%AC%E4%B8%80%E4%B8%AAgin%E7%A8%8B%E5%BA%8F/" class="article-date">
-  <time datetime="2022-08-29T08:17:21.678Z" itemprop="datePublished">2022-08-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/29/gin%E6%A1%86%E6%9E%B6/%E7%AC%AC%E4%B8%80%E4%B8%AAgin%E7%A8%8B%E5%BA%8F/">第一个gin程序</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;net/http&quot;</span></span><br><span class="line"></span><br><span class="line">	<span class="string">&quot;github.com/gin-gonic/gin&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	r := gin.Default()</span><br><span class="line">	r.GET(<span class="string">&quot;/&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">		c.String(<span class="number">200</span>, <span class="string">&quot;Hello&quot;</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">	r.GET(<span class="string">&quot;/name&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">		c.String(http.StatusOK, <span class="string">&quot;world&quot;</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">	</span><br><span class="line">	r.Run() <span class="comment">// listen and serve on 0.0.0.0:8080</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>首先，我们使用了<code>gin.Default()</code>生成了一个实例，这个实例即 WSGI 应用程序。</li>
-<li>接下来，我们使用<code>r.Get(&quot;/&quot;, ...)</code>声明了一个路由，告诉 Gin 什么样的URL 能触发传入的函数，这个函数返回我们想要显示在用户浏览器中的信息。</li>
-<li>最后用 <code>r.Run()</code>函数来让应用运行在本地服务器上，默认监听端口是 _8080_，可以传入参数设置端口，例如<code>r.Run(&quot;:9999&quot;)</code>即运行在 _9999_端口。</li>
-</ol>
-<h3 id="解析路经参数"><a href="#解析路经参数" class="headerlink" title="解析路经参数"></a>解析路经参数</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">r.GET(<span class="string">&quot;/user/:name&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">	name := c.Param(<span class="string">&quot;name&quot;</span>)</span><br><span class="line">	c.String(http.StatusOK, <span class="string">&quot;Hello %s&quot;</span>, name)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="解析qurey参数"><a href="#解析qurey参数" class="headerlink" title="解析qurey参数"></a>解析qurey参数</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">r.POST(<span class="string">&quot;/form&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">	username := c.PostForm(<span class="string">&quot;username&quot;</span>)</span><br><span class="line">	<span class="comment">//可设置默认的初始值</span></span><br><span class="line">	password := c.DefaultPostForm(<span class="string">&quot;password&quot;</span>, <span class="string">&quot;000000&quot;</span>)</span><br><span class="line"></span><br><span class="line">	c.JSON(http.StatusOK, gin.H&#123;</span><br><span class="line">		<span class="string">&quot;username&quot;</span>: username,</span><br><span class="line">		<span class="string">&quot;password&quot;</span>: password,</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="解析qurey-amp-路经参数"><a href="#解析qurey-amp-路经参数" class="headerlink" title="解析qurey&amp;路经参数"></a>解析qurey&amp;路经参数</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">r.POST(<span class="string">&quot;/posts&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">	id := c.Query(<span class="string">&quot;id&quot;</span>)</span><br><span class="line">	page := c.DefaultQuery(<span class="string">&quot;page&quot;</span>, <span class="string">&quot;0&quot;</span>)</span><br><span class="line">	username := c.PostForm(<span class="string">&quot;username&quot;</span>)</span><br><span class="line">	<span class="comment">//可设置默认的初始值</span></span><br><span class="line">	password := c.DefaultPostForm(<span class="string">&quot;password&quot;</span>, <span class="string">&quot;000000&quot;</span>)</span><br><span class="line"></span><br><span class="line">	c.JSON(http.StatusOK, gin.H&#123;</span><br><span class="line">		<span class="string">&quot;id&quot;</span>:       id,</span><br><span class="line">		<span class="string">&quot;page&quot;</span>:     page,</span><br><span class="line">		<span class="string">&quot;username&quot;</span>: username,</span><br><span class="line">		<span class="string">&quot;password&quot;</span>: password,</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>curl “<a target="_blank" rel="noopener" href="http://localhost:8080/posts?id=1&amp;page=13&quot;">http://localhost:8080/posts?id=1&amp;page=13&quot;</a>  -X POST -d ‘username=geektutu&amp;password=1234’<br>{“id”:”1”,”page”:”13”,”password”:”1234”,”username”:”geektutu”}</p>
-<h3 id="map参数"><a href="#map参数" class="headerlink" title="map参数"></a>map参数</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">r.POST(<span class="string">&quot;/post&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">	ids := c.QueryMap(<span class="string">&quot;ids&quot;</span>)</span><br><span class="line">	names := c.PostFormMap(<span class="string">&quot;names&quot;</span>)</span><br><span class="line"></span><br><span class="line">	c.JSON(http.StatusOK, gin.H&#123;</span><br><span class="line">		<span class="string">&quot;ids&quot;</span>:   ids,</span><br><span class="line">		<span class="string">&quot;names&quot;</span>: names,</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>curl -g “<a target="_blank" rel="noopener" href="http://localhost:9999/post?ids%5BJack%5D=001&amp;ids%5BTom%5D=002&quot;">http://localhost:9999/post?ids[Jack]=001&amp;ids[Tom]=002&quot;</a> -X POST -d ‘names[a]=Sam&amp;names[b]=David’<br>{“ids”:{“Jack”:”001”,”Tom”:”002”},”names”:{“a”:”Sam”,”b”:”David”}}</p>
-<h3 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">r.GET(<span class="string">&quot;/redirect&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">	c.Redirect(http.StatusMovedPermanently, <span class="string">&quot;/index&quot;</span>)</span><br><span class="line">&#125;)</span><br><span class="line">r.GET(<span class="string">&quot;/index&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">	c.Request.URL.Path = <span class="string">&quot;/&quot;</span></span><br><span class="line">	r.HandleContext(c)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">ubuntu@root:~/go$ curl http://localhost:8080/index</span></span><br><span class="line"><span class="comment">Helloubuntu@root:~/go$ -i http://localhost:8080/redirect</span></span><br><span class="line"><span class="comment">HTTP/1.1 301 Moved Permanently</span></span><br><span class="line"><span class="comment">Content-Type: text/html; charset=utf-8</span></span><br><span class="line"><span class="comment">Location: /index</span></span><br><span class="line"><span class="comment">Date: Mon, 29 Aug 2022 09:08:43 GMT</span></span><br><span class="line"><span class="comment">Content-Length: 41</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">&lt;a href=&quot;/index&quot;&gt;Moved Permanently&lt;/a&gt;.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="多组路由"><a href="#多组路由" class="headerlink" title="多组路由"></a>多组路由</h3><p>利用分组路由可以更好地实现权限控制（将需要登陆鉴权的路由防盗同一组中去，简化权限控制）</p>
-<p>划分一个模块一个路由，便于管理和查找相关的代码</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">defaultHandler := <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">		c.JSON(http.StatusOK, gin.H&#123;</span><br><span class="line">			<span class="string">&quot;path&quot;</span>: c.FullPath(),</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//https://geektutu.com/post/quick-go-gin.html</span></span><br><span class="line">	<span class="comment">//group v1</span></span><br><span class="line">	v1 := r.Group(<span class="string">&quot;/v1&quot;</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		v1.GET(<span class="string">&quot;/posts&quot;</span>, defaultHandler)</span><br><span class="line">		v1.GET(<span class="string">&quot;/series&quot;</span>, defaultHandler)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//group v2</span></span><br><span class="line">	v2 := r.Group(<span class="string">&quot;/v2&quot;</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		v2.GET(<span class="string">&quot;/posts&quot;</span>, defaultHandler)</span><br><span class="line">		v2.GET(<span class="string">&quot;/series&quot;</span>, defaultHandler)</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//ubuntu@root:~$ curl http://localhost:8080/v1/posts</span></span><br><span class="line"><span class="comment">//&#123;&quot;path&quot;:&quot;/v1/posts&quot;&#125;</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/08/29/gin%E6%A1%86%E6%9E%B6/%E7%AC%AC%E4%B8%80%E4%B8%AAgin%E7%A8%8B%E5%BA%8F/" data-id="cl7pyik0r000aildo0k8q3dgr" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-ComponentInstallation/docker安装" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2022/08/29/ComponentInstallation/docker%E5%AE%89%E8%A3%85/" class="article-date">
@@ -155,7 +94,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/08/29/ComponentInstallation/docker%E5%AE%89%E8%A3%85/" data-id="cl7pyijzz0001ildo9ccb69if" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/08/29/ComponentInstallation/docker%E5%AE%89%E8%A3%85/" data-id="cl7pyik000001imdocs24by9u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -203,7 +142,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/08/25/hexo/%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%AE%89%E8%A3%85/" data-id="cl7pyik1s000kildoh9dt3blu" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/08/25/hexo/%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%AE%89%E8%A3%85/" data-id="cl7pyik0s000kimdofiv19rih" class="article-share-link">Share</a>
       
       
     </footer>
@@ -253,7 +192,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/08/25/openEuler/%E5%AE%89%E8%A3%85%E5%8F%8A%E6%A6%82%E8%BF%B0/" data-id="cl7pyik1u000lildocahj67u1" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/08/25/openEuler/%E5%AE%89%E8%A3%85%E5%8F%8A%E6%A6%82%E8%BF%B0/" data-id="cl7pyik0s000limdoguxh9vpj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -337,7 +276,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/08/25/hexo/%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/" data-id="cl7pyik1s000jildo5z324qaf" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/08/25/hexo/%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/" data-id="cl7pyik0o000jimdo0k8chcml" class="article-share-link">Share</a>
       
       
     </footer>
@@ -412,7 +351,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/08/24/ComponentInstallation/ccache%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/" data-id="cl7pyijzt0000ildo8l6eeush" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/08/24/ComponentInstallation/ccache%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/" data-id="cl7pyijzt0000imdob5y28jim" class="article-share-link">Share</a>
       
       
     </footer>
@@ -456,7 +395,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/08/24/ComponentInstallation/gitlab-14.0.5%E9%95%9C%E5%83%8F%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" data-id="cl7pyik010002ildo87sb2h44" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/08/24/ComponentInstallation/gitlab-14.0.5%E9%95%9C%E5%83%8F%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" data-id="cl7pyik030002imdo1zqs8le2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -503,7 +442,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/08/24/ComponentInstallation/kkFileView-4.0.0%E5%AE%89%E8%A3%85/" data-id="cl7pyik080003ildoc5r1b5m7" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/08/24/ComponentInstallation/kkFileView-4.0.0%E5%AE%89%E8%A3%85/" data-id="cl7pyik040003imdo3oia66z9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -559,7 +498,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/08/24/deploy/wget%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AF%A6%E8%A7%A3/" data-id="cl7pyik0p0007ildohadv7h0o" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/08/24/deploy/wget%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AF%A6%E8%A7%A3/" data-id="cl7pyik070007imdo8pm8fojr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -607,7 +546,50 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/08/24/deploy/snap%E5%92%8Capt/" data-id="cl7pyik0k0004ildohm7mcpyi" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/08/24/deploy/snap%E5%92%8Capt/" data-id="cl7pyik050004imdoh92n1e8n" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-deploy/ubuntu安装vscode" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/08/24/deploy/ubuntu%E5%AE%89%E8%A3%85vscode/" class="article-date">
+  <time datetime="2022-08-24T08:08:06.548Z" itemprop="datePublished">2022-08-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/24/deploy/ubuntu%E5%AE%89%E8%A3%85vscode/">ubuntu安装vscode</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="在ubuntu的软件商城中安装code报错"><a href="#在ubuntu的软件商城中安装code报错" class="headerlink" title="在ubuntu的软件商城中安装code报错"></a>在ubuntu的软件商城中安装code报错</h3><p>Unable to install “Visual Studio Code”: snap “code” has “install-snap” change in progress；</p>
+<h4 id="问题原因-amp-amp-解决"><a href="#问题原因-amp-amp-解决" class="headerlink" title="问题原因&amp;&amp;解决"></a>问题原因&amp;&amp;解决</h4><p>软件正在安装，所以不需要再次点击</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@root:~/Desktop/Doc$ snap changes</span><br><span class="line">ID   Status  Spawn                   Ready                   Summary</span><br><span class="line">1    Done    2022-02-23              yesterday at 11:37 CST  Initialize system state</span><br><span class="line">2    Done    yesterday at 11:37 CST  yesterday at 11:37 CST  Initialize device</span><br><span class="line">3    Done    yesterday at 11:42 CST  yesterday at 11:43 CST  Install &quot;typora&quot; snap from &quot;latest/stable&quot; channel</span><br><span class="line">4    Done    yesterday at 14:03 CST  yesterday at 14:12 CST  Auto-refresh 4 snaps</span><br><span class="line">5    Do      today at 11:06 CST      -                       Install &quot;code&quot; snap from &quot;latest/stable&quot; channel</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="从ubuntu软件商店下载的VScode无法输入中文，重新安装VScode"><a href="#从ubuntu软件商店下载的VScode无法输入中文，重新安装VScode" class="headerlink" title="从ubuntu软件商店下载的VScode无法输入中文，重新安装VScode"></a>从ubuntu软件商店下载的VScode无法输入中文，重新安装VScode</h3><p><strong>ubuntu 添加信任源</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@root:~/Desktop$ wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor &gt; packages.microsoft.gpg</span><br><span class="line">ubuntu@root:~/Desktop$ sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/</span><br><span class="line">[sudo] password for ubuntu: </span><br><span class="line">ubuntu@root:~/Desktop$ sudo sh -c &#x27;echo &quot;deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main&quot; &gt; /etc/apt/sources.list.d/vscode.list&#x27;</span><br><span class="line">ubuntu@root:~/Desktop$ rm -f packages.microsoft.gpg</span><br><span class="line">ubuntu@root:~/Desktop$ sudo apt install apt-transport-https</span><br><span class="line">Reading package lists... Done</span><br><span class="line">Building dependency tree       </span><br><span class="line">Reading state information... Done</span><br><span class="line">The following packages were automatically installed and are no longer required:</span><br><span class="line">  gyp javascript-common libc-ares2 libjs-inherits libjs-is-typedarray libjs-psl libjs-typedarray-to-buffer libpython2-stdlib libpython2.7-minimal libpython2.7-stdlib libssl-dev libuv1-dev</span><br><span class="line">  python-pkg-resources python2 python2-minimal python2.7 python2.7-minimal</span><br><span class="line">Use &#x27;sudo apt autoremove&#x27; to remove them.</span><br><span class="line">The following NEW packages will be installed:</span><br><span class="line">  apt-transport-https</span><br><span class="line">0 upgraded, 1 newly installed, 0 to remove and 257 not upgraded.</span><br><span class="line">Need to get 1,704 B of archives.</span><br><span class="line">After this operation, 162 kB of additional disk space will be used.</span><br><span class="line">Get:1 http://cn.archive.ubuntu.com/ubuntu focal-updates/universe amd64 apt-transport-https all 2.0.9 [1,704 B]</span><br><span class="line">Fetched 1,704 B in 1s (2,988 B/s)        </span><br><span class="line">Selecting previously unselected package apt-transport-https.</span><br><span class="line">(Reading database ... 196975 files and directories currently installed.)</span><br><span class="line">Preparing to unpack .../apt-transport-https_2.0.9_all.deb ...</span><br><span class="line">Unpacking apt-transport-https (2.0.9) ...</span><br><span class="line">Setting up apt-transport-https (2.0.9) ...</span><br><span class="line">ubuntu@root:~/Desktop$ sudo apt update -y</span><br><span class="line">ubuntu@root:~/Desktop$ sudo apt install code -y</span><br></pre></td></tr></table></figure>
+<p>下载之后重新打开，支持中文输入。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/08/24/deploy/ubuntu%E5%AE%89%E8%A3%85vscode/" data-id="cl7pyik060006imdo0yyr5483" class="article-share-link">Share</a>
       
       
     </footer>
@@ -669,7 +651,7 @@
           </li>
         
           <li>
-            <a href="/2022/09/03/go%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/%E8%A1%A8%E5%8D%95/">(no title)</a>
+            <a href="/2022/09/02/go%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
           </li>
         
       </ul>
