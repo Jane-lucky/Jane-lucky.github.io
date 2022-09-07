@@ -1,703 +1,676 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
 
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <title>Jane&#39;s Blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="彤～">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
 <meta property="og:title" content="Jane&#39;s Blog">
 <meta property="og:url" content="http://example.com/page/2/index.html">
 <meta property="og:site_name" content="Jane&#39;s Blog">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="彤～">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Jane&#39;s Blog" type="application/atom+xml">
+<meta name="twitter:card" content="summary_large_image">
   
   
-    <link rel="icon" href="/favicon.png">
   
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+  <title>Jane&#39;s Blog</title>
 
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
 <meta name="generator" content="Hexo 5.4.2"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Jane&#39;s Blog</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>彤～</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-          <a class="main-nav-link" href="/">Home</a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
         
-      </nav>
-      <nav id="sub-nav">
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-ComponentInstallation/docker安装" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2022/08/29/ComponentInstallation/docker%E5%AE%89%E8%A3%85/" class="article-date">
-  <time datetime="2022-08-29T07:29:56.286Z" itemprop="datePublished">2022-08-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/29/ComponentInstallation/docker%E5%AE%89%E8%A3%85/">docker安装</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/08/29/ComponentInstallation/docker%E5%AE%89%E8%A3%85/" data-id="cl7pyik000001imdocs24by9u" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hexo/概念及安装" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2022/08/25/hexo/%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%AE%89%E8%A3%85/" class="article-date">
-  <time datetime="2022-08-25T02:38:13.613Z" itemprop="datePublished">2022-08-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/25/hexo/%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%AE%89%E8%A3%85/">hexo安装及概念</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <a target="_blank" rel="noopener" href="http://daringfireball.net/projects/markdown/">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>安装nodejs(需要注意nodejs的版本要求)：<a href="../deploy/ubuntu%E5%AE%89%E8%A3%85nodejs">ubuntu安装nodejs</a></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@root:~/Desktop/Blog$ hexo -v</span><br><span class="line">INFO  Validating config</span><br><span class="line">hexo: 5.4.2</span><br><span class="line">hexo-cli: 4.3.0</span><br><span class="line">os: linux 5.15.0-46-generic Ubuntu 20.04.4 LTS (Focal Fossa)</span><br><span class="line">node: 14.20.0</span><br><span class="line">v8: 8.4.371.23-node.87</span><br><span class="line">uv: 1.42.0</span><br><span class="line">zlib: 1.2.11</span><br><span class="line">brotli: 1.0.9</span><br><span class="line">ares: 1.18.1</span><br><span class="line">modules: 83</span><br><span class="line">nghttp2: 1.42.0</span><br><span class="line">napi: 8</span><br><span class="line">llhttp: 2.1.5</span><br><span class="line">openssl: 1.1.1q</span><br><span class="line">cldr: 40.0</span><br><span class="line">icu: 70.1</span><br><span class="line">tz: 2021a3</span><br><span class="line">unicode: 14.0</span><br></pre></td></tr></table></figure>
-
-<h2 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h2><h3 id="init"><a href="#init" class="headerlink" title="init"></a>init</h3><p>初始化</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir Blog</span><br><span class="line">cd Blog</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">也可不写文件夹，默认是在本目录层级构建</span></span><br><span class="line">hexo init &lt;folder&gt;</span><br></pre></td></tr></table></figure>
-
-<p>基本目录层级</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@root:~/Desktop/Blog$ tree -L 1</span><br><span class="line">.</span><br><span class="line">├── _config.landscape.yml</span><br><span class="line">├── _config.yml</span><br><span class="line">├── node_modules</span><br><span class="line">├── package.json</span><br><span class="line">├── package-lock.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">└── themes</span><br><span class="line"></span><br><span class="line">4 directories, 4 files</span><br></pre></td></tr></table></figure>
-
-<h3 id="new"><a href="#new" class="headerlink" title="new"></a>new</h3>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/08/25/hexo/%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%AE%89%E8%A3%85/" data-id="cl7pyik0s000kimdofiv19rih" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-openEuler/安装及概述" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2022/08/25/openEuler/%E5%AE%89%E8%A3%85%E5%8F%8A%E6%A6%82%E8%BF%B0/" class="article-date">
-  <time datetime="2022-08-25T01:42:52.122Z" itemprop="datePublished">2022-08-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/25/openEuler/%E5%AE%89%E8%A3%85%E5%8F%8A%E6%A6%82%E8%BF%B0/">openEuler安装及基本概念</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
-<li>一款面向全球的开源操作系统</li>
-<li>支持ARM、X86等多种处理器，能够充分释放计算芯片的潜能：<strong>高效、稳定、安全</strong></li>
-<li>适用于<strong>数据库、大数据、云计算、人工智能</strong>等多种应用场景</li>
-<li>构建支持多处理器架构、统一和开放的操作系统</li>
-</ul>
-<h2 id="在VirtualBox中安装"><a href="#在VirtualBox中安装" class="headerlink" title="在VirtualBox中安装"></a>在VirtualBox中安装</h2><p>系统：虚拟机安装</p>
-<p>版本：openEuler 20.03</p>
-<h3 id="获取镜像"><a href="#获取镜像" class="headerlink" title="获取镜像"></a>获取镜像</h3><p><a target="_blank" rel="noopener" href="https://repo.openeuler.org/openEuler-20.03-LTS-SP3/ISO/">IOS下载地址</a></p>
-<ol>
-<li>单击“x86_64”。</li>
-<li>若选择本地安装，分别将发布包 “openEuler-20.03-LTS-SP3-x86_64-dvd.iso”和校验文件“openEuler-20.03-LTS-SP3-x86_64-dvd.iso.sha256sum”下载到本地。</li>
-<li>若选择网络安装，分别将发布包 “openEuler-20.03-LTS-SP3-netinst-x86_64-dvd.iso ”和校验文件“openEuler-20.03-LTS-SP3-netinst-x86_64-dvd.iso.sha256sum”下载到本地。</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/08/25/openEuler/%E5%AE%89%E8%A3%85%E5%8F%8A%E6%A6%82%E8%BF%B0/" data-id="cl7pyik0s000limdoguxh9vpj" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hexo/基础配置文件解析" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2022/08/25/hexo/%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/" class="article-date">
-  <time datetime="2022-08-24T16:00:00.000Z" itemprop="datePublished">2022-08-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/25/hexo/%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/">hexo初始化基础配置文件解析</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="config-yml"><a href="#config-yml" class="headerlink" title="_config.yml"></a>_config.yml</h2><p>网站的配置信息，可以配置大部分参数。</p>
-<h3 id="站点设置"><a href="#站点设置" class="headerlink" title="站点设置"></a>站点设置</h3><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>title</td>
-<td>网站标题</td>
-</tr>
-<tr>
-<td>subtitle</td>
-<td>网站副标题</td>
-</tr>
-<tr>
-<td>description</td>
-<td>网站描述</td>
-</tr>
-<tr>
-<td>keywords</td>
-<td>网站关键词</td>
-</tr>
-<tr>
-<td>author</td>
-<td>作者名称</td>
-</tr>
-<tr>
-<td>language</td>
-<td>使用语言</td>
-</tr>
-<tr>
-<td>timezone</td>
-<td>网站时区</td>
-</tr>
-</tbody></table>
-<h3 id="网址设置"><a href="#网址设置" class="headerlink" title="网址设置"></a>网址设置</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"># Hexo Configuration</span><br><span class="line">## Docs<span class="punctuation">:</span> https<span class="punctuation">:</span><span class="comment">//hexo.io/docs/configuration.html</span></span><br><span class="line">## Source<span class="punctuation">:</span> https<span class="punctuation">:</span><span class="comment">//github.com/hexojs/hexo/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># URL</span><br><span class="line">## Set your site url here. For example<span class="punctuation">,</span> if you use GitHub Page<span class="punctuation">,</span> set url as &#x27;https<span class="punctuation">:</span><span class="comment">//username.github.io/project&#x27;</span></span><br><span class="line">url<span class="punctuation">:</span> http<span class="punctuation">:</span><span class="comment">//example.com</span></span><br><span class="line">permalink<span class="punctuation">:</span> <span class="punctuation">:</span>year/<span class="punctuation">:</span>month/<span class="punctuation">:</span>day/<span class="punctuation">:</span>title/</span><br><span class="line">permalink_defaults<span class="punctuation">:</span></span><br><span class="line">pretty_urls<span class="punctuation">:</span></span><br><span class="line">  trailing_index<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span> # Set to <span class="literal"><span class="keyword">false</span></span> to remove trailing &#x27;index.html&#x27; from permalinks</span><br><span class="line">  trailing_html<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span> # Set to <span class="literal"><span class="keyword">false</span></span> to remove trailing &#x27;.html&#x27; from permalinks</span><br><span class="line"></span><br><span class="line"># Directory</span><br><span class="line">source_dir<span class="punctuation">:</span> source</span><br><span class="line">public_dir<span class="punctuation">:</span> public</span><br><span class="line">tag_dir<span class="punctuation">:</span> tags</span><br><span class="line">archive_dir<span class="punctuation">:</span> archives</span><br><span class="line">category_dir<span class="punctuation">:</span> categories</span><br><span class="line">code_dir<span class="punctuation">:</span> downloads/code</span><br><span class="line">i18n_dir<span class="punctuation">:</span> <span class="punctuation">:</span>lang</span><br><span class="line">skip_render<span class="punctuation">:</span></span><br><span class="line"></span><br><span class="line"># Writing</span><br><span class="line">new_post_name<span class="punctuation">:</span> <span class="punctuation">:</span>title.md # File name of new posts</span><br><span class="line">default_layout<span class="punctuation">:</span> post</span><br><span class="line">titlecase<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span> # Transform title into titlecase</span><br><span class="line">external_link<span class="punctuation">:</span></span><br><span class="line">  enable<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span> # Open external links in new tab</span><br><span class="line">  field<span class="punctuation">:</span> site # Apply to the whole site</span><br><span class="line">  exclude<span class="punctuation">:</span> &#x27;&#x27;</span><br><span class="line">filename_case<span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">render_drafts<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line">post_asset_folder<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line">relative_link<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line">future<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">highlight<span class="punctuation">:</span></span><br><span class="line">  enable<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">  line_number<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">  auto_detect<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line">  tab_replace<span class="punctuation">:</span> &#x27;&#x27;</span><br><span class="line">  wrap<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">  hljs<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line">prismjs<span class="punctuation">:</span></span><br><span class="line">  enable<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line">  preprocess<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">  line_number<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">  tab_replace<span class="punctuation">:</span> &#x27;&#x27;</span><br><span class="line"></span><br><span class="line"># Home page setting</span><br><span class="line"># path<span class="punctuation">:</span> Root path for your blogs index page. (default = &#x27;&#x27;)</span><br><span class="line"># per_page<span class="punctuation">:</span> Posts displayed per page. (<span class="number">0</span> = disable pagination)</span><br><span class="line"># order_by<span class="punctuation">:</span> Posts order. (Order by date descending by default)</span><br><span class="line">index_generator<span class="punctuation">:</span></span><br><span class="line">  path<span class="punctuation">:</span> &#x27;&#x27;</span><br><span class="line">  per_page<span class="punctuation">:</span> <span class="number">10</span></span><br><span class="line">  order_by<span class="punctuation">:</span> -date</span><br><span class="line"></span><br><span class="line"># Category &amp; Tag</span><br><span class="line">default_category<span class="punctuation">:</span> uncategorized</span><br><span class="line">category_map<span class="punctuation">:</span></span><br><span class="line">tag_map<span class="punctuation">:</span></span><br><span class="line"></span><br><span class="line"># Metadata elements</span><br><span class="line">## https<span class="punctuation">:</span><span class="comment">//developer.mozilla.org/en-US/docs/Web/HTML/Element/meta</span></span><br><span class="line">meta_generator<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line"></span><br><span class="line"># Date / Time format</span><br><span class="line">## Hexo uses Moment.js to parse and display date</span><br><span class="line">## You can customize the date format as defined in</span><br><span class="line">## http<span class="punctuation">:</span><span class="comment">//momentjs.com/docs/#/displaying/format/</span></span><br><span class="line">date_format<span class="punctuation">:</span> YYYY-MM-DD</span><br><span class="line">time_format<span class="punctuation">:</span> HH<span class="punctuation">:</span>mm<span class="punctuation">:</span>ss</span><br><span class="line">## updated_option supports &#x27;mtime&#x27;<span class="punctuation">,</span> &#x27;date&#x27;<span class="punctuation">,</span> &#x27;empty&#x27;</span><br><span class="line">updated_option<span class="punctuation">:</span> &#x27;mtime&#x27;</span><br><span class="line"></span><br><span class="line"># Pagination</span><br><span class="line">## Set per_page to <span class="number">0</span> to disable pagination</span><br><span class="line">per_page<span class="punctuation">:</span> <span class="number">10</span></span><br><span class="line">pagination_dir<span class="punctuation">:</span> page</span><br><span class="line"></span><br><span class="line"># Include / Exclude file(s)</span><br><span class="line">## include<span class="punctuation">:</span>/exclude<span class="punctuation">:</span> options only apply to the &#x27;source/&#x27; folder</span><br><span class="line">include<span class="punctuation">:</span></span><br><span class="line">exclude<span class="punctuation">:</span></span><br><span class="line">ignore<span class="punctuation">:</span></span><br><span class="line"></span><br><span class="line"># Extensions</span><br><span class="line">## Plugins<span class="punctuation">:</span> https<span class="punctuation">:</span><span class="comment">//hexo.io/plugins/</span></span><br><span class="line">## Themes<span class="punctuation">:</span> https<span class="punctuation">:</span><span class="comment">//hexo.io/themes/</span></span><br><span class="line">theme<span class="punctuation">:</span> landscape</span><br><span class="line"></span><br><span class="line"># Deployment</span><br><span class="line">## Docs<span class="punctuation">:</span> https<span class="punctuation">:</span><span class="comment">//hexo.io/docs/one-command-deployment</span></span><br><span class="line">deploy<span class="punctuation">:</span></span><br><span class="line">  type<span class="punctuation">:</span> &#x27;&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h2><p>应用程序信息</p>
-<h2 id="scaffolds"><a href="#scaffolds" class="headerlink" title="scaffolds"></a>scaffolds</h2><p>模板文件夹，当新建文章的时候会根据该模板建立文件。默认是post模板(可以自己添加模板内容)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@root:~/Desktop/Blog$ ls scaffolds/</span><br><span class="line">draft.md  page.md  post.md</span><br><span class="line">ubuntu@root:~/Desktop/Blog$ cat scaffolds/post.md </span><br><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">tags:</span><br><span class="line">---</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="source"><a href="#source" class="headerlink" title="source"></a>source</h2><p>资源文件夹是用来存放用户资源的地方。</p>
-<p>HTML和MarkDown文件会被解析并放到public文件夹，而其他文件会被拷贝过去</p>
-<h2 id="themes"><a href="#themes" class="headerlink" title="themes"></a>themes</h2><p>主题文件夹。根据该主题来生成静态页面。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/08/25/hexo/%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/" data-id="cl7pyik0o000jimdo0k8chcml" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ComponentInstallation/ccache安装及使用" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2022/08/24/ComponentInstallation/ccache%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/" class="article-date">
-  <time datetime="2022-08-24T09:38:21.004Z" itemprop="datePublished">2022-08-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/24/ComponentInstallation/ccache%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/">ccache安装及使用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>在处理一些较大规模工程时，编译会花费较长的时间。ccache会在第一遍编译时时间较长，之后的编译会成倍的提速。</p>
-<p><strong>基本原理：</strong>通过头文件告诉缓存到源文件中而改进构建性能，因而通过减少每一步编译时添加头文件所需的时间而提高构建速度。</p>
-<p>第一趟编译ccache缓存GCC的”-E”的输出，编译选项以及.o文件到$HOME/.ccache。第二次编译尽量利用缓存，必要时更新缓存。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">[root@68ab9a9c9a49 ccache-3.2.4]# yum install gcc make cmake -y</span><br><span class="line"></span><br><span class="line">[root@68ab9a9c9a49 home]# wget http://samba.org/ftp/ccache/ccache-3.2.4.tar.gz</span><br><span class="line">[root@68ab9a9c9a49 home]# tar -zxf ccache-3.2.4.tar.gz</span><br><span class="line">[root@68ab9a9c9a49 home]# ls</span><br><span class="line">ccache-3.2.4  ccache-3.2.4.tar.gz</span><br><span class="line">[root@68ab9a9c9a49 home]# cd ccache-3.2.4</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">配置安装</span></span><br><span class="line">[root@68ab9a9c9a49 ccache-3.2.4]# /home/ccache-3.2.4/configure -prefix=/usr/local/ccache-3.2.4</span><br><span class="line">configure: Configuring ccache</span><br><span class="line">checking build system type... aarch64-unknown-linux-gnu</span><br><span class="line">checking host system type... aarch64-unknown-linux-gnu</span><br><span class="line">checking for gcc... gcc</span><br><span class="line">checking whether the C compiler works... yes</span><br><span class="line">checking for C compiler default output file name... a.out</span><br><span class="line">checking for suffix of executables...</span><br><span class="line">checking whether we are cross compiling... no</span><br><span class="line">checking for suffix of object files... o</span><br><span class="line">checking whether we are using the GNU C compiler... yes</span><br><span class="line">.......</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">编译安装</span></span><br><span class="line">[root@034ebb878219 ccache-3.2.4]# make -j4</span><br><span class="line">[root@68ab9a9c9a49 ccache-3.2.4]# make install</span><br><span class="line">/usr/bin/install -c -d /usr/local/ccache-3.2.4/bin</span><br><span class="line">/usr/bin/install -c -m 755 ccache /usr/local/ccache-3.2.4/bin</span><br><span class="line">/usr/bin/install -c -d /usr/local/ccache-3.2.4/share/man/man1</span><br><span class="line">/usr/bin/install -c -m 644 ./ccache.1 /usr/local/ccache-3.2.4/share/man/man1/</span><br><span class="line"></span><br><span class="line">[root@68ab9a9c9a49 home]# cd /usr/bin/</span><br><span class="line">[root@68ab9a9c9a49 bin]# ln -s /usr/local/ccache-3.2.4/bin/ccache ccache</span><br><span class="line"></span><br><span class="line">[root@68ab9a9c9a49 usr]# ccache --v</span><br><span class="line">ccache version 3.2.4</span><br><span class="line"></span><br><span class="line">Copyright (C) 2002-2007 Andrew Tridgell</span><br><span class="line">Copyright (C) 2009-2015 Joel Rosdahl</span><br><span class="line"></span><br><span class="line">This program is free software; you can redistribute it and/or modify it under</span><br><span class="line">the terms of the GNU General Public License as published by the Free Software</span><br><span class="line">Foundation; either version 3 of the License, or (at your option) any later</span><br><span class="line">version.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="编译加速使用（mysql编译）"><a href="#编译加速使用（mysql编译）" class="headerlink" title="编译加速使用（mysql编译）"></a>编译加速使用（mysql编译）</h2><h3 id="ccache加入环境变量，取代C编译器："><a href="#ccache加入环境变量，取代C编译器：" class="headerlink" title="ccache加入环境变量，取代C编译器："></a>ccache加入环境变量，取代C编译器：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cp ccache /usr/local/bin/</span><br><span class="line">ln -s ccache /usr/local/bin/gcc</span><br><span class="line">ln -s ccache /usr/local/bin/g++</span><br><span class="line">ln -s ccache /usr/local/bin/cc</span><br><span class="line">ln -s ccache /usr/local/bin/c++</span><br></pre></td></tr></table></figure>
-
-<p>yum安装以缓存的形式进行安装，目录挂载，本地源</p>
-<p>可以大量的减少安装等待的时间</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install --downloadonly 包名</span><br></pre></td></tr></table></figure>
-
-<p>在 ccache 中使用 -s 命令行选项来获得关于高速缓存性能的统计数据。</p>
-<h3 id="MYSQL-5-7-X编译"><a href="#MYSQL-5-7-X编译" class="headerlink" title="MYSQL 5.7.X编译"></a>MYSQL 5.7.X编译</h3><h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><p>将sh文件后台执行，<code>sh test.sh &amp;&gt; /tmp/test.log</code></p>
-<p>mysql版本：5.7.36</p>
-<p>时间消耗：21 minutes</p>
-<p>第一次使用 ccache 编译那个文件时，您将不会看到有任何的帮助，因为编译信息还没有被高速缓存。</p>
-<p>ccache获取的缓存的数据</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@74c8c1b5bfab home]# ccache -s</span><br><span class="line">cache directory                     /root/.ccache</span><br><span class="line">primary config                      /root/.ccache/ccache.conf</span><br><span class="line">secondary config      (readonly)    /usr/local/ccache-3.2.4/etc/ccache.conf</span><br><span class="line">cache hit (direct)                    36</span><br><span class="line">cache hit (preprocessed)              23</span><br><span class="line">cache miss                          2239</span><br><span class="line">called for link                      508</span><br><span class="line">called for preprocessing              20</span><br><span class="line">compile failed                        19</span><br><span class="line">preprocessor error                    20</span><br><span class="line">no input file                          3</span><br><span class="line">files in cache                      4715</span><br><span class="line">cache size                           1.6 GB</span><br><span class="line">max cache size                       5.0 GB</span><br></pre></td></tr></table></figure>
-
-<h4 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h4><p><strong>前提：</strong>.cacahe文件中已经获取到编译的缓存</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -itd --name ccachtest -v $PWD/yumcache/:/home/lamp -v $PWD/ccache/:/root/.ccache -v $PWD/ccache-3.2.4:/usr/local/ccache-3.2.4 centos:7</span><br></pre></td></tr></table></figure>
-
-<p>时间消耗：Total:4 minutes</p>
-<ol>
-<li><p>yum下载采用缓存的方式进行</p>
-<p><code>-v $PWD/yumcache/:/home/lamp</code></p>
-</li>
-<li><p>ccache不必每次都进行编译</p>
-<p><code>-v $PWD/ccache-3.2.4:/usr/local/ccache-3.2.4</code>    </p>
-</li>
-<li><p>缓存/root/.ccache文件目录</p>
-<p><code>-v $PWD/ccache/:/root/.ccache</code></p>
-</li>
-</ol>
-<h4 id="同缓存编译不同版本"><a href="#同缓存编译不同版本" class="headerlink" title="同缓存编译不同版本"></a>同缓存编译不同版本</h4><p>参考方法二，仅修改mysql的版本：5.7.35</p>
-<p>时间消耗:19 minutes</p>
-<p>ccache获取的缓存的数据</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@0a200c0bc3fd .ccache]# ccache -s</span><br><span class="line">cache directory                     /root/.ccache</span><br><span class="line">primary config                      /root/.ccache/ccache.conf</span><br><span class="line">secondary config      (readonly)    /usr/local/ccache-3.2.4/etc/ccache.conf</span><br><span class="line">cache hit (direct)                  2544</span><br><span class="line">cache hit (preprocessed)              68</span><br><span class="line">cache miss                          4386</span><br><span class="line">called for link                     1630</span><br><span class="line">called for preprocessing              60</span><br><span class="line">compile failed                        57</span><br><span class="line">preprocessor error                    62</span><br><span class="line">no input file                         11</span><br><span class="line">files in cache                      9245</span><br><span class="line">cache size                           3.1 GB</span><br><span class="line">max cache size                       5.0 GB</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/08/24/ComponentInstallation/ccache%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/" data-id="cl7pyijzt0000imdob5y28jim" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ComponentInstallation/gitlab-14.0.5镜像编译安装" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2022/08/24/ComponentInstallation/gitlab-14.0.5%E9%95%9C%E5%83%8F%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" class="article-date">
-  <time datetime="2022-08-24T09:27:23.579Z" itemprop="datePublished">2022-08-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/24/ComponentInstallation/gitlab-14.0.5%E9%95%9C%E5%83%8F%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/">gitlab-14.0.5镜像编译安装</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><em>注:其中CE和EE的安装包括镜像构建方式相同</em></p>
-<h2 id="直接安装gitlab"><a href="#直接安装gitlab" class="headerlink" title="直接安装gitlab"></a>直接安装gitlab</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh | bash</span><br><span class="line">apt-get install gitlab-ee=14.0.5-ee.0</span><br></pre></td></tr></table></figure>
-
-<h2 id="下载gitlab"><a href="#下载gitlab" class="headerlink" title="下载gitlab"></a>下载gitlab</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --content-disposition https://packages.gitlab.com/gitlab/gitlab-ee/packages/ubuntu/focal/gitlab-ee_14.0.5-ee.0_arm64.deb/download.deb</span><br></pre></td></tr></table></figure>
-
-<p>获取gitlab源码</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@ecs-5e66 gitlab]$ git clone https://gitlab.com/gitlab-org/omnibus-gitlab.git</span><br><span class="line">Cloning into &#x27;omnibus-gitlab&#x27;...</span><br><span class="line">remote: Enumerating objects: 148163, done.</span><br><span class="line">remote: Counting objects: 100% (16/16), done.</span><br><span class="line">remote: Compressing objects: 100% (16/16), done.</span><br><span class="line">remote: Total 148163 (delta 8), reused 0 (delta 0), pack-reused 148147</span><br><span class="line">Receiving objects: 100% (148163/148163), 24.69 MiB | 6.92 MiB/s, done.</span><br><span class="line">Resolving deltas: 100% (94777/94777), done.</span><br><span class="line">[root@ecs-5e66 gitlab]$ cd omnibus-gitlab/</span><br><span class="line">[root@ecs-5e66 omnibus-gitlab]$ git checkout 14.0.5+ee.0</span><br><span class="line">Note: checking out &#x27;14.0.5+ee.0&#x27;.</span><br><span class="line">....</span><br><span class="line"></span><br><span class="line">HEAD is now at fe10a61... Update VERSION to 14.0.5-ee</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="构建gitlab"><a href="#构建gitlab" class="headerlink" title="构建gitlab"></a>构建gitlab</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">切换分支</span></span><br><span class="line">[root@ecs-5e66 omnibus-gitlab]$ cd docker</span><br><span class="line">[root@ecs-5e66 docker]$</span><br><span class="line">[root@ecs-5e66 docker]$ cat &lt;&lt; EOF &gt; RELEASE</span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">RELEASE_PACKAGE=gitlab-ee</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">RELEASE_VERSION=14.0.5-ee</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">DOWNLOAD_URL=https://packages.gitlab.com/gitlab/gitlab-ee/packages/ubuntu/focal/gitlab-ee_14.0.5-ee.0_arm64.deb/download.deb</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">需要添加依赖libatomic1</span></span><br><span class="line">[root@ecs-5e66 docker]$ git diff</span><br><span class="line">diff --git a/docker/Dockerfile b/docker/Dockerfile</span><br><span class="line">index d07c1f4..602d412 100644</span><br><span class="line">--- a/docker/Dockerfile</span><br><span class="line">+++ b/docker/Dockerfile</span><br><span class="line">@@ -14,6 +14,7 @@ RUN apt-get update -q \</span><br><span class="line">       openssh-server \</span><br><span class="line">       tzdata \</span><br><span class="line">       wget \</span><br><span class="line">+      libatomic1 \</span><br><span class="line">     &amp;&amp; rm -rf /var/lib/apt/lists/*</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"> # </span><span class="language-bash">Use BusyBox</span></span><br><span class="line">[root@ecs-5e66 docker]$ docker build -t gitlab/gitlab-ee:14.0.5 .</span><br><span class="line">Sending build context to Docker daemon  28.67kB</span><br><span class="line">Step 1/18 : FROM ubuntu:20.04</span><br><span class="line"><span class="meta prompt_"> ---&gt; </span><span class="language-bash">d5ca7a445605</span></span><br><span class="line">Step 2/18 : MAINTAINER GitLab Inc. &lt;support@gitlab.com&gt;</span><br><span class="line"><span class="meta prompt_"> ---&gt; </span><span class="language-bash">Using cache</span></span><br><span class="line"><span class="meta prompt_"> ---&gt; </span><span class="language-bash">fbceb05a9c47</span></span><br><span class="line">Step 3/18 : SHELL [&quot;/bin/sh&quot;, &quot;-c&quot;]</span><br><span class="line"><span class="meta prompt_"> ---&gt; </span><span class="language-bash">Using cache</span></span><br><span class="line"><span class="meta prompt_"> ---&gt; </span><span class="language-bash">acf3fce3b499</span></span><br><span class="line">Step 4/18 : ENV LANG=C.UTF-8</span><br><span class="line">......</span><br><span class="line">Step 18/18 : HEALTHCHECK --interval=60s --timeout=30s --retries=5 CMD /opt/gitlab/bin/gitlab-healthcheck --fail --max-time 10</span><br><span class="line"><span class="meta prompt_"> ---&gt; </span><span class="language-bash">Running <span class="keyword">in</span> 5b6cac9a902a</span></span><br><span class="line">Removing intermediate container 5b6cac9a902a</span><br><span class="line"><span class="meta prompt_"> ---&gt; </span><span class="language-bash">9bb5a07d8303</span></span><br><span class="line">Successfully built 9bb5a07d8303</span><br><span class="line">Successfully tagged gitlab/gitlab-ee:14.0.5</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/08/24/ComponentInstallation/gitlab-14.0.5%E9%95%9C%E5%83%8F%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" data-id="cl7pyik030002imdo1zqs8le2" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ComponentInstallation/kkFileView-4.0.0安装" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2022/08/24/ComponentInstallation/kkFileView-4.0.0%E5%AE%89%E8%A3%85/" class="article-date">
-  <time datetime="2022-08-24T09:24:39.141Z" itemprop="datePublished">2022-08-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/24/ComponentInstallation/kkFileView-4.0.0%E5%AE%89%E8%A3%85/">kkFileView-4.0.0编译安装</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>获取源码</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://gitee.com/kekingcn/file-online-preview.git</span><br><span class="line">cd file-online-preview/</span><br><span class="line">git checkout v4.0.0</span><br></pre></td></tr></table></figure>
-
-<h2 id="centos-7-6-安装"><a href="#centos-7-6-安装" class="headerlink" title="centos 7.6 安装"></a>centos 7.6 安装</h2><h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install git wget vim libreoffice java-11-openjdk maven -y</span><br><span class="line">java -version</span><br><span class="line">mvn -v</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">/usr/lib64/libreoffice</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="修改原文档中的配置文件"><a href="#修改原文档中的配置文件" class="headerlink" title="修改原文档中的配置文件"></a>修改原文档中的配置文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br><span class="line">diff --git a/server/src/main/bin/startup.sh b/server/src/main/bin/startup.sh</span><br><span class="line">index cae3d3b..413c957 100644</span><br><span class="line">--- a/server/src/main/bin/startup.sh</span><br><span class="line">+++ b/server/src/main/bin/startup.sh</span><br><span class="line">@@ -1,5 +1,5 @@</span><br><span class="line"><span class="meta prompt_"> #</span><span class="language-bash">!/bin/bash</span></span><br><span class="line">-DIR_HOME=(&quot;/opt/openoffice.org3&quot; &quot;/opt/libreoffice&quot; &quot;/opt/libreoffice6.1&quot; &quot;/opt/libreoffice7.0&quot; &quot;/opt/libreoffice7.1&quot; &quot;/opt/openoffice4&quot; &quot;/usr/lib/openoffice&quot; &quot;/usr/lib/libreoffice&quot;)</span><br><span class="line">+DIR_HOME=(&quot;/opt/openoffice.org3&quot; &quot;/opt/libreoffice&quot; &quot;/opt/libreoffice6.1&quot; &quot;/opt/libreoffice7.0&quot; &quot;/opt/libreoffice7.1&quot; &quot;/opt/openoffice4&quot; &quot;/usr/lib/openoffice&quot; &quot;/usr/lib64/libreoffice&quot;)</span><br><span class="line"> FLAG=</span><br><span class="line"> OFFICE_HOME=</span><br><span class="line"> KKFILEVIEW_BIN_FOLDER=$(cd &quot;$(dirname &quot;$0&quot;)&quot;;pwd)</span><br><span class="line">diff --git a/server/src/main/config/application.properties b/server/src/main/config/application.properties</span><br><span class="line">index fd79f6d..b78e4c2 100644</span><br><span class="line">--- a/server/src/main/config/application.properties</span><br><span class="line">+++ b/server/src/main/config/application.properties</span><br><span class="line">@@ -27,7 +27,7 @@ office.plugin.task.timeout = 5m</span><br><span class="line"> file.dir = $&#123;KK_FILE_DIR:default&#125;</span><br><span class="line"><span class="meta prompt_"> #</span><span class="language-bash">openoffice home&lt;E8&gt;&lt;B7&gt;&lt;AF&gt;&lt;E5&gt;&lt;BE&gt;&lt;84&gt;</span></span><br><span class="line"><span class="meta prompt_"> #</span><span class="language-bash">office.home = C:\\Program Files (x86)\\OpenOffice 4</span></span><br><span class="line">-office.home = $&#123;KK_OFFICE_HOME:default&#125;</span><br><span class="line">+office.home = /usr/lib64/libreoffice</span><br></pre></td></tr></table></figure>
-
-<h3 id="mvn构建"><a href="#mvn构建" class="headerlink" title="mvn构建"></a>mvn构建</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean package -DskipTests -Prelease</span><br></pre></td></tr></table></figure>
-
-<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">生成对应的</span></span><br><span class="line">cd server/target/</span><br><span class="line">tar -zxvf kkFileView-4.0.0.tar.gz</span><br><span class="line">cd kkFileView-4.0.0/bin</span><br><span class="line">./start.sh</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/08/24/ComponentInstallation/kkFileView-4.0.0%E5%AE%89%E8%A3%85/" data-id="cl7pyik040003imdo3oia66z9" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-deploy/wget知识点详解" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2022/08/24/deploy/wget%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AF%A6%E8%A7%A3/" class="article-date">
-  <time datetime="2022-08-24T08:59:32.289Z" itemprop="datePublished">2022-08-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/24/deploy/wget%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AF%A6%E8%A7%A3/">wget知识点详解</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="wget"><a href="#wget" class="headerlink" title="wget"></a>wget</h2><p>“world wide web”和”get”的结合，目前支持http、https以及ftp这三个TCP/IP协议下载。</p>
-<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
-<li>支持递归下载</li>
-<li>支持代理服务器</li>
-<li>恰当地转换页面中的连接</li>
-<li>生成可在本地浏览的页面镜像</li>
-</ul>
-<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><ol>
-<li><p><code>wget</code>下载单文件</p>
-</li>
-<li><p><code>wget -O</code>：下载并以不同的文件名保存</p>
-<p>将下载连接的文件保存为boost_1_80.tar.gz</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O boost_1_80.tar.gz https://boostorg.jfrog.io/artifactory/main/release/1.80.0/source/boost_1_80_0.tar.gz</span><br></pre></td></tr></table></figure></li>
-<li><p><code>wget -c</code>:断点续传</p>
-</li>
-<li><p><code>wget -q </code>:quiet (no output)——下载内容但不显示任何内容</p>
-</li>
-<li><p><code>wget -P</code>：下载到指定目录</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -P/tmp https://boostorg.jfrog.io/artifactory/main/release/1.80.0/source/boost_1_80_0.tar.gz</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/08/24/deploy/wget%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AF%A6%E8%A7%A3/" data-id="cl7pyik070007imdo8pm8fojr" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-deploy/snap和apt" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2022/08/24/deploy/snap%E5%92%8Capt/" class="article-date">
-  <time datetime="2022-08-24T08:47:41.950Z" itemprop="datePublished">2022-08-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/24/deploy/snap%E5%92%8Capt/">snap和apt</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="snap"><a href="#snap" class="headerlink" title="snap"></a>snap</h2><p><strong>软件包和部署系统</strong>。通过该应用程序与系统无关，也就是说可以在任何支持snap的linux发行版上本地运行。</p>
-<p>一种全新的软件包管理方式，它类似一个容器拥有一个应用程序所有的文件和库，各个应用程序之间完全独立。所以使用snap包的好处就是它解决了应用程序之间的依赖问题，使应用程序之间更容易管理。但是由此带来的问题就是它占用更多的磁盘空间。</p>
-<p>类似于一个容器，它包含一个应用程序需要用到的所有文件和库（snap包包含一个私有的root文件系统，里面包含了依赖的软件包）。它们会被安装到单独的目录；各个应用程序之间相互隔离。使用snap有很多好处，首先它解决了软件包的依赖问题；其次，也使应用程序更容易管理。</p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ol>
-<li><code>sudo snap list</code>:查看已下载snap的软件。</li>
-</ol>
-<h2 id="apt"><a href="#apt" class="headerlink" title="apt"></a>apt</h2><p>软件包管理器，用于在基于 Debian 的系统上安装和删除软件包。APT 使检索、配置、升级、安装和删除包的过程自动化。</p>
-<ul>
-<li>你希望应用程序由你使用的发行版进行审核。</li>
-<li>你担心节省存储空间。APT 安装的应用程序共享它们的依赖项。</li>
-<li>你希望应用程序正确集成到GUI 环境中。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/08/24/deploy/snap%E5%92%8Capt/" data-id="cl7pyik050004imdoh92n1e8n" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-deploy/ubuntu安装vscode" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2022/08/24/deploy/ubuntu%E5%AE%89%E8%A3%85vscode/" class="article-date">
-  <time datetime="2022-08-24T08:08:06.548Z" itemprop="datePublished">2022-08-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/24/deploy/ubuntu%E5%AE%89%E8%A3%85vscode/">ubuntu安装vscode</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="在ubuntu的软件商城中安装code报错"><a href="#在ubuntu的软件商城中安装code报错" class="headerlink" title="在ubuntu的软件商城中安装code报错"></a>在ubuntu的软件商城中安装code报错</h3><p>Unable to install “Visual Studio Code”: snap “code” has “install-snap” change in progress；</p>
-<h4 id="问题原因-amp-amp-解决"><a href="#问题原因-amp-amp-解决" class="headerlink" title="问题原因&amp;&amp;解决"></a>问题原因&amp;&amp;解决</h4><p>软件正在安装，所以不需要再次点击</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@root:~/Desktop/Doc$ snap changes</span><br><span class="line">ID   Status  Spawn                   Ready                   Summary</span><br><span class="line">1    Done    2022-02-23              yesterday at 11:37 CST  Initialize system state</span><br><span class="line">2    Done    yesterday at 11:37 CST  yesterday at 11:37 CST  Initialize device</span><br><span class="line">3    Done    yesterday at 11:42 CST  yesterday at 11:43 CST  Install &quot;typora&quot; snap from &quot;latest/stable&quot; channel</span><br><span class="line">4    Done    yesterday at 14:03 CST  yesterday at 14:12 CST  Auto-refresh 4 snaps</span><br><span class="line">5    Do      today at 11:06 CST      -                       Install &quot;code&quot; snap from &quot;latest/stable&quot; channel</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="从ubuntu软件商店下载的VScode无法输入中文，重新安装VScode"><a href="#从ubuntu软件商店下载的VScode无法输入中文，重新安装VScode" class="headerlink" title="从ubuntu软件商店下载的VScode无法输入中文，重新安装VScode"></a>从ubuntu软件商店下载的VScode无法输入中文，重新安装VScode</h3><p><strong>ubuntu 添加信任源</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@root:~/Desktop$ wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor &gt; packages.microsoft.gpg</span><br><span class="line">ubuntu@root:~/Desktop$ sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/</span><br><span class="line">[sudo] password for ubuntu: </span><br><span class="line">ubuntu@root:~/Desktop$ sudo sh -c &#x27;echo &quot;deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main&quot; &gt; /etc/apt/sources.list.d/vscode.list&#x27;</span><br><span class="line">ubuntu@root:~/Desktop$ rm -f packages.microsoft.gpg</span><br><span class="line">ubuntu@root:~/Desktop$ sudo apt install apt-transport-https</span><br><span class="line">Reading package lists... Done</span><br><span class="line">Building dependency tree       </span><br><span class="line">Reading state information... Done</span><br><span class="line">The following packages were automatically installed and are no longer required:</span><br><span class="line">  gyp javascript-common libc-ares2 libjs-inherits libjs-is-typedarray libjs-psl libjs-typedarray-to-buffer libpython2-stdlib libpython2.7-minimal libpython2.7-stdlib libssl-dev libuv1-dev</span><br><span class="line">  python-pkg-resources python2 python2-minimal python2.7 python2.7-minimal</span><br><span class="line">Use &#x27;sudo apt autoremove&#x27; to remove them.</span><br><span class="line">The following NEW packages will be installed:</span><br><span class="line">  apt-transport-https</span><br><span class="line">0 upgraded, 1 newly installed, 0 to remove and 257 not upgraded.</span><br><span class="line">Need to get 1,704 B of archives.</span><br><span class="line">After this operation, 162 kB of additional disk space will be used.</span><br><span class="line">Get:1 http://cn.archive.ubuntu.com/ubuntu focal-updates/universe amd64 apt-transport-https all 2.0.9 [1,704 B]</span><br><span class="line">Fetched 1,704 B in 1s (2,988 B/s)        </span><br><span class="line">Selecting previously unselected package apt-transport-https.</span><br><span class="line">(Reading database ... 196975 files and directories currently installed.)</span><br><span class="line">Preparing to unpack .../apt-transport-https_2.0.9_all.deb ...</span><br><span class="line">Unpacking apt-transport-https (2.0.9) ...</span><br><span class="line">Setting up apt-transport-https (2.0.9) ...</span><br><span class="line">ubuntu@root:~/Desktop$ sudo apt update -y</span><br><span class="line">ubuntu@root:~/Desktop$ sudo apt install code -y</span><br></pre></td></tr></table></figure>
-<p>下载之后重新打开，支持中文输入。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/08/24/deploy/ubuntu%E5%AE%89%E8%A3%85vscode/" data-id="cl7pyik060006imdo0yyr5483" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
-  </nav>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2022/09/06/go%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/%E4%BA%92%E6%96%A5%E9%94%81-sync.Mutex/">互斥锁-sync.Mutex</a>
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
           </li>
+          
         
-          <li>
-            <a href="/2022/09/06/go%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">单例模式</a>
-          </li>
         
-          <li>
-            <a href="/2022/09/05/go%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/context/">context源码学习</a>
-          </li>
-        
-          <li>
-            <a href="/2022/09/03/go%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E5%AE%9E%E6%88%98/">日志收集实战</a>
-          </li>
-        
-          <li>
-            <a href="/2022/09/02/go%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
     </div>
   </div>
+</nav>
 
   
-</aside>
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="快乐快乐才是意义"></span>
+          
+        </div>
+
         
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2022 彤～<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
     </div>
   </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/08/29/ComponentInstallation/docker%E5%AE%89%E8%A3%85/" target="_self">
+          docker安装
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/08/29/ComponentInstallation/docker%E5%AE%89%E8%A3%85/" target="_self">
+        <div>
+          安装1curl -fsSL https:&#x2F;&#x2F;get.docker.com | bash -s docker --mirror Aliyun
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-29 15:29" pubdate>
+              2022-08-29
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/08/25/hexo/%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%AE%89%E8%A3%85/" target="_self">
+          hexo安装及概念
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/08/25/hexo/%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%AE%89%E8%A3%85/" target="_self">
+        <div>
+          概念Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。 安装安装nodejs(需要注意nodejs的版本要求)：ubuntu安装nodejs 1npm install -g hexo-cli  验证1234567891011121314151617181920ubuntu@root:~&#x2F;Desktop&#x2F;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-25 10:38" pubdate>
+              2022-08-25
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/08/25/openEuler/%E5%AE%89%E8%A3%85%E5%8F%8A%E6%A6%82%E8%BF%B0/" target="_self">
+          openEuler安装及基本概念
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/08/25/openEuler/%E5%AE%89%E8%A3%85%E5%8F%8A%E6%A6%82%E8%BF%B0/" target="_self">
+        <div>
+          基本概念 一款面向全球的开源操作系统 支持ARM、X86等多种处理器，能够充分释放计算芯片的潜能：高效、稳定、安全 适用于数据库、大数据、云计算、人工智能等多种应用场景 构建支持多处理器架构、统一和开放的操作系统  在VirtualBox中安装系统：虚拟机安装 版本：openEuler 20.03 获取镜像IOS下载地址  单击“x86_64”。 若选择本地安装，分别将发布包 “openEuler
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-25 09:42" pubdate>
+              2022-08-25
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/08/25/hexo/%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/" target="_self">
+          hexo初始化基础配置文件解析
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/08/25/hexo/%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/" target="_self">
+        <div>
+          _config.yml网站的配置信息，可以配置大部分参数。 站点设置   参数 描述    title 网站标题   subtitle 网站副标题   description 网站描述   keywords 网站关键词   author 作者名称   language 使用语言   timezone 网站时区   网址设置12345678910111213141516171819202122232
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-25 00:00" pubdate>
+              2022-08-25
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/08/24/ComponentInstallation/ccache%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/" target="_self">
+          ccache安装及使用
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/08/24/ComponentInstallation/ccache%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/" target="_self">
+        <div>
+          简介在处理一些较大规模工程时，编译会花费较长的时间。ccache会在第一遍编译时时间较长，之后的编译会成倍的提速。 基本原理：通过头文件告诉缓存到源文件中而改进构建性能，因而通过减少每一步编译时添加头文件所需的时间而提高构建速度。 第一趟编译ccache缓存GCC的”-E”的输出，编译选项以及.o文件到$HOME&#x2F;.ccache。第二次编译尽量利用缓存，必要时更新缓存。 安装12345678910
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-24 17:38" pubdate>
+              2022-08-24
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/08/24/ComponentInstallation/gitlab-14.0.5%E9%95%9C%E5%83%8F%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" target="_self">
+          gitlab-14.0.5镜像编译安装
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/08/24/ComponentInstallation/gitlab-14.0.5%E9%95%9C%E5%83%8F%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" target="_self">
+        <div>
+          注:其中CE和EE的安装包括镜像构建方式相同 直接安装gitlab12curl -s https:&#x2F;&#x2F;packages.gitlab.com&#x2F;install&#x2F;repositories&#x2F;gitlab&#x2F;gitlab-ee&#x2F;script.deb.sh | bashapt-get install gitlab-ee&#x3D;14.0.5-ee.0  下载gitlab1wget --content-disposit
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-24 17:27" pubdate>
+              2022-08-24
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/08/24/ComponentInstallation/kkFileView-4.0.0%E5%AE%89%E8%A3%85/" target="_self">
+          kkFileView-4.0.0编译安装
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/08/24/ComponentInstallation/kkFileView-4.0.0%E5%AE%89%E8%A3%85/" target="_self">
+        <div>
+          获取源码 123git clone https:&#x2F;&#x2F;gitee.com&#x2F;kekingcn&#x2F;file-online-preview.gitcd file-online-preview&#x2F;git checkout v4.0.0  centos 7.6 安装安装依赖1234yum install git wget vim libreoffice java-11-openjdk maven -yjava -
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-24 17:24" pubdate>
+              2022-08-24
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/08/24/deploy/wget%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AF%A6%E8%A7%A3/" target="_self">
+          wget知识点详解
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/08/24/deploy/wget%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AF%A6%E8%A7%A3/" target="_self">
+        <div>
+          wget“world wide web”和”get”的结合，目前支持http、https以及ftp这三个TCP&#x2F;IP协议下载。 特点 支持递归下载 支持代理服务器 恰当地转换页面中的连接 生成可在本地浏览的页面镜像  使用方法 wget下载单文件  wget -O：下载并以不同的文件名保存 将下载连接的文件保存为boost_1_80.tar.gz 1wget -O boost_1_80.tar.g
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-24 16:59" pubdate>
+              2022-08-24
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/08/24/deploy/snap%E5%92%8Capt/" target="_self">
+          snap和apt
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/08/24/deploy/snap%E5%92%8Capt/" target="_self">
+        <div>
+          snap软件包和部署系统。通过该应用程序与系统无关，也就是说可以在任何支持snap的linux发行版上本地运行。 一种全新的软件包管理方式，它类似一个容器拥有一个应用程序所有的文件和库，各个应用程序之间完全独立。所以使用snap包的好处就是它解决了应用程序之间的依赖问题，使应用程序之间更容易管理。但是由此带来的问题就是它占用更多的磁盘空间。 类似于一个容器，它包含一个应用程序需要用到的所有文件和库
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-24 16:47" pubdate>
+              2022-08-24
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/08/24/deploy/ubuntu%E5%AE%89%E8%A3%85vscode/" target="_self">
+          ubuntu安装vscode
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/08/24/deploy/ubuntu%E5%AE%89%E8%A3%85vscode/" target="_self">
+        <div>
+          在ubuntu的软件商城中安装code报错Unable to install “Visual Studio Code”: snap “code” has “install-snap” change in progress； 问题原因&amp;&amp;解决软件正在安装，所以不需要再次点击 12345678ubuntu@root:~&#x2F;Desktop&#x2F;Doc$ snap changesID   Sta
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-24 16:08" pubdate>
+              2022-08-24
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
   </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>
