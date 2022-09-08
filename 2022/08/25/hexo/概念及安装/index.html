@@ -18,19 +18,22 @@
   
     <meta name="description" content="概念Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。 安装安装nodejs(需要注意nodejs的版本要求)：ubuntu安装nodejs 1npm install -g hexo-cli  验证1234567891011121314151617181920ubuntu@root:~&#x2F;Desktop&#x2F;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo安装及概念">
+<meta property="og:title" content="hexo安装及主题配置">
 <meta property="og:url" content="http://example.com/2022/08/25/hexo/%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%AE%89%E8%A3%85/index.html">
 <meta property="og:site_name" content="Jane&#39;s Blog">
 <meta property="og:description" content="概念Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。 安装安装nodejs(需要注意nodejs的版本要求)：ubuntu安装nodejs 1npm install -g hexo-cli  验证1234567891011121314151617181920ubuntu@root:~&#x2F;Desktop&#x2F;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-08-25T02:38:13.613Z">
-<meta property="article:modified_time" content="2022-08-25T03:01:59.178Z">
+<meta property="article:modified_time" content="2022-09-08T03:41:52.485Z">
 <meta property="article:author" content="彤～">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="fluid">
+<meta property="article:tag" content="安装">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>hexo安装及概念 - Jane&#39;s Blog</title>
+  <title>hexo安装及主题配置 - Jane&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -195,7 +198,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="hexo安装及概念"></span>
+            <span id="subtitle" data-typed-text="hexo安装及主题配置"></span>
           
         </div>
 
@@ -218,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          734 words
+          874 words
         
       </span>
     
@@ -229,7 +232,7 @@
         
         
         
-          7 mins
+          8 mins
         
       </span>
     
@@ -267,12 +270,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">hexo安装及概念</h1>
+            <h1 style="display: none">hexo安装及主题配置</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <a target="_blank" rel="noopener" href="http://daringfireball.net/projects/markdown/">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+                <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> 是一个快速、简洁且高效的博客框架。Hexo 使用 <a target="_blank" rel="noopener" href="http://daringfireball.net/projects/markdown/">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>安装nodejs(需要注意nodejs的版本要求)：<a href="../deploy/ubuntu%E5%AE%89%E8%A3%85nodejs">ubuntu安装nodejs</a></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">npm install -g hexo-cli<br></code></pre></td></tr></table></figure>
 
@@ -284,7 +287,11 @@
 <p>基本目录层级</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs shell">ubuntu@root:~/Desktop/Blog$ tree -L 1<br>.<br>├── _config.landscape.yml<br>├── _config.yml<br>├── node_modules<br>├── package.json<br>├── package-lock.json<br>├── scaffolds<br>├── source<br>└── themes<br><br>4 directories, 4 files<br></code></pre></td></tr></table></figure>
 
-<h3 id="new"><a href="#new" class="headerlink" title="new"></a>new</h3>
+<h3 id="new"><a href="#new" class="headerlink" title="new"></a>new</h3><h2 id="fluid-主题配置"><a href="#fluid-主题配置" class="headerlink" title="fluid 主题配置"></a>fluid 主题配置</h2><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">npm install <span class="hljs-comment">--save hexo-theme-fluid</span><br></code></pre></td></tr></table></figure>
+
+<p>在博客目录下创建 <code>_config.fluid.yml</code> 文件，将主题的 <a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid/blob/master/_config.yml">_config.yml</a><a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid/blob/master/_config.yml"> </a><a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid/blob/master/_config.yml"> (opens new window)</a> 全部配置（或部分配置）复制过去。</p>
+<p>根据自己的需要进行主题配置，<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/guide/#%E5%85%B3%E4%BA%8E%E6%8C%87%E5%8D%97">fluid主题配置</a></p>
+
                 
               </div>
             
@@ -292,6 +299,45 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BB%84%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="category-chain-item">组件安装配置</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%BB%84%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/he/" class="category-chain-item">he</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/hexo/">#hexo</a>
+      
+        <a href="/tags/fluid/">#fluid</a>
+      
+        <a href="/tags/%E5%AE%89%E8%A3%85/">#安装</a>
+      
+    </div>
   
 </div>
 
@@ -301,7 +347,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>hexo安装及概念</div>
+      <div>hexo安装及主题配置</div>
       <div>http://example.com/2022/08/25/hexo/概念及安装/</div>
     </div>
     <div class="license-meta">
