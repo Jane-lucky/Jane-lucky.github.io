@@ -16,21 +16,22 @@
   <meta name="author" content="彤～">
   <meta name="keywords" content="">
   
-    <meta name="description" content="12345title: minio编译失败问题分析&amp;编译安装categories: - [组件安装配置, 编译安装]tags:- minio  问题原因下载编译minio，编译出现报错 问题分析&amp;解决 查看是否go版本较低导致 可升级go版本， 注：可以cat go.mod查看mod的go版本，可匹配，如果安装的不匹配，git下载之后，需要执行go mod tidy根据环境修改mo">
+    <meta name="description" content="问题原因下载编译minio，编译出现报错 问题分析&amp;解决 查看是否go版本较低导致 可升级go版本， 注：可以cat go.mod查看mod的go版本，可匹配，如果安装的不匹配，git下载之后，需要执行go mod tidy根据环境修改mod文件。 以下为go 1.18安装步骤 123456789101112wget https:&#x2F;&#x2F;studygolang.com&#x2F;dl&#x2F;golang&#x2F;go">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Jane&#39;s Blog">
+<meta property="og:title" content="minio编译失败问题分析&amp;编译安装">
 <meta property="og:url" content="http://example.com/2022/09/08/ComponentInstallation/minio%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/index.html">
 <meta property="og:site_name" content="Jane&#39;s Blog">
-<meta property="og:description" content="12345title: minio编译失败问题分析&amp;编译安装categories: - [组件安装配置, 编译安装]tags:- minio  问题原因下载编译minio，编译出现报错 问题分析&amp;解决 查看是否go版本较低导致 可升级go版本， 注：可以cat go.mod查看mod的go版本，可匹配，如果安装的不匹配，git下载之后，需要执行go mod tidy根据环境修改mo">
+<meta property="og:description" content="问题原因下载编译minio，编译出现报错 问题分析&amp;解决 查看是否go版本较低导致 可升级go版本， 注：可以cat go.mod查看mod的go版本，可匹配，如果安装的不匹配，git下载之后，需要执行go mod tidy根据环境修改mod文件。 以下为go 1.18安装步骤 123456789101112wget https:&#x2F;&#x2F;studygolang.com&#x2F;dl&#x2F;golang&#x2F;go">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-09-08T07:35:51.964Z">
-<meta property="article:modified_time" content="2022-09-08T07:37:07.321Z">
+<meta property="article:modified_time" content="2022-09-08T07:51:58.532Z">
 <meta property="article:author" content="彤～">
+<meta property="article:tag" content="minio">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Jane&#39;s Blog</title>
+  <title>minio编译失败问题分析&amp;编译安装 - Jane&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -195,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text=""></span>
+            <span id="subtitle" data-typed-text="minio编译失败问题分析&amp;编译安装"></span>
           
         </div>
 
@@ -218,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.1k words
+          3k words
         
       </span>
     
@@ -229,7 +230,7 @@
         
         
         
-          26 mins
+          25 mins
         
       </span>
     
@@ -267,14 +268,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none"></h1>
+            <h1 style="display: none">minio编译失败问题分析&amp;编译安装</h1>
             
             
               <div class="markdown-body">
                 
-                <figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs subunit">title: minio编译失败问题分析&amp;编译安装<br>categories: <br>- [组件安装配置, 编译安装]<br><span class="hljs-keyword">tags:</span><br>- minio<br></code></pre></td></tr></table></figure>
-
-<h1 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h1><p>下载编译minio，编译出现报错</p>
+                <h1 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h1><p>下载编译minio，编译出现报错</p>
 <h1 id="问题分析-amp-解决"><a href="#问题分析-amp-解决" class="headerlink" title="问题分析&amp;解决"></a>问题分析&amp;解决</h1><ol>
 <li><p>查看是否go版本较低导致</p>
 <p>可升级go版本，</p>
@@ -316,6 +315,41 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BB%84%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="category-chain-item">组件安装配置</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%BB%84%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" class="category-chain-item">编译安装</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/minio/">#minio</a>
+      
+    </div>
   
 </div>
 
@@ -325,7 +359,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div></div>
+      <div>minio编译失败问题分析&amp;编译安装</div>
       <div>http://example.com/2022/09/08/ComponentInstallation/minio编译安装/</div>
     </div>
     <div class="license-meta">
