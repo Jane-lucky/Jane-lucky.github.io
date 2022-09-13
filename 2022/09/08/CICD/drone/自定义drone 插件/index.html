@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/fluid.png">
-  <link rel="icon" href="/project/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="drone插件制作原理：参照变量的方式（PLUGIN_） 制作脚本文件——》封装镜像——》插件完成，编写drone文件验证正确性 插件也仅仅时dockers 容器，也就意味着可以采用任何语言来实现插件。如下是基于bash和go语言构成插件内容. 基于bash的插件制作 制作脚本文件  123#! &#x2F;bin&#x2F;shcurl -X $&amp;#123;PLUGIN_METHOD&amp;#125; -d $&amp;#123">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义droe 插件">
-<meta property="og:url" content="http://jane-lucky.github.io/project/2022/09/08/CICD/drone/%E8%87%AA%E5%AE%9A%E4%B9%89drone%20%E6%8F%92%E4%BB%B6/index.html">
+<meta property="og:url" content="http://jane-lucky.github.io/2022/09/08/CICD/drone/%E8%87%AA%E5%AE%9A%E4%B9%89drone%20%E6%8F%92%E4%BB%B6/index.html">
 <meta property="og:site_name" content="Jane&#39;s Blog">
 <meta property="og:description" content="drone插件制作原理：参照变量的方式（PLUGIN_） 制作脚本文件——》封装镜像——》插件完成，编写drone文件验证正确性 插件也仅仅时dockers 容器，也就意味着可以采用任何语言来实现插件。如下是基于bash和go语言构成插件内容. 基于bash的插件制作 制作脚本文件  123#! &#x2F;bin&#x2F;shcurl -X $&amp;#123;PLUGIN_METHOD&amp;#125; -d $&amp;#123">
 <meta property="og:locale" content="en_US">
@@ -56,12 +56,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/project/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -70,15 +70,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"jane-lucky.github.io","root":"/project/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+    var CONFIG = {"hostname":"jane-lucky.github.io","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/project/js/utils.js" ></script>
-  <script  src="/project/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
   
 
 
@@ -95,7 +95,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/project/">
+    <a class="navbar-brand" href="/">
       <strong>Jane&#39;s Blog</strong>
     </a>
 
@@ -114,7 +114,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 Home
               </a>
@@ -126,7 +126,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 Archives
               </a>
@@ -138,7 +138,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 Categories
               </a>
@@ -150,7 +150,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 Tags
               </a>
@@ -162,7 +162,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 About
               </a>
@@ -191,7 +191,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -317,12 +317,12 @@
     
       <span class="category-chain">
         
-  <a href="/project/categories/CICD/" class="category-chain-item">CICD</a>
+  <a href="/categories/CICD/" class="category-chain-item">CICD</a>
   
   
     <span>></span>
     
-  <a href="/project/categories/CICD/drone/" class="category-chain-item">drone</a>
+  <a href="/categories/CICD/drone/" class="category-chain-item">drone</a>
   
   
 
@@ -339,9 +339,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/project/tags/docker/">#docker</a>
+        <a href="/tags/docker/">#docker</a>
       
-        <a href="/project/tags/drone/">#drone</a>
+        <a href="/tags/drone/">#drone</a>
       
     </div>
   
@@ -354,7 +354,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>自定义droe 插件</div>
-      <div>http://jane-lucky.github.io/project/2022/09/08/CICD/drone/自定义drone 插件/</div>
+      <div>http://jane-lucky.github.io/2022/09/08/CICD/drone/自定义drone 插件/</div>
     </div>
     <div class="license-meta">
       
@@ -396,7 +396,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/project/2022/09/09/k8s/kind%E6%A6%82%E5%BF%B5&amp;%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2k8s%E9%9B%86%E7%BE%A4/" title="kind概念&amp;安装部署k8s集群">
+                      <a href="/2022/09/09/k8s/kind%E6%A6%82%E5%BF%B5&amp;%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2k8s%E9%9B%86%E7%BE%A4/" title="kind概念&amp;安装部署k8s集群">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">kind概念&amp;安装部署k8s集群</span>
                         <span class="visible-mobile">Previous</span>
@@ -406,7 +406,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/project/2022/09/08/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/minio%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" title="minio编译失败问题分析&amp;编译安装">
+                      <a href="/2022/09/08/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/minio%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" title="minio编译失败问题分析&amp;编译安装">
                         <span class="hidden-mobile">minio编译失败问题分析&amp;编译安装</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -533,8 +533,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/project/js/events.js" ></script>
-<script  src="/project/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -556,7 +556,7 @@
 
 
   
-    <script  src="/project/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -628,7 +628,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/project/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
@@ -636,7 +636,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/project/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   
