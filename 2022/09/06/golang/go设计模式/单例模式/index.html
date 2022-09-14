@@ -24,7 +24,7 @@
 <meta property="og:description" content="原理只能开启一个线程，只有一个实例，并且能够实现自我实例化; 确保一个类只有一个实例，变成单例之后，确保程序运行之后查找的对象均是一个对象。 懒汉式非线程安全，也就是多线程下可能创建多次对象。 线程安全，利用加锁保证线程安全，但由于每次调用都有加锁的操作，性能相较于不高效。 不加锁1234567891011type singleton struct &amp;#123;&amp;#125;var instance">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-09-06T02:13:57.929Z">
-<meta property="article:modified_time" content="2022-09-09T03:34:03.368Z">
+<meta property="article:modified_time" content="2022-09-13T03:25:25.408Z">
 <meta property="article:author" content="彤～">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -290,7 +290,7 @@
 <p>只有当对象未初始化的时候，才会有加减的操作</p>
 <h3 id="sync-Once实现"><a href="#sync-Once实现" class="headerlink" title="sync.Once实现"></a>sync.Once实现</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">var</span> once sync.Once<br><br><span class="hljs-keyword">type</span> singleton <span class="hljs-keyword">struct</span> &#123;<br>&#125;<br><br><span class="hljs-keyword">var</span> instance *singleton<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">GetInstance</span><span class="hljs-params">()</span></span> *singleton &#123;<br><br>	once.Do(<span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>		instance = &amp;singleton&#123;&#125;<br>	&#125;)<br>	<span class="hljs-keyword">return</span> instance<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p><a href="http://jane-lucky.github.io/project/2022/09/09/golang/Golang%E5%8C%85/sync.Once/"><code>Do</code>方法源码</a></p>
+<p><a href="https://jane-lucky.github.io/2022/09/09/golang/Golang%E5%8C%85/sync.Once/"><code>Do</code>方法源码</a></p>
 <h2 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h2><p>单例使用较少，并且创建的资源比较多。</p>
 <p>直接创建好对象，不需要判断为空，线程安全。</p>
 <figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs smali">type singleton struct &#123;<br>&#125;<br><br>var<span class="hljs-built_in"> instance </span>*singleton<br><br>func init() &#123;<br><span class="hljs-built_in">	instance </span>= &amp;singleton&#123;&#125;<br>&#125;<br>func GetInstance() *singleton &#123;<br><span class="hljs-built_in">	return </span>instance<br>&#125;<br></code></pre></td></tr></table></figure>
