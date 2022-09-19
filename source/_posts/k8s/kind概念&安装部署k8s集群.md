@@ -107,6 +107,7 @@ nodes:
 - role: worker
 - role: worker
 - role: worker
+[root@host-server ~]# kind create cluster --config=kind-config.yaml
 [root@host-server ~]# kind get clusters
 kind
 #构建成功之后node一直是notready的状态，可能是因为版本不对应
