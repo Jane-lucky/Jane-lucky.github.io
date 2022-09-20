@@ -105,5 +105,5 @@ theme: fluid
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repository: https://oauth2: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@github.com/Jane-lucky/Jane-lucky.github.io.git
+  repository: https://oauth2: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@github.com/Jane-lucky/Jane-lucky.github.io.git
   branch: master
