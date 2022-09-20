@@ -223,15 +223,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2022/08/24/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/kkFileView-4.0.0%E5%AE%89%E8%A3%85/" target="_self">
-          kkFileView-4.0.0编译安装
+        <a href="/2022/09/15/golang/Golang%E5%8C%85/context/" target="_self">
+          context源码学习
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/08/24/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/kkFileView-4.0.0%E5%AE%89%E8%A3%85/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/15/golang/Golang%E5%8C%85/context/" target="_self">
         <div>
-          获取源码 123git clone https:&#x2F;&#x2F;gitee.com&#x2F;kekingcn&#x2F;file-online-preview.gitcd file-online-preview&#x2F;git checkout v4.0.0  centos 7.6 安装安装依赖1234yum install git wget vim libreoffice java-11-openjdk maven -yjava -
+          go:1.18.5 context包架构布局   类型 名称 作用    Context 接口 定义了 Context 接口的四个方法   emptyCtx 结构体 实现了 Context 接口，它其实是个空的 context   CancelFunc 函数 取消函数   canceler 接口 context 取消接口，定义了两个方法   cancelCtx 结构体 可以被取消   timerC
         </div>
       </a>
 
@@ -239,8 +239,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-24 17:24" pubdate>
-              2022-08-24
+            <time datetime="2022-09-15 09:21" pubdate>
+              2022-09-15
             </time>
           </div>
         
@@ -255,8 +255,76 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" class="category-chain-item">编译安装</a>
+  <a href="/categories/golang/" class="category-chain-item">golang</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/golang/Golang%E5%8C%85/" class="category-chain-item">Golang包</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/09/15/golang/Golang%E5%8C%85/sync.Once/" target="_self">
+          sync.Once 源码
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/15/golang/Golang%E5%8C%85/sync.Once/" target="_self">
+        <div>
+          概念Go 标准库提供的使函数只执行一次的实现，常应用于单例模式。 原理保证变量仅被初始化一次，线程安全，支持并发。 源码因为源码很少，所以就直接全部复制上来了。 123456789101112131415161718192021222324252627282930package syncimport (	&quot;sync&#x2F;atomic&quot;)type Once struct &amp;#123;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-09-15 09:21" pubdate>
+              2022-09-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/golang/" class="category-chain-item">golang</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/golang/Golang%E5%8C%85/" class="category-chain-item">Golang包</a>
+  
+  
+
   
 
       </span>
@@ -270,7 +338,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/kkFileView/">#kkFileView</a>
+              <a href="/tags/sync/">#sync</a>
             
           </div>
         
@@ -284,15 +352,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2022/08/24/linux/wget%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AF%A6%E8%A7%A3/" target="_self">
-          wget知识点详解
+        <a href="/2022/09/15/golang/Golang%E5%8C%85/%E4%BA%92%E6%96%A5%E9%94%81-sync.Mutex/" target="_self">
+          互斥锁-sync.Mutex
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/08/24/linux/wget%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AF%A6%E8%A7%A3/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/15/golang/Golang%E5%8C%85/%E4%BA%92%E6%96%A5%E9%94%81-sync.Mutex/" target="_self">
         <div>
-          wget“world wide web”和”get”的结合，目前支持http、https以及ftp这三个TCP&#x2F;IP协议下载。 特点 支持递归下载 支持代理服务器 恰当地转换页面中的连接 生成可在本地浏览的页面镜像  使用方法 wget下载单文件  wget -O：下载并以不同的文件名保存 将下载连接的文件保存为boost_1_80.tar.gz 1wget -O boost_1_80.tar.g
+          概念go语言中的一种互斥锁，保证同步的一种工具。 实现协程对互斥资源的访问，其中，Lock()用于争夺锁资源，Unlock()用于释放锁资源并唤醒等待队列中的协程。在正常的使用情况下（如代码所示），只有进入临界区的协程会执行Unlock()。因此，同一时刻只有一个协程可以执行Unlock()方法。 作用 避免多个线程在同一个时刻操作同一数据块。 协调多个线程，避免在同一时刻执行同一个代码块  用法
         </div>
       </a>
 
@@ -300,8 +368,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-24 16:59" pubdate>
-              2022-08-24
+            <time datetime="2022-09-15 09:21" pubdate>
+              2022-09-15
             </time>
           </div>
         
@@ -316,8 +384,15 @@
     
       <span class="category-chain">
         
-  <a href="/categories/linux/" class="category-chain-item">linux</a>
+  <a href="/categories/golang/" class="category-chain-item">golang</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/golang/Golang%E5%8C%85/" class="category-chain-item">Golang包</a>
+  
+  
+
   
 
       </span>
@@ -331,7 +406,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/linux/">#linux</a>
+              <a href="/tags/sync/">#sync</a>
             
           </div>
         
@@ -345,15 +420,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2022/08/24/linux/snap%E5%92%8Capt/" target="_self">
-          snap和apt
+        <a href="/2022/09/15/golang/gin%E6%A1%86%E6%9E%B6/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6&amp;Template/" target="_self">
+          上传文件&amp;&amp;Template
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/08/24/linux/snap%E5%92%8Capt/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/15/golang/gin%E6%A1%86%E6%9E%B6/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6&amp;Template/" target="_self">
         <div>
-          snap软件包和部署系统。通过该应用程序与系统无关，也就是说可以在任何支持snap的linux发行版上本地运行。 一种全新的软件包管理方式，它类似一个容器拥有一个应用程序所有的文件和库，各个应用程序之间完全独立。所以使用snap包的好处就是它解决了应用程序之间的依赖问题，使应用程序之间更容易管理。但是由此带来的问题就是它占用更多的磁盘空间。 类似于一个容器，它包含一个应用程序需要用到的所有文件和库
+          HTML模板123456789r.LoadHTMLGlob(&quot;templates&#x2F;*&quot;)stu1 :&#x3D; &amp;Student&amp;#123;Name: &quot;Geektutu&quot;, Age: 20&amp;#125;stu2 :&#x3D; &amp;Student&amp;#123;Name: &quot;Jack&quot;, Age: 22&amp;#125;r.GET(&quot;&#x2F;arr
         </div>
       </a>
 
@@ -361,8 +436,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-24 16:47" pubdate>
-              2022-08-24
+            <time datetime="2022-09-15 09:21" pubdate>
+              2022-09-15
             </time>
           </div>
         
@@ -377,8 +452,15 @@
     
       <span class="category-chain">
         
-  <a href="/categories/linux/" class="category-chain-item">linux</a>
+  <a href="/categories/golang/" class="category-chain-item">golang</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/golang/gin%E6%A1%86%E6%9E%B6/" class="category-chain-item">gin框架</a>
+  
+  
+
   
 
       </span>
@@ -388,13 +470,6 @@
 
           </div>
         
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/linux/">#linux</a>
-            
-          </div>
         
       </div>
     </article>
@@ -406,15 +481,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2022/08/24/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/ubuntu%E5%AE%89%E8%A3%85vscode/" target="_self">
-          ubuntu安装vscode
+        <a href="/2022/09/15/golang/gin%E6%A1%86%E6%9E%B6/%E4%B8%AD%E9%97%B4%E4%BB%B6/" target="_self">
+          middleware——中间件
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/08/24/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/ubuntu%E5%AE%89%E8%A3%85vscode/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/15/golang/gin%E6%A1%86%E6%9E%B6/%E4%B8%AD%E9%97%B4%E4%BB%B6/" target="_self">
         <div>
-          在ubuntu的软件商城中安装code报错Unable to install “Visual Studio Code”: snap “code” has “install-snap” change in progress； 问题原因&amp;&amp;解决软件正在安装，所以不需要再次点击 12345678ubuntu@root:~&#x2F;Desktop&#x2F;Doc$ snap changesID   Sta
+          middleware概念中间件处理处理程序是简单的http.Handler,它包装另一个http.Handler 作请求的一些预处理和或后处理，被称为中间件。 每个中间件只处理一件事情，完成后将其传递给另一个中间件或者最终处理程序，可以做到程序的解耦，减少程序的冗余和降低代码复用率。 应用常见的用例：请求如之记录、header操纵、http请求认证和Responseriter劫持等等。  记录对服
         </div>
       </a>
 
@@ -422,8 +497,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-24 16:08" pubdate>
-              2022-08-24
+            <time datetime="2022-09-15 09:21" pubdate>
+              2022-09-15
             </time>
           </div>
         
@@ -438,8 +513,15 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" class="category-chain-item">编译安装</a>
+  <a href="/categories/golang/" class="category-chain-item">golang</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/golang/gin%E6%A1%86%E6%9E%B6/" class="category-chain-item">gin框架</a>
+  
+  
+
   
 
       </span>
@@ -449,13 +531,6 @@
 
           </div>
         
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/vscode/">#vscode</a>
-            
-          </div>
         
       </div>
     </article>
@@ -467,15 +542,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2022/08/24/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/ubuntu%E5%AE%89%E8%A3%85nodejs/" target="_self">
-          ubuntu 安装nodejs
+        <a href="/2022/09/15/golang/gin%E6%A1%86%E6%9E%B6/%E7%AC%AC%E4%B8%80%E4%B8%AAgin%E7%A8%8B%E5%BA%8F/" target="_self">
+          第一个gin程序
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/08/24/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/ubuntu%E5%AE%89%E8%A3%85nodejs/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/15/golang/gin%E6%A1%86%E6%9E%B6/%E7%AC%AC%E4%B8%80%E4%B8%AAgin%E7%A8%8B%E5%BA%8F/" target="_self">
         <div>
-          安装指定版本的nodejs12curl -sL https:&#x2F;&#x2F;deb.nodesource.com&#x2F;setup_14.x | sudo -E bash -sudo apt install nodejs
+          路由1234567891011121314151617181920package mainimport (	&quot;net&#x2F;http&quot;	&quot;github.com&#x2F;gin-gonic&#x2F;gin&quot;)func main() &amp;#123;	r :&#x3D; gin.Default()	r.GET(&quot;&#x2F;&quot;, func(c *gin.Context) &amp;#123;
         </div>
       </a>
 
@@ -483,8 +558,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-24 14:13" pubdate>
-              2022-08-24
+            <time datetime="2022-09-15 09:21" pubdate>
+              2022-09-15
             </time>
           </div>
         
@@ -499,8 +574,15 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" class="category-chain-item">编译安装</a>
+  <a href="/categories/golang/" class="category-chain-item">golang</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/golang/gin%E6%A1%86%E6%9E%B6/" class="category-chain-item">gin框架</a>
+  
+  
+
   
 
       </span>
@@ -511,12 +593,120 @@
           </div>
         
         
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/nodejs/">#nodejs</a>
-            
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/09/15/golang/go%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" target="_self">
+          单例模式
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/15/golang/go%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" target="_self">
+        <div>
+          原理只能开启一个线程，只有一个实例，并且能够实现自我实例化; 确保一个类只有一个实例，变成单例之后，确保程序运行之后查找的对象均是一个对象。 懒汉式非线程安全，也就是多线程下可能创建多次对象。 线程安全，利用加锁保证线程安全，但由于每次调用都有加锁的操作，性能相较于不高效。 不加锁1234567891011type singleton struct &amp;#123;&amp;#125;var instance
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-09-15 09:21" pubdate>
+              2022-09-15
+            </time>
           </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/golang/" class="category-chain-item">golang</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/golang/go%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="category-chain-item">go设计模式</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/08/25/hexo/%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/" target="_self">
+          hexo初始化基础配置文件解析
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/08/25/hexo/%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90/" target="_self">
+        <div>
+          _config.yml网站的配置信息，可以配置大部分参数。 站点设置   参数 描述    title 网站标题   subtitle 网站副标题   description 网站描述   keywords 网站关键词   author 作者名称   language 使用语言   timezone 网站时区   网址设置12345678910111213141516171819202122232
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-25 00:00" pubdate>
+              2022-08-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/hexo/" class="category-chain-item">hexo</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
         
       </div>
     </article>
