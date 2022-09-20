@@ -15,7 +15,7 @@ tags:
 
 创建了3个work节点和3个master
 
-```
+```shell
 [root@host-server ~]# kubectl get nodes
 NAME                  STATUS   ROLES           AGE     VERSION
 kind-control-plane    Ready    control-plane   4h23m   v1.25.0

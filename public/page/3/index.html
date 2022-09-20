@@ -223,15 +223,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2022/09/15/linux/wget%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AF%A6%E8%A7%A3/" target="_self">
-          wget知识点详解
+        <a href="/2022/09/15/k8s/crictl%20%E5%AF%B9%20Kubernetes%20%E8%8A%82%E7%82%B9%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95/" target="_self">
+          crictl 对 Kubernetes 节点进行调试
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/15/linux/wget%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AF%A6%E8%A7%A3/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/15/k8s/crictl%20%E5%AF%B9%20Kubernetes%20%E8%8A%82%E7%82%B9%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95/" target="_self">
         <div>
-          wget“world wide web”和”get”的结合，目前支持http、https以及ftp这三个TCP&#x2F;IP协议下载。 特点 支持递归下载 支持代理服务器 恰当地转换页面中的连接 生成可在本地浏览的页面镜像  使用方法 wget下载单文件  wget -O：下载并以不同的文件名保存 将下载连接的文件保存为boost_1_80.tar.gz 1wget -O boost_1_80.tar.g
+          CRI 是一个插件接口，它使 kubelet 能够使用各种容器运行时，无需重新编译集群组件。 你需要在集群中的每个节点上都有一个可以正常工作的容器运行时， 这样kubelet 能启动pod及其容器。 而crictl是CRI兼容的容器运行时命令行接口。使用它来检查和调试kubernetes节点上的容器运行时和应用程序。 命令用法123456789101112131415161718192021222
         </div>
       </a>
 
@@ -255,7 +255,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/linux/" class="category-chain-item">linux</a>
+  <a href="/categories/k8s/" class="category-chain-item">k8s</a>
   
   
 
@@ -270,7 +270,135 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/linux/">#linux</a>
+              <a href="/tags/k8s/">#k8s</a>
+            
+              <a href="/tags/kind/">#kind</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/09/15/k8s/k8s%E5%9C%A8kind%E4%B8%8A%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/" target="_self">
+          k8s在kind上的简单使用
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/15/k8s/k8s%E5%9C%A8kind%E4%B8%8A%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/" target="_self">
+        <div>
+          在创建k8s集群可参考kind安装部署k8s集群 查看运行的节点创建了3个work节点和3个master 12345678[root@host-server ~]# kubectl get nodesNAME                  STATUS   ROLES           AGE     VERSIONkind-control-plane    Ready    control
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-09-15 09:21" pubdate>
+              2022-09-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/k8s/" class="category-chain-item">k8s</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/k8s/">#k8s</a>
+            
+              <a href="/tags/kind/">#kind</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/09/15/k8s/kind%E6%A6%82%E5%BF%B5&amp;%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2k8s%E9%9B%86%E7%BE%A4/" target="_self">
+          kind概念&amp;安装部署k8s集群
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/15/k8s/kind%E6%A6%82%E5%BF%B5&amp;%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2k8s%E9%9B%86%E7%BE%A4/" target="_self">
+        <div>
+          kind：kubernetes in docker。将k8s所有需要的组件，全部部署在一个docker容器中，一套开箱即用的k8s环境搭建方案 Kind 相比于 Minikube 有什么优势呢？基于 Docker 而不是虚拟化 Kind 不是打包一个虚拟化镜像，而是直接讲 K8S 组件运行在 Docker。带来了什么好处呢？  不需要运行 GuestOS 占用资源更低。 不基于虚拟化技术，可以在
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-09-15 09:21" pubdate>
+              2022-09-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/k8s/" class="category-chain-item">k8s</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/k8s/">#k8s</a>
+            
+              <a href="/tags/kind/">#kind</a>
             
           </div>
         
@@ -720,135 +848,6 @@
               <a href="/tags/harbor/">#harbor</a>
             
               <a href="/tags/drone/">#drone</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/09/15/golang/Golang%E5%8C%85/Time/" target="_self">
-          time包方法详解
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/15/golang/Golang%E5%8C%85/Time/" target="_self">
-        <div>
-          time.Now获取当前时间. time.Until保存时间值t，用于评估直到时间t的持续时间 12345678910111213package mainimport (	&quot;fmt&quot;	&quot;time&quot;)func main() &amp;#123;	&#x2F;&#x2F;获取当前时间	t :&#x3D; time.Now()	fmt.Println(&quot;Duration until t:&amp;q
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-09-15 09:21" pubdate>
-              2022-09-15
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/golang/" class="category-chain-item">golang</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/golang/Golang%E5%8C%85/" class="category-chain-item">Golang包</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/09/15/golang/Golang%E5%8C%85/atomic.Value%20%E7%B1%BB%E5%9E%8B/" target="_self">
-          atomic.Value 类型
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/15/golang/Golang%E5%8C%85/atomic.Value%20%E7%B1%BB%E5%9E%8B/" target="_self">
-        <div>
-          
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-09-15 09:21" pubdate>
-              2022-09-15
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/golang/" class="category-chain-item">golang</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/golang/Golang%E5%8C%85/" class="category-chain-item">Golang包</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/atomic/">#atomic</a>
             
           </div>
         

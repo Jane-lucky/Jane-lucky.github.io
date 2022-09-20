@@ -4,13 +4,75 @@
   
   
   <entry>
-    <title>网站收集</title>
-    <link href="/2022/09/19/%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86/"/>
-    <url>/2022/09/19/%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86/</url>
+    <title>修改linux命令提示符</title>
+    <link href="/2022/09/20/linux/%E4%BF%AE%E6%94%B9linux%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E7%AC%A6/"/>
+    <url>/2022/09/20/linux/%E4%BF%AE%E6%94%B9linux%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E7%AC%A6/</url>
     
-    <content type="html"><![CDATA[<p><a href="https://www.liwenzhou.com/">李文周go语言学习</a></p>]]></content>
+    <content type="html"><![CDATA[<p><strong>通过设置PS1环境变量的值来达到修改linux命令提示符的目的</strong></p><h2 id="Linux修改命令提示符参数"><a href="#Linux修改命令提示符参数" class="headerlink" title="Linux修改命令提示符参数"></a>Linux修改命令提示符参数</h2><table><thead><tr><th>参数</th><th>描述</th></tr></thead><tbody><tr><td><code>\d</code></td><td>代表日期，格式为 weekday month date，例如：”Mon Aug 1”</td></tr><tr><td><code>\H</code></td><td>完整的主机名称</td></tr><tr><td><code>\h</code></td><td>仅取主机的第一个名字</td></tr><tr><td><code>\T</code></td><td>显示时间为 24 小时格式，如：HH：MM：SS</td></tr><tr><td><code>\t</code></td><td>显示时间为 12 小时格式 , 如：HH：MM：SS</td></tr><tr><td><code>\A</code></td><td>显示时间为 12 小时格式：HH：MM</td></tr><tr><td><code>\u</code></td><td>当前用户的账号名称</td></tr><tr><td><code>\v</code></td><td>BASH 的版本信息</td></tr><tr><td><code>\w</code></td><td>完整的工作目录名称</td></tr><tr><td><code>\W</code></td><td>利用 basename 取得工作目录名称，所以只会列出最后一个目录</td></tr><tr><td><code>#</code></td><td>下达的第几个命令</td></tr><tr><td><code>$</code></td><td>提示字符，如果是 root 时，提示符为：# ，普通用户则为：$</td></tr></tbody></table><h2 id="临时修改linux提示符"><a href="#临时修改linux提示符" class="headerlink" title="临时修改linux提示符"></a>临时修改linux提示符</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@74d785955174 /08:18:59]# PS1=&quot;[\u\w\t]\\$&quot;<br>[root/08:19:16]#PS1=&quot;[\u\w\v]\\$&quot;<br>[root/4.2]#PS1=&quot;[\u\v]\\$&quot;<br>[root4.2]#PS1=&quot;[\u@\v]\\$&quot;<br>[root@4.2]#PS1=&quot;[\u@\v \W]\\$&quot;<br></code></pre></td></tr></table></figure>]]></content>
     
     
+    <categories>
+      
+      <category>linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>linux 常见文本处理命令</title>
+    <link href="/2022/09/20/linux/Linux-cut%E5%91%BD%E4%BB%A4/"/>
+    <url>/2022/09/20/linux/Linux-cut%E5%91%BD%E4%BB%A4/</url>
+    
+    <content type="html"><![CDATA[<h2 id="文本处理"><a href="#文本处理" class="headerlink" title="文本处理"></a>文本处理</h2><table><thead><tr><th>类型</th><th>命令</th></tr></thead><tbody><tr><td>查看文件</td><td>cat、more、less</td></tr><tr><td>文件摘选</td><td>head、tail</td></tr><tr><td>提取文件内容</td><td>cut、awk、grep</td></tr><tr><td>文件排序与比较</td><td>wc、sort、diff</td></tr><tr><td>文本操作工具</td><td>sed、tr</td></tr></tbody></table><h2 id="CUT"><a href="#CUT" class="headerlink" title="CUT"></a>CUT</h2><p>文件内容的查看，显示行中的指定部分，删除文件中的指定字段。</p><p>cut的工作就是“剪”，具体的说就是在文件中负责剪切数据用的。cut 命令从文件的每一行剪切字节、字符和字段并将这些字节、字符和字段输出。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs shell">Mandatory arguments to long options are mandatory for short options too.<br>  -b, --bytes=LIST        select only these bytes<br>  -c, --characters=LIST   select only these characters<br>  -d, --delimiter=DELIM   use DELIM instead of TAB for field delimiter<br>  -f, --fields=LIST       select only these fields;  also print any line<br>                            that contains no delimiter character, unless<br>                            the -s option is specified<br>  -n                      with -b: don&#x27;t split multibyte characters<br>      --complement        complement the set of selected bytes, characters<br>                            or fields<br>  -s, --only-delimited    do not print lines not containing delimiters<br>      --output-delimiter=STRING  use STRING as the output delimiter<br>                            the default is to use the input delimiter<br>      --help     display this help and exit<br>      --version  output version information and exit<br></code></pre></td></tr></table></figure><h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@k8s-node1 localhost]# cat test.txt<br>No Name Mark Percent<br>01 tom 69 91<br>02 jack 71 87<br>03 alex 68 98<br>[root@k8s-node1 localhost]# cut -f2 -d&quot; &quot; test.txt<br>Name<br>tom<br>jack<br>alex<br>[root@k8s-node1 localhost]# cut -f2- -d&quot; &quot; test.txt<br>Name Mark Percent<br>tom 69 91<br>jack 71 87<br>alex 68 98<br>[root@k8s-node1 localhost]# cut -c 2 test.txt<br>o<br>1<br>2<br>3<br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title></title>
+    <link href="/2022/09/20/linux/vim%E5%BF%AB%E6%8D%B7%E6%93%8D%E4%BD%9C/"/>
+    <url>/2022/09/20/linux/vim%E5%BF%AB%E6%8D%B7%E6%93%8D%E4%BD%9C/</url>
+    
+    <content type="html"><![CDATA[<h2 id="相关命令"><a href="#相关命令" class="headerlink" title="相关命令"></a>相关命令</h2><table><thead><tr><th>操作</th><th>解释</th></tr></thead><tbody><tr><td>vim -M test.log</td><td>以只读的方式打开，不可强制保存</td></tr><tr><td>vim +8 test.log</td><td>编辑打开文档，光标停留的行数</td></tr><tr><td>vim -R test.log</td><td>以只读的方式打开，强制保存</td></tr><tr><td>yy或者y</td><td>复制一行</td></tr><tr><td>p</td><td>光标后一行粘贴</td></tr><tr><td>dd</td><td>删除</td></tr><tr><td>0</td><td>行尾</td></tr><tr><td>$</td><td>行首</td></tr><tr><td>:set nu</td><td>显示行数</td></tr><tr><td>/字符串+enter</td><td>查找字符串</td></tr><tr><td>:set hlsearch</td><td>查找字符串高亮</td></tr><tr><td>n</td><td>查找下一个</td></tr><tr><td>shift+n</td><td>查找上一个</td></tr><tr><td>:1.5s/new/old/g</td><td>替换</td></tr><tr><td>ctrl+r</td><td>还原</td></tr><tr><td>u</td><td>撤销</td></tr><tr><td>P</td><td>光标前一行插入</td></tr></tbody></table>]]></content>
+    
+    
+    <categories>
+      
+      <category>linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>linux</tag>
+      
+    </tags>
     
   </entry>
   
@@ -21,7 +83,7 @@
     <link href="/2022/09/19/k8s/%E5%AF%B9%E8%B1%A1%E7%AE%A1%E7%90%86/"/>
     <url>/2022/09/19/k8s/%E5%AF%B9%E8%B1%A1%E7%AE%A1%E7%90%86/</url>
     
-    <content type="html"><![CDATA[<h1 id="指令式命令管理"><a href="#指令式命令管理" class="headerlink" title="指令式命令管理"></a>指令式命令管理</h1><p><code>kubectl</code>采用动词驱动的方式来创建一些常见的对象类型。</p><p><code>run</code>:创建一个pod运行容器。</p><p><code>create</code>:创建对象——支持JSON和YMAL格式类型。</p><p>可以创建不同的对象类型</p><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">Examples:<br>  <span class="hljs-comment"># Create a pod using the data in pod.json</span><br>  kubectl <span class="hljs-built_in">create</span> -f ./pod.json<br><br>  <span class="hljs-comment"># Create a pod based on the JSON passed into stdin</span><br>  cat pod.json | kubectl <span class="hljs-built_in">create</span> -f -<br><br>  <span class="hljs-comment"># Edit the data in registry.yaml in JSON then create the resource using the edited data</span><br>  kubectl <span class="hljs-built_in">create</span> -f registry.yaml <span class="hljs-comment">--edit -o json</span><br></code></pre></td></tr></table></figure><p><code>delete</code>:与create的用法相似</p><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">Examples:<br>  <span class="hljs-comment"># Delete a pod using the type and name specified in pod.json</span><br>  kubectl <span class="hljs-built_in">delete</span> -f ./pod.json<br><br>  <span class="hljs-comment"># Delete resources from a directory containing kustomization.yaml - e.g. dir/kustomization.yaml</span><br>  kubectl <span class="hljs-built_in">delete</span> -k dir<br><br>  <span class="hljs-comment"># Delete resources from all files that end with &#x27;.json&#x27; - i.e. expand wildcard characters in file names</span><br>  kubectl <span class="hljs-built_in">delete</span> -f <span class="hljs-string">&#x27;*.json&#x27;</span><br><br>  <span class="hljs-comment"># Delete a pod based on the type and name in the JSON passed into stdin</span><br>  cat pod.json | kubectl <span class="hljs-built_in">delete</span> -f -<br><br>  <span class="hljs-comment"># Delete pods and services with same names &quot;baz&quot; and &quot;foo&quot;</span><br>  kubectl <span class="hljs-built_in">delete</span> pod,service baz foo<br><br>  <span class="hljs-comment"># Delete pods and services with label name=myLabel</span><br>  kubectl <span class="hljs-built_in">delete</span> pods,services -l name=myLabel<br><br>  <span class="hljs-comment"># Delete a pod with minimal delay</span><br>  kubectl <span class="hljs-built_in">delete</span> pod foo <span class="hljs-comment">--now</span><br><br>  <span class="hljs-comment"># Force delete a pod on a dead node</span><br>  kubectl <span class="hljs-built_in">delete</span> pod foo <span class="hljs-comment">--force</span><br><br>  <span class="hljs-comment"># Delete all pods</span><br>  kubectl <span class="hljs-built_in">delete</span> pods <span class="hljs-comment">--all</span><br><br></code></pre></td></tr></table></figure><p><code>set</code>：在创建对象之前修改对象</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">kubectl create<span class="hljs-built_in"> service </span>clusterip my-svc <span class="hljs-attribute">--clusterip</span>=<span class="hljs-string">&quot;None&quot;</span> -o yaml <span class="hljs-attribute">--dry-run</span>=client | kubectl <span class="hljs-built_in">set</span> selector --local -f - <span class="hljs-string">&#x27;environment=qa&#x27;</span> -o yaml | kubectl create -f -<br></code></pre></td></tr></table></figure><p><code>kubectl create service clusterip my-svc --clusterip=&quot;None&quot; -o yaml --dry-run=client</code>:创建service配置，但将其以YAML格式标准输出上打印而不是发送API服务器。</p><p><code>kubectl set selector --local -f - &#39;environment=qa&#39; -o yaml</code>从标准输入读入配置，更新yaml。</p><p><code>kubectl create -f -</code>:使用标准输入上获得的配置创建对象</p><p><code>edit</code>更改对象</p><p><code>kubectl create --edit</code>来在对象创建之前更改配置。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="指令式命令管理"><a href="#指令式命令管理" class="headerlink" title="指令式命令管理"></a>指令式命令管理</h1><p><code>kubectl</code>采用动词驱动的方式来创建一些常见的对象类型。</p><p><code>run</code>:创建一个pod运行容器。</p><p><code>create</code>:创建对象——支持JSON和YMAL格式类型。</p><p>可以创建不同的对象类型</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">Examples:<br><span class="hljs-meta prompt_">  # </span><span class="language-bash">Create a pod using the data <span class="hljs-keyword">in</span> pod.json</span><br>  kubectl create -f ./pod.json<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">  # </span><span class="language-bash">Create a pod based on the JSON passed into stdin</span><br>  cat pod.json | kubectl create -f -<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">  # </span><span class="language-bash">Edit the data <span class="hljs-keyword">in</span> registry.yaml <span class="hljs-keyword">in</span> JSON <span class="hljs-keyword">then</span> create the resource using the edited data</span><br>  kubectl create -f registry.yaml --edit -o json<br></code></pre></td></tr></table></figure><p><code>delete</code>:与create的用法相似</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs shell">Examples:<br><span class="hljs-meta prompt_">  # </span><span class="language-bash">Delete a pod using the <span class="hljs-built_in">type</span> and name specified <span class="hljs-keyword">in</span> pod.json</span><br>  kubectl delete -f ./pod.json<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">  # </span><span class="language-bash">Delete resources from a directory containing kustomization.yaml - e.g. <span class="hljs-built_in">dir</span>/kustomization.yaml</span><br>  kubectl delete -k dir<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">  # </span><span class="language-bash">Delete resources from all files that end with <span class="hljs-string">&#x27;.json&#x27;</span> - i.e. <span class="hljs-built_in">expand</span> wildcard characters <span class="hljs-keyword">in</span> file names</span><br>  kubectl delete -f &#x27;*.json&#x27;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">  # </span><span class="language-bash">Delete a pod based on the <span class="hljs-built_in">type</span> and name <span class="hljs-keyword">in</span> the JSON passed into stdin</span><br>  cat pod.json | kubectl delete -f -<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">  # </span><span class="language-bash">Delete pods and services with same names <span class="hljs-string">&quot;baz&quot;</span> and <span class="hljs-string">&quot;foo&quot;</span></span><br>  kubectl delete pod,service baz foo<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">  # </span><span class="language-bash">Delete pods and services with label name=myLabel</span><br>  kubectl delete pods,services -l name=myLabel<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">  # </span><span class="language-bash">Delete a pod with minimal delay</span><br>  kubectl delete pod foo --now<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">  # </span><span class="language-bash">Force delete a pod on a dead node</span><br>  kubectl delete pod foo --force<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">  # </span><span class="language-bash">Delete all pods</span><br>  kubectl delete pods --all<br><br></code></pre></td></tr></table></figure><p><code>set</code>：在创建对象之前修改对象</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">kubectl create service clusterip my-svc --clusterip=&quot;None&quot; -o yaml --dry-run=client | kubectl set selector --local -f - &#x27;environment=qa&#x27; -o yaml | kubectl create -f -<br></code></pre></td></tr></table></figure><p><code>kubectl create service clusterip my-svc --clusterip=&quot;None&quot; -o yaml --dry-run=client</code>:创建service配置，但将其以YAML格式标准输出上打印而不是发送API服务器。</p><p><code>kubectl set selector --local -f - &#39;environment=qa&#39; -o yaml</code>从标准输入读入配置，更新yaml。</p><p><code>kubectl create -f -</code>:使用标准输入上获得的配置创建对象</p><p><code>edit</code>更改对象</p><p><code>kubectl create --edit</code>来在对象创建之前更改配置。</p>]]></content>
     
     
     <categories>
@@ -325,6 +387,56 @@
   
   
   <entry>
+    <title>snap和apt</title>
+    <link href="/2022/09/15/linux/snap%E5%92%8Capt/"/>
+    <url>/2022/09/15/linux/snap%E5%92%8Capt/</url>
+    
+    <content type="html"><![CDATA[<h2 id="snap"><a href="#snap" class="headerlink" title="snap"></a>snap</h2><p><strong>软件包和部署系统</strong>。通过该应用程序与系统无关，也就是说可以在任何支持snap的linux发行版上本地运行。</p><p>一种全新的软件包管理方式，它类似一个容器拥有一个应用程序所有的文件和库，各个应用程序之间完全独立。所以使用snap包的好处就是它解决了应用程序之间的依赖问题，使应用程序之间更容易管理。但是由此带来的问题就是它占用更多的磁盘空间。</p><p>类似于一个容器，它包含一个应用程序需要用到的所有文件和库（snap包包含一个私有的root文件系统，里面包含了依赖的软件包）。它们会被安装到单独的目录；各个应用程序之间相互隔离。使用snap有很多好处，首先它解决了软件包的依赖问题；其次，也使应用程序更容易管理。</p><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ol><li><code>sudo snap list</code>:查看已下载snap的软件。</li></ol><h2 id="apt"><a href="#apt" class="headerlink" title="apt"></a>apt</h2><p>软件包管理器，用于在基于 Debian 的系统上安装和删除软件包。APT 使检索、配置、升级、安装和删除包的过程自动化。</p><ul><li>你希望应用程序由你使用的发行版进行审核。</li><li>你担心节省存储空间。APT 安装的应用程序共享它们的依赖项。</li><li>你希望应用程序正确集成到GUI 环境中。</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>wget知识点详解</title>
+    <link href="/2022/09/15/linux/wget%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AF%A6%E8%A7%A3/"/>
+    <url>/2022/09/15/linux/wget%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AF%A6%E8%A7%A3/</url>
+    
+    <content type="html"><![CDATA[<h2 id="wget"><a href="#wget" class="headerlink" title="wget"></a>wget</h2><p>“world wide web”和”get”的结合，目前支持http、https以及ftp这三个TCP/IP协议下载。</p><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul><li>支持递归下载</li><li>支持代理服务器</li><li>恰当地转换页面中的连接</li><li>生成可在本地浏览的页面镜像</li></ul><h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><ol><li><p><code>wget</code>下载单文件</p></li><li><p><code>wget -O</code>：下载并以不同的文件名保存</p><p>将下载连接的文件保存为boost_1_80.tar.gz</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget -O boost_1_80.tar.gz https://boostorg.jfrog.io/artifactory/main/release/1.80.0/source/boost_1_80_0.tar.gz<br></code></pre></td></tr></table></figure></li><li><p><code>wget -c</code>:断点续传</p></li><li><p><code>wget -q </code>:quiet (no output)——下载内容但不显示任何内容</p></li><li><p><code>wget -P</code>：下载到指定目录</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget -P/tmp https://boostorg.jfrog.io/artifactory/main/release/1.80.0/source/boost_1_80_0.tar.gz<br></code></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>hexo安装及主题配置</title>
     <link href="/2022/09/15/hexo/%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%AE%89%E8%A3%85/"/>
     <url>/2022/09/15/hexo/%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%AE%89%E8%A3%85/</url>
@@ -385,7 +497,7 @@
     <link href="/2022/09/15/k8s/k8s%E5%9C%A8kind%E4%B8%8A%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/"/>
     <url>/2022/09/15/k8s/k8s%E5%9C%A8kind%E4%B8%8A%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</url>
     
-    <content type="html"><![CDATA[<p>在创建k8s集群可参考<a href>kind安装部署k8s集群</a></p><h1 id="查看运行的节点"><a href="#查看运行的节点" class="headerlink" title="查看运行的节点"></a>查看运行的节点</h1><p>创建了3个work节点和3个master</p><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs fortran">[root@host-server ~]# kubectl get nodes<br><span class="hljs-keyword">NAME</span>                  <span class="hljs-keyword">STATUS</span>   ROLES           AGE     VERSION<br><span class="hljs-keyword">kind</span>-control-plane    Ready    control-plane   <span class="hljs-number">4</span>h23m   v1<span class="hljs-number">.25</span><span class="hljs-number">.0</span><br><span class="hljs-keyword">kind</span>-control-plane2   Ready    control-plane   <span class="hljs-number">4</span>h22m   v1<span class="hljs-number">.25</span><span class="hljs-number">.0</span><br><span class="hljs-keyword">kind</span>-control-plane3   Ready    control-plane   <span class="hljs-number">4</span>h22m   v1<span class="hljs-number">.25</span><span class="hljs-number">.0</span><br><span class="hljs-keyword">kind</span>-worker           Ready    &lt;<span class="hljs-keyword">none</span>&gt;          <span class="hljs-number">4</span>h21m   v1<span class="hljs-number">.25</span><span class="hljs-number">.0</span><br><span class="hljs-keyword">kind</span>-worker2          Ready    &lt;<span class="hljs-keyword">none</span>&gt;          <span class="hljs-number">4</span>h21m   v1<span class="hljs-number">.25</span><span class="hljs-number">.0</span><br><span class="hljs-keyword">kind</span>-worker3          Ready    &lt;<span class="hljs-keyword">none</span>&gt;          <span class="hljs-number">4</span>h21m   v1<span class="hljs-number">.25</span><span class="hljs-number">.0</span><br></code></pre></td></tr></table></figure><h1 id="如何运行"><a href="#如何运行" class="headerlink" title="如何运行"></a>如何运行</h1><p>在宿主机中，使用kubectl就可以完成几大部分的k8s操作，有些人可能就对于和平常看见的k8s部署不同，包括看不见构建k8s的镜像、它到底是如何部署上去、怎么就成功部署了3个works和3个master等有诸多的疑惑。</p><p>先上图：</p><p><img src="/2022/09/15/k8s/k8s%E5%9C%A8kind%E4%B8%8A%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/image-20220909161301440-1663039219073-7.png" alt="kind"></p><p>在此也仅是简单介绍该工作流程，如果需要进一步了解，可参考<a href="https://kind.sigs.k8s.io/">kind文档</a></p><ol><li><p>采用镜像的方式构建k8s node节点</p><p>kind,原文就是 Kubernetes in docker 。这样事情也就变得明朗起来。将k8s环境以docker container的方式搭建。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@host-server ~]# docker ps -a<br>CONTAINER ID        IMAGE                                COMMAND                  CREATED             STATUS              PORTS                       NAMES<br>a9459c6610fd        kindest/haproxy:v20220607-9a4d8d2a   &quot;haproxy -sf 7 -W -d…&quot;   4 hours ago         Up 4 hours          127.0.0.1:34805-&gt;6443/tcp   kind-external-load-balancer<br>1747e4be5b45        kindest/node:v1.25.0                 &quot;/usr/local/bin/entr…&quot;   4 hours ago         Up 4 hours                                      kind-worker2<br>1af5558bd923        kindest/node:v1.25.0                 &quot;/usr/local/bin/entr…&quot;   4 hours ago         Up 4 hours          127.0.0.1:46155-&gt;6443/tcp   kind-control-plane3<br>d8fd68d3fb29        kindest/node:v1.25.0                 &quot;/usr/local/bin/entr…&quot;   4 hours ago         Up 4 hours          127.0.0.1:38435-&gt;6443/tcp   kind-control-plane<br>543d3a6c7d22        kindest/node:v1.25.0                 &quot;/usr/local/bin/entr…&quot;   4 hours ago         Up 4 hours                                      kind-worker<br>78580624a92e        kindest/node:v1.25.0                 &quot;/usr/local/bin/entr…&quot;   4 hours ago         Up 4 hours          127.0.0.1:34349-&gt;6443/tcp   kind-control-plane2<br>35e8c2851baf        kindest/node:v1.25.0                 &quot;/usr/local/bin/entr…&quot;   4 hours ago         Up 4 hours                                      kind-worker3<br></code></pre></td></tr></table></figure></li><li><p>简化了环境的搭建</p><p>kind命令的使用，可以让操作者不在纠结搭建环境中出现的错误，毕竟在搭建环境的过程中，可能常常会出现各种各样的问题，最终导致从入门到放弃。</p></li><li><p>进入节点内部</p><p>以容器的方式进入节点环境，容器中涵盖了k8s所需的环境，包括kubeadm 、kubectl 、kubelet管理套件，</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@host-server ~]# docker exec -it kind-worker bash<br>root@kind-worker:/# kube<br>kubeadm  kubectl  kubelet<br></code></pre></td></tr></table></figure></li><li><p>采用crictl的方式 检查和调试kubernetes节点上的容器运行时和应用程序，其余的操作命令可参见<a href="https://kubernetes.io/zh-cn/docs/tasks/debug/debug-cluster/crictl/">https://kubernetes.io/zh-cn/docs/tasks/debug/debug-cluster/crictl/</a></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">root@kind-worker:/# crictl pods<br>POD ID              CREATED             STATE               NAME                NAMESPACE           ATTEMPT             RUNTIME<br>70378a1203be0       5 hours ago         Ready               kube-proxy-9b29x    kube-system         0                   (default)<br>1155cba575f39       5 hours ago         Ready               kindnet-ftncm       kube-system         0                   (default)<br></code></pre></td></tr></table></figure></li></ol>]]></content>
+    <content type="html"><![CDATA[<p>在创建k8s集群可参考<a href>kind安装部署k8s集群</a></p><h1 id="查看运行的节点"><a href="#查看运行的节点" class="headerlink" title="查看运行的节点"></a>查看运行的节点</h1><p>创建了3个work节点和3个master</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@host-server ~]# kubectl get nodes<br>NAME                  STATUS   ROLES           AGE     VERSION<br>kind-control-plane    Ready    control-plane   4h23m   v1.25.0<br>kind-control-plane2   Ready    control-plane   4h22m   v1.25.0<br>kind-control-plane3   Ready    control-plane   4h22m   v1.25.0<br>kind-worker           Ready    &lt;none&gt;          4h21m   v1.25.0<br>kind-worker2          Ready    &lt;none&gt;          4h21m   v1.25.0<br>kind-worker3          Ready    &lt;none&gt;          4h21m   v1.25.0<br></code></pre></td></tr></table></figure><h1 id="如何运行"><a href="#如何运行" class="headerlink" title="如何运行"></a>如何运行</h1><p>在宿主机中，使用kubectl就可以完成几大部分的k8s操作，有些人可能就对于和平常看见的k8s部署不同，包括看不见构建k8s的镜像、它到底是如何部署上去、怎么就成功部署了3个works和3个master等有诸多的疑惑。</p><p>先上图：</p><p><img src="/2022/09/15/k8s/k8s%E5%9C%A8kind%E4%B8%8A%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/image-20220909161301440-1663039219073-7.png" alt="kind"></p><p>在此也仅是简单介绍该工作流程，如果需要进一步了解，可参考<a href="https://kind.sigs.k8s.io/">kind文档</a></p><ol><li><p>采用镜像的方式构建k8s node节点</p><p>kind,原文就是 Kubernetes in docker 。这样事情也就变得明朗起来。将k8s环境以docker container的方式搭建。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@host-server ~]# docker ps -a<br>CONTAINER ID        IMAGE                                COMMAND                  CREATED             STATUS              PORTS                       NAMES<br>a9459c6610fd        kindest/haproxy:v20220607-9a4d8d2a   &quot;haproxy -sf 7 -W -d…&quot;   4 hours ago         Up 4 hours          127.0.0.1:34805-&gt;6443/tcp   kind-external-load-balancer<br>1747e4be5b45        kindest/node:v1.25.0                 &quot;/usr/local/bin/entr…&quot;   4 hours ago         Up 4 hours                                      kind-worker2<br>1af5558bd923        kindest/node:v1.25.0                 &quot;/usr/local/bin/entr…&quot;   4 hours ago         Up 4 hours          127.0.0.1:46155-&gt;6443/tcp   kind-control-plane3<br>d8fd68d3fb29        kindest/node:v1.25.0                 &quot;/usr/local/bin/entr…&quot;   4 hours ago         Up 4 hours          127.0.0.1:38435-&gt;6443/tcp   kind-control-plane<br>543d3a6c7d22        kindest/node:v1.25.0                 &quot;/usr/local/bin/entr…&quot;   4 hours ago         Up 4 hours                                      kind-worker<br>78580624a92e        kindest/node:v1.25.0                 &quot;/usr/local/bin/entr…&quot;   4 hours ago         Up 4 hours          127.0.0.1:34349-&gt;6443/tcp   kind-control-plane2<br>35e8c2851baf        kindest/node:v1.25.0                 &quot;/usr/local/bin/entr…&quot;   4 hours ago         Up 4 hours                                      kind-worker3<br></code></pre></td></tr></table></figure></li><li><p>简化了环境的搭建</p><p>kind命令的使用，可以让操作者不在纠结搭建环境中出现的错误，毕竟在搭建环境的过程中，可能常常会出现各种各样的问题，最终导致从入门到放弃。</p></li><li><p>进入节点内部</p><p>以容器的方式进入节点环境，容器中涵盖了k8s所需的环境，包括kubeadm 、kubectl 、kubelet管理套件，</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@host-server ~]# docker exec -it kind-worker bash<br>root@kind-worker:/# kube<br>kubeadm  kubectl  kubelet<br></code></pre></td></tr></table></figure></li><li><p>采用crictl的方式 检查和调试kubernetes节点上的容器运行时和应用程序，其余的操作命令可参见<a href="https://kubernetes.io/zh-cn/docs/tasks/debug/debug-cluster/crictl/">https://kubernetes.io/zh-cn/docs/tasks/debug/debug-cluster/crictl/</a></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">root@kind-worker:/# crictl pods<br>POD ID              CREATED             STATE               NAME                NAMESPACE           ATTEMPT             RUNTIME<br>70378a1203be0       5 hours ago         Ready               kube-proxy-9b29x    kube-system         0                   (default)<br>1155cba575f39       5 hours ago         Ready               kindnet-ftncm       kube-system         0                   (default)<br></code></pre></td></tr></table></figure></li></ol>]]></content>
     
     
     <categories>
@@ -427,56 +539,6 @@
       <tag>k8s</tag>
       
       <tag>kind</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>snap和apt</title>
-    <link href="/2022/09/15/linux/snap%E5%92%8Capt/"/>
-    <url>/2022/09/15/linux/snap%E5%92%8Capt/</url>
-    
-    <content type="html"><![CDATA[<h2 id="snap"><a href="#snap" class="headerlink" title="snap"></a>snap</h2><p><strong>软件包和部署系统</strong>。通过该应用程序与系统无关，也就是说可以在任何支持snap的linux发行版上本地运行。</p><p>一种全新的软件包管理方式，它类似一个容器拥有一个应用程序所有的文件和库，各个应用程序之间完全独立。所以使用snap包的好处就是它解决了应用程序之间的依赖问题，使应用程序之间更容易管理。但是由此带来的问题就是它占用更多的磁盘空间。</p><p>类似于一个容器，它包含一个应用程序需要用到的所有文件和库（snap包包含一个私有的root文件系统，里面包含了依赖的软件包）。它们会被安装到单独的目录；各个应用程序之间相互隔离。使用snap有很多好处，首先它解决了软件包的依赖问题；其次，也使应用程序更容易管理。</p><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ol><li><code>sudo snap list</code>:查看已下载snap的软件。</li></ol><h2 id="apt"><a href="#apt" class="headerlink" title="apt"></a>apt</h2><p>软件包管理器，用于在基于 Debian 的系统上安装和删除软件包。APT 使检索、配置、升级、安装和删除包的过程自动化。</p><ul><li>你希望应用程序由你使用的发行版进行审核。</li><li>你担心节省存储空间。APT 安装的应用程序共享它们的依赖项。</li><li>你希望应用程序正确集成到GUI 环境中。</li></ul>]]></content>
-    
-    
-    <categories>
-      
-      <category>linux</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>linux</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>wget知识点详解</title>
-    <link href="/2022/09/15/linux/wget%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AF%A6%E8%A7%A3/"/>
-    <url>/2022/09/15/linux/wget%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AF%A6%E8%A7%A3/</url>
-    
-    <content type="html"><![CDATA[<h2 id="wget"><a href="#wget" class="headerlink" title="wget"></a>wget</h2><p>“world wide web”和”get”的结合，目前支持http、https以及ftp这三个TCP/IP协议下载。</p><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul><li>支持递归下载</li><li>支持代理服务器</li><li>恰当地转换页面中的连接</li><li>生成可在本地浏览的页面镜像</li></ul><h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><ol><li><p><code>wget</code>下载单文件</p></li><li><p><code>wget -O</code>：下载并以不同的文件名保存</p><p>将下载连接的文件保存为boost_1_80.tar.gz</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget -O boost_1_80.tar.gz https://boostorg.jfrog.io/artifactory/main/release/1.80.0/source/boost_1_80_0.tar.gz<br></code></pre></td></tr></table></figure></li><li><p><code>wget -c</code>:断点续传</p></li><li><p><code>wget -q </code>:quiet (no output)——下载内容但不显示任何内容</p></li><li><p><code>wget -P</code>：下载到指定目录</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget -P/tmp https://boostorg.jfrog.io/artifactory/main/release/1.80.0/source/boost_1_80_0.tar.gz<br></code></pre></td></tr></table></figure></li></ol>]]></content>
-    
-    
-    <categories>
-      
-      <category>linux</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>linux</tag>
       
     </tags>
     
