@@ -1,5 +1,5 @@
 ---
-tilte: vim的常用操作
+title: vim的常用操作
 categories: 
 - linux
 tags:
