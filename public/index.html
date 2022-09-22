@@ -231,7 +231,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2022/09/20/golang/RabbitMQ-go%E6%95%99%E7%A8%8B/%E5%B7%A5%E4%BD%9C%E9%98%9F%E5%88%97/" target="_self">
         <div>
-          
+          本节会创建一个work queue,它将在多个工作中分发时间消费任务。 work queue的核心避免快速处理资源密集的任务，必须等待来完成，相反是在完成之后进行调度。封装一个任务作为消息发送给一个队列，一个在后台运行的任务程序将会弹出并处理执行该任务。当有很多works的时候将会在它们之间进行共享。 本节内容在web服务中是极其有用的，可以在一个短的http请求中处理一个完整的任务（例如注册时发
         </div>
       </a>
 

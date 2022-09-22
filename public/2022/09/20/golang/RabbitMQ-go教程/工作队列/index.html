@@ -16,16 +16,20 @@
   <meta name="author" content="彤～">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="本节会创建一个work queue,它将在多个工作中分发时间消费任务。 work queue的核心避免快速处理资源密集的任务，必须等待来完成，相反是在完成之后进行调度。封装一个任务作为消息发送给一个队列，一个在后台运行的任务程序将会弹出并处理执行该任务。当有很多works的时候将会在它们之间进行共享。 本节内容在web服务中是极其有用的，可以在一个短的http请求中处理一个完整的任务（例如注册时发">
+<meta property="og:type" content="article">
 <meta property="og:title" content="(二) RabbitMQ go教程——工作队列（work queues）">
 <meta property="og:url" content="http://jane-lucky.github.io/2022/09/20/golang/RabbitMQ-go%E6%95%99%E7%A8%8B/%E5%B7%A5%E4%BD%9C%E9%98%9F%E5%88%97/index.html">
 <meta property="og:site_name" content="Jane&#39;s Blog">
+<meta property="og:description" content="本节会创建一个work queue,它将在多个工作中分发时间消费任务。 work queue的核心避免快速处理资源密集的任务，必须等待来完成，相反是在完成之后进行调度。封装一个任务作为消息发送给一个队列，一个在后台运行的任务程序将会弹出并处理执行该任务。当有很多works的时候将会在它们之间进行共享。 本节内容在web服务中是极其有用的，可以在一个短的http请求中处理一个完整的任务（例如注册时发">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://jane-lucky.github.io/2022/09/20/golang/RabbitMQ-go%E6%95%99%E7%A8%8B/%E5%B7%A5%E4%BD%9C%E9%98%9F%E5%88%97/1663727458340.png">
 <meta property="article:published_time" content="2022-09-20T08:23:10.642Z">
-<meta property="article:modified_time" content="2022-09-20T08:24:25.751Z">
+<meta property="article:modified_time" content="2022-09-21T08:20:51.268Z">
 <meta property="article:author" content="彤～">
 <meta property="article:tag" content="RabbitMQ">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://jane-lucky.github.io/2022/09/20/golang/RabbitMQ-go%E6%95%99%E7%A8%8B/%E5%B7%A5%E4%BD%9C%E9%98%9F%E5%88%97/1663727458340.png">
   
   
   
@@ -217,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 words
+          2.3k words
         
       </span>
     
@@ -228,7 +232,7 @@
         
         
         
-          1 mins
+          19 mins
         
       </span>
     
@@ -271,7 +275,34 @@
             
               <div class="markdown-body">
                 
-                
+                <p>本节会创建一个<code>work queue</code>,它将在多个工作中分发时间消费任务。</p>
+<p><code>work queue</code>的核心避免快速处理资源密集的任务，必须等待来完成，相反是在完成之后进行调度。封装一个任务作为消息发送给一个队列，一个在后台运行的任务程序将会弹出并处理执行该任务。当有很多works的时候将会在它们之间进行共享。</p>
+<p>本节内容在web服务中是极其有用的，可以在一个短的http请求中处理一个完整的任务（例如注册时发送邮件或短信验证码等场景）。</p>
+<p>本节代码基于前一节进行改动，只展示改动部分：借助<code>time.Sleep</code>函数模拟一些比较耗时的任务——将一些包含<code>.</code>的字符串封装成消息发送，有一个<code>.</code>就表示需要耗费1秒钟的工作。</p>
+<h1 id="一"><a href="#一" class="headerlink" title="一"></a>一</h1><p>默认情况下，rabbitMQ会给每一个消费者发送每一条消息，平均每一个消费者均会得到相同数量的信息。以下方法称为循环：生产者发送消息的时候，存在多个消费者的时候，消费者依次获取信息。</p>
+<p><strong>Round-robin</strong>的优点是可较容易的并行化，如果工作积压，可以增加多个工人，轻松完成</p>
+<h2 id="send-go"><a href="#send-go" class="headerlink" title="send.go"></a>send.go</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">//定义的队列是幂等的，消息内容是byte数组</span><br>	body := bodyFrom(os.Args)<br>	<span class="hljs-comment">//body := &quot;Hello World&quot;</span><br><br></code></pre></td></tr></table></figure>
+
+<p>添加bodyFrom方法，读取命令行参数信息</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">bodyFrom</span><span class="hljs-params">(args []<span class="hljs-type">string</span>)</span></span> <span class="hljs-type">string</span> &#123;<br>	<span class="hljs-keyword">var</span> s <span class="hljs-type">string</span><br>	<span class="hljs-keyword">if</span> (<span class="hljs-built_in">len</span>(args) &lt; <span class="hljs-number">2</span>) || os.Args[<span class="hljs-number">1</span>] == <span class="hljs-string">&quot;&quot;</span> &#123;<br>		s = <span class="hljs-string">&quot;Hello&quot;</span><br>	&#125; <span class="hljs-keyword">else</span> &#123;<br>		s = strings.Join(args[<span class="hljs-number">1</span>:], <span class="hljs-string">&quot; &quot;</span>)<br>	&#125;<br>	<span class="hljs-keyword">return</span> s<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="receive-go"><a href="#receive-go" class="headerlink" title="receive.go"></a>receive.go</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>	<span class="hljs-keyword">for</span> d := <span class="hljs-keyword">range</span> msgs &#123;<br>		log.Printf(<span class="hljs-string">&quot;Received a message: %s&quot;</span>, d.Body)<br>		dotCount := bytes.Count(d.Body, []<span class="hljs-type">byte</span>(<span class="hljs-string">&quot;.&quot;</span>))<br>		t := time.Duration(dotCount)<br>		time.Sleep(time.Second * t) <span class="hljs-comment">//模拟耗时任务</span><br>		log.Printf(<span class="hljs-string">&quot;Done&quot;</span>)<br>	&#125;<br>&#125;()<br></code></pre></td></tr></table></figure>
+
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">go run send.go First message.<br>go run send.go Second message..<br>go run send.go Third message...<br>go run send.go Fourth message....<br>go run send.go Fifth message.....<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2022/09/20/golang/RabbitMQ-go%E6%95%99%E7%A8%8B/%E5%B7%A5%E4%BD%9C%E9%98%9F%E5%88%97/1663727458340.png" srcset="/img/loading.gif" lazyload alt="1663727458340"></p>
+<h1 id="二"><a href="#二" class="headerlink" title="二"></a>二</h1><p>在上述模拟程序中，如果一个消费者执行了一个较长的任务的时候宕机，我们可能会觉得在接收消息的时候可能会出现消息丢失的情况，但实际上情况并没有想象的那么糟糕。并没有丢失任何一个任务消息，其他运行的接受者会接替已经死亡的这个节点，确保接收信息的准确性。</p>
+<p>原因是RabbitMQ提供<code>ack</code>确认机制，接受者会提供一个确认信号返回给rabbitmq告知信息已经被取出。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">//将告诉服务段请在队列中传输消息，我们将在管道中读取到该消息</span><br>msgs, err := ch.Consume(<br>	q.Name, <span class="hljs-comment">//queue</span><br>	<span class="hljs-string">&quot;&quot;</span>, <span class="hljs-comment">//consumer</span><br>	<span class="hljs-literal">true</span>, <span class="hljs-comment">//ack</span><br>	<span class="hljs-literal">false</span>,<span class="hljs-comment">//exclusive</span><br>	<span class="hljs-literal">false</span>,<span class="hljs-comment">//no-local</span><br>	<span class="hljs-literal">false</span>,<span class="hljs-comment">//no-wait</span><br>	<span class="hljs-literal">nil</span>,<span class="hljs-comment">//args</span><br>)<br></code></pre></td></tr></table></figure>
+
+<p>如果消费者消失（chan关闭，连接关闭或者TCP连接丢失）没有发送ack，rabbitMQ会认为该信息并没有被完整接收，将会返回到队列中。与此同时如果存在其他的消费者的话，会快速传递给其他消费值。</p>
+<p>设置ack为false进行手动确认</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs go">msgs, err := ch.Consume(<br>	q.Name,<br>	<span class="hljs-string">&quot;&quot;</span>,<br>	<span class="hljs-literal">false</span>,<br>	<span class="hljs-comment">//true, //ack</span><br>	<span class="hljs-literal">false</span>,<br>	<span class="hljs-literal">false</span>,<br>	<span class="hljs-literal">false</span>,<br>	<span class="hljs-literal">nil</span>,<br>)<br>failOnError(err, <span class="hljs-string">&quot;Failed to register a consumer&quot;</span>)<br><br><span class="hljs-keyword">var</span> forever <span class="hljs-keyword">chan</span> <span class="hljs-keyword">struct</span>&#123;&#125;<br><span class="hljs-comment">//forever := make(chan bool)</span><br><br><span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>	<span class="hljs-keyword">for</span> d := <span class="hljs-keyword">range</span> msgs &#123;<br>		log.Printf(<span class="hljs-string">&quot;Received a message: %s&quot;</span>, d.Body)<br>		dotCount := bytes.Count(d.Body, []<span class="hljs-type">byte</span>(<span class="hljs-string">&quot;.&quot;</span>))<br>		t := time.Duration(dotCount)<br>		time.Sleep(time.Second * t)<br>		log.Printf(<span class="hljs-string">&quot;Done&quot;</span>)<br>		d.Ack(<span class="hljs-literal">false</span>)<br>	&#125;<br>&#125;()<br></code></pre></td></tr></table></figure>
+
+<h1 id="公平分发"><a href="#公平分发" class="headerlink" title="公平分发"></a>公平分发</h1><p>如果存在调度的不公平性，例如：存在两个任务，但在任务分发的时候，存在奇数任务重，偶数轻，如果依旧按照上述的分配方式，会出现资源闲置的问题。</p>
+<p><strong>解决：</strong>可以将预取计数设置为1（目的是告诉不要向一个work发出多个消息——在处理并确认前一条消息的之前，不要重复发送）。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs go">err = ch.Qos(<br>  <span class="hljs-number">1</span>,     <span class="hljs-comment">// prefetch count</span><br>  <span class="hljs-number">0</span>,     <span class="hljs-comment">// prefetch size</span><br>  <span class="hljs-literal">false</span>, <span class="hljs-comment">// global</span><br>)<br></code></pre></td></tr></table></figure>
+
                 
               </div>
             
