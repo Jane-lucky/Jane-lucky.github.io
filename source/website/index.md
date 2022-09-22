@@ -10,3 +10,5 @@ date: 2022-09-20 09:42:33
 [陕西省人事考试网](http://www.sxrsks.cn/)
 
 [Kubernetes 文档 | Kubernetes](https://kubernetes.io/zh-cn/docs/home/)
+
+[PMI网站](https://www.pmi.org):后期查询成绩，下载证书，查找PDU，PMIID，证书换审等
