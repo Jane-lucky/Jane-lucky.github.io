@@ -133,7 +133,7 @@ func main() {
 
 	go func() {
 		for d := range msgs {
-			log.Panicf("Received a message: %s", d.Body)
+			log.Printf("Received a message: %s", d.Body)
 		}
 	}()
 	log.Printf(" [*] Waiting for messages. To exit press CTRL+C")
