@@ -393,6 +393,31 @@
   
   
   <entry>
+    <title>CSA-自旋锁</title>
+    <link href="/2022/09/15/golang/CSA%20%E8%87%AA%E6%97%8B%E9%94%81/"/>
+    <url>/2022/09/15/golang/CSA%20%E8%87%AA%E6%97%8B%E9%94%81/</url>
+    
+    <content type="html"><![CDATA[<h1 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h1><p>比较和交换——原子操作：在多线程没有锁的状态下确保多个线程对一个值的更新。</p><h1 id="自旋锁"><a href="#自旋锁" class="headerlink" title="自旋锁"></a>自旋锁</h1><p>不断的判断比较。</p><p>持有的锁和等待竞争的锁不需要作内核态和用户态之间的转换，只需要循环等待持有锁的释放锁。避免不同状态转换的消耗。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>golang</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CSA</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>docker安装</title>
     <link href="/2022/09/15/docker/docker%E5%AE%89%E8%A3%85/"/>
     <url>/2022/09/15/docker/docker%E5%AE%89%E8%A3%85/</url>
@@ -485,31 +510,6 @@
     <tags>
       
       <tag>httpd</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>CSA-自旋锁</title>
-    <link href="/2022/09/15/golang/CSA%20%E8%87%AA%E6%97%8B%E9%94%81/"/>
-    <url>/2022/09/15/golang/CSA%20%E8%87%AA%E6%97%8B%E9%94%81/</url>
-    
-    <content type="html"><![CDATA[<h1 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h1><p>比较和交换——原子操作：在多线程没有锁的状态下确保多个线程对一个值的更新。</p><h1 id="自旋锁"><a href="#自旋锁" class="headerlink" title="自旋锁"></a>自旋锁</h1><p>不断的判断比较。</p><p>持有的锁和等待竞争的锁不需要作内核态和用户态之间的转换，只需要循环等待持有锁的释放锁。避免不同状态转换的消耗。</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>golang</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>CSA</tag>
       
     </tags>
     
