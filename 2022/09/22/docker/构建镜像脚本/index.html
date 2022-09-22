@@ -16,22 +16,22 @@
   <meta name="author" content="彤～">
   <meta name="keywords" content="">
   
-    <meta name="description" content="基础镜像 alpine源码获取 123wget https:&#x2F;&#x2F;github.com&#x2F;docker-library&#x2F;redis&#x2F;raw&#x2F;6ec0ad5628df2404509f776e9c70fbecf5364c10&#x2F;5.0&#x2F;alpine&#x2F;Dockerfilewget https:&#x2F;&#x2F;github.com&#x2F;docker-library&#x2F;redis&#x2F;raw&#x2F;6ec0ad5628df2404509f7">
+    <meta name="description" content="镜像构建命令脚本 版本 操作系统 1sh build-image.sh 4.5.0 alpine  镜像构建脚本样例（rocketmq）文件目录 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647[root@ecs-5e66 image-build]$ lltotal 28-rw">
 <meta property="og:type" content="article">
-<meta property="og:title" content="redis 5.0.6 arm镜像构建">
-<meta property="og:url" content="http://jane-lucky.github.io/2022/09/15/docker/redis%205.0.6%E9%95%9C%E5%83%8F%E6%9E%84%E5%BB%BA/index.html">
+<meta property="og:title" content="build-images自动化脚本学习（一）">
+<meta property="og:url" content="http://jane-lucky.github.io/2022/09/22/docker/%E6%9E%84%E5%BB%BA%E9%95%9C%E5%83%8F%E8%84%9A%E6%9C%AC/index.html">
 <meta property="og:site_name" content="Jane&#39;s Blog">
-<meta property="og:description" content="基础镜像 alpine源码获取 123wget https:&#x2F;&#x2F;github.com&#x2F;docker-library&#x2F;redis&#x2F;raw&#x2F;6ec0ad5628df2404509f776e9c70fbecf5364c10&#x2F;5.0&#x2F;alpine&#x2F;Dockerfilewget https:&#x2F;&#x2F;github.com&#x2F;docker-library&#x2F;redis&#x2F;raw&#x2F;6ec0ad5628df2404509f7">
+<meta property="og:description" content="镜像构建命令脚本 版本 操作系统 1sh build-image.sh 4.5.0 alpine  镜像构建脚本样例（rocketmq）文件目录 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647[root@ecs-5e66 image-build]$ lltotal 28-rw">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-09-15T01:21:15.652Z">
-<meta property="article:modified_time" content="2022-09-14T08:42:57.495Z">
+<meta property="article:published_time" content="2022-09-22T11:26:20.537Z">
+<meta property="article:modified_time" content="2022-09-22T11:27:43.786Z">
 <meta property="article:author" content="彤～">
-<meta property="article:tag" content="redis">
+<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>redis 5.0.6 arm镜像构建 - Jane&#39;s Blog</title>
+  <title>build-images自动化脚本学习（一） - Jane&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="redis 5.0.6 arm镜像构建"></span>
+            <span id="subtitle" data-typed-text="build-images自动化脚本学习（一）"></span>
           
         </div>
 
@@ -207,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-09-15 09:21" pubdate>
-          September 15, 2022 am
+        <time datetime="2022-09-22 19:26" pubdate>
+          September 22, 2022 pm
         </time>
       </span>
     
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          595 words
+          1.5k words
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          5 mins
+          13 mins
         
       </span>
     
@@ -268,19 +268,16 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">redis 5.0.6 arm镜像构建</h1>
+            <h1 style="display: none">build-images自动化脚本学习（一）</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="基础镜像-alpine"><a href="#基础镜像-alpine" class="headerlink" title="基础镜像 alpine"></a>基础镜像 alpine</h1><p>源码获取</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget https://github.com/docker-library/redis/raw/6ec0ad5628df2404509f776e9c70fbecf5364c10/5.0/alpine/Dockerfile<br>wget https://github.com/docker-library/redis/raw/6ec0ad5628df2404509f776e9c70fbecf5364c10/5.0/alpine/docker-entrypoint.sh<br>chmod +x docker-entrypoint.sh<br></code></pre></td></tr></table></figure>
+                <h1 id="镜像构建命令"><a href="#镜像构建命令" class="headerlink" title="镜像构建命令"></a>镜像构建命令</h1><p>脚本 版本 操作系统</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sh build-image.sh 4.5.0 alpine<br></code></pre></td></tr></table></figure>
 
-<h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h1><h2 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h2><p>redis 5.0.X版本中，尽管官方已经提供了arm版本的redis镜像，但是在arm centos 7.6系统中，会出现page size的问题，因此建议重新获取dockerfile构建对应的镜像。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@ecs-5e66 jdk]$ docker logs redist<br>&lt;jemalloc&gt;: Unsupported system page size<br>&lt;jemalloc&gt;: Unsupported system page size<br><br></code></pre></td></tr></table></figure>
-
-<h2 id="问题二"><a href="#问题二" class="headerlink" title="问题二"></a>问题二</h2><p>在构建过程中，由于redis的Dockerfile在不停的更新，包括对应的基础镜像，因此建议在构建过程中，采用对应的Dockerfile构建，而不仅仅是改变Dockerfile中的版本。</p>
-
+<h1 id="镜像构建脚本样例（rocketmq）"><a href="#镜像构建脚本样例（rocketmq）" class="headerlink" title="镜像构建脚本样例（rocketmq）"></a>镜像构建脚本样例（rocketmq）</h1><p>文件目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@ecs-5e66 image-build]$ ll<br>total 28<br>-rw-r--r-- 1 root docker 1633 Sep 22 16:10 build-image-dashboard.sh<br>-rwxr-xr-x 1 root docker 1734 Sep 22 16:10 build-image.sh<br>-rw-r--r-- 1 root docker 3027 Sep 22 16:10 Dockerfile-alpine<br>-rw-r--r-- 1 root docker 3102 Sep 22 17:47 Dockerfile-centos<br>-rw-r--r-- 1 root docker 3861 Sep 22 16:10 Dockerfile-centos-dashboard<br>drwxr-xr-x 2 root docker 4096 Sep 22 16:10 scripts<br>-rwxr-xr-x 1 root docker 1726 Sep 22 16:10 update.sh<br>[root@ecs-5e66 image-build]$ cat build-image.sh<br><span class="hljs-meta prompt_">#</span><span class="language-bash">检查版本</span><br>checkVersion() &#123;<br>    echo &quot;Version = $1&quot;<br>        echo $1 |grep -E &quot;^[0-9]+\.[0-9]+\.[0-9]+&quot; &gt; /dev/null<br>    if [ $? = 0 ]; then<br>        return 1<br>    fi<br><br>        echo &quot;Version $1 illegal, it should be X.X.X format(e.g. 4.5.0), please check released versions in &#x27;https://archive.apache.org/dist/rocketmq/&#x27;&quot;<br>    exit -1<br>&#125;<br><br>if [ $# -lt 2 ]; then<br>    echo -e &quot;Usage: sh $0 Version BaseImage&quot;<br>    exit -1<br>fi<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">赋值命令行中的参数</span><br>ROCKETMQ_VERSION=$1<br>BASE_IMAGE=$2<br><br>checkVersion $ROCKETMQ_VERSION<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">Build rocketmq 构建</span><br>case &quot;$&#123;BASE_IMAGE&#125;&quot; in<br>    alpine)<br>        docker build --no-cache -f Dockerfile-alpine -t apache/rocketmq:$&#123;ROCKETMQ_VERSION&#125;-alpine --build-arg version=$&#123;ROCKETMQ_VERSION&#125; .<br>    ;;<br>    centos)<br>        docker build --no-cache -f Dockerfile-centos -t apache/rocketmq:$&#123;ROCKETMQ_VERSION&#125; --build-arg version=$&#123;ROCKETMQ_VERSION&#125; .<br>    ;;<br>    *)<br>        echo &quot;$&#123;BASE_IMAGE&#125; is not supported, supported base images: centos, alpine&quot;<br>        exit -1<br>    ;;<br>esac<br><br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -313,7 +310,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/redis/">#redis</a>
+        <a href="/tags/docker/">#docker</a>
       
     </div>
   
@@ -325,8 +322,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>redis 5.0.6 arm镜像构建</div>
-      <div>http://jane-lucky.github.io/2022/09/15/docker/redis 5.0.6镜像构建/</div>
+      <div>build-images自动化脚本学习（一）</div>
+      <div>http://jane-lucky.github.io/2022/09/22/docker/构建镜像脚本/</div>
     </div>
     <div class="license-meta">
       
@@ -338,7 +335,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>September 15, 2022</div>
+          <div>September 22, 2022</div>
         </div>
       
       
@@ -368,18 +365,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/09/15/docker/gitlab-14.0.5%E9%95%9C%E5%83%8F%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" title="gitlab-14.0.5镜像编译安装">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">gitlab-14.0.5镜像编译安装</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/09/15/docker/%E6%90%AD%E5%BB%BAhttpd%E4%B8%B4%E6%97%B6%E6%BA%90/" title="临时源搭建">
-                        <span class="hidden-mobile">临时源搭建</span>
+                      <a href="/2022/09/22/golang/RabbitMQ-go%E6%95%99%E7%A8%8B/publish/" title="(三) RabbitMQ go教程——发布/订阅（publish/subscribe）">
+                        <span class="hidden-mobile">(三) RabbitMQ go教程——发布/订阅（publish/subscribe）</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
