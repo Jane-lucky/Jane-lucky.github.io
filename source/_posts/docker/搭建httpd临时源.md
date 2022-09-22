@@ -1,5 +1,5 @@
 ---
-title: 搭建httpd临时源
+title: 临时源搭建
 categories: 
 - docker
 tags:
@@ -7,7 +7,7 @@ tags:
 
 ---
 
-# docker搭建临时源
+# docker HTTP搭建临时源
 
 ```shell
 [root@ecs-5e66 jdk-src]$ docker run -itd --name httptest -v $PWD:/usr/local/apache2/htdocs/ httpd:alpine
@@ -47,5 +47,17 @@ Saving to: ‘jdk-8u301-linux-aarch64.tar.gz’
 100%[====================================================================================================================================================================>] 74,283,479  --.-K/s   in 0.09s
 
 2022-09-14 14:52:17 (797 MB/s) - ‘jdk-8u301-linux-aarch64.tar.gz’ saved [74283479/74283479]
+```
+
+# pip临时源搭建
+
+```
+pip临时源搭建
+[zhaiwb zhaiwb@~]$ docker run -itd --rm --name pipts_zhai -p 8083:8080 -v $PWD/PIP_ding:/data/ centos:7
+[root@1deeaa27aa36 /]# yum install -y python3-pip python3-devel
+[root@1deeaa27aa36 home]# pip3 install pypiserver
+[root@1deeaa27aa36 data]# pypi-server -p 8080 /data
+
+pip3 install --trusted-host 122.9.34.193 -i http://122.9.34.193:8083 --no-cache-dir -r dlist.txt
 ```
 
