@@ -393,6 +393,31 @@
   
   
   <entry>
+    <title>CSA-自旋锁</title>
+    <link href="/2022/09/15/golang/CSA%20%E8%87%AA%E6%97%8B%E9%94%81/"/>
+    <url>/2022/09/15/golang/CSA%20%E8%87%AA%E6%97%8B%E9%94%81/</url>
+    
+    <content type="html"><![CDATA[<h1 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h1><p>比较和交换——原子操作：在多线程没有锁的状态下确保多个线程对一个值的更新。</p><h1 id="自旋锁"><a href="#自旋锁" class="headerlink" title="自旋锁"></a>自旋锁</h1><p>不断的判断比较。</p><p>持有的锁和等待竞争的锁不需要作内核态和用户态之间的转换，只需要循环等待持有锁的释放锁。避免不同状态转换的消耗。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>golang</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CSA</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>docker安装</title>
     <link href="/2022/09/15/docker/docker%E5%AE%89%E8%A3%85/"/>
     <url>/2022/09/15/docker/docker%E5%AE%89%E8%A3%85/</url>
@@ -493,23 +518,27 @@
   
   
   <entry>
-    <title>CSA-自旋锁</title>
-    <link href="/2022/09/15/golang/CSA%20%E8%87%AA%E6%97%8B%E9%94%81/"/>
-    <url>/2022/09/15/golang/CSA%20%E8%87%AA%E6%97%8B%E9%94%81/</url>
+    <title>hexo安装及主题配置</title>
+    <link href="/2022/09/15/hexo/%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%AE%89%E8%A3%85/"/>
+    <url>/2022/09/15/hexo/%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%AE%89%E8%A3%85/</url>
     
-    <content type="html"><![CDATA[<h1 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h1><p>比较和交换——原子操作：在多线程没有锁的状态下确保多个线程对一个值的更新。</p><h1 id="自旋锁"><a href="#自旋锁" class="headerlink" title="自旋锁"></a>自旋锁</h1><p>不断的判断比较。</p><p>持有的锁和等待竞争的锁不需要作内核态和用户态之间的转换，只需要循环等待持有锁的释放锁。避免不同状态转换的消耗。</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p><a href="https://hexo.io/zh-cn/docs/">Hexo</a> 是一个快速、简洁且高效的博客框架。Hexo 使用 <a href="http://daringfireball.net/projects/markdown/">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>安装nodejs(需要注意nodejs的版本要求)：<a href="../deploy/ubuntu%E5%AE%89%E8%A3%85nodejs">ubuntu安装nodejs</a></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">npm install -g hexo-cli<br></code></pre></td></tr></table></figure><h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs shell">ubuntu@root:~/Desktop/Blog$ hexo -v<br>INFO  Validating config<br>hexo: 5.4.2<br>hexo-cli: 4.3.0<br>os: linux 5.15.0-46-generic Ubuntu 20.04.4 LTS (Focal Fossa)<br>node: 14.20.0<br>v8: 8.4.371.23-node.87<br>uv: 1.42.0<br>zlib: 1.2.11<br>brotli: 1.0.9<br>ares: 1.18.1<br>modules: 83<br>nghttp2: 1.42.0<br>napi: 8<br>llhttp: 2.1.5<br>openssl: 1.1.1q<br>cldr: 40.0<br>icu: 70.1<br>tz: 2021a3<br>unicode: 14.0<br></code></pre></td></tr></table></figure><h2 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h2><h3 id="init"><a href="#init" class="headerlink" title="init"></a>init</h3><p>初始化</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkdir Blog<br>cd Blog<br><span class="hljs-meta prompt_">#</span><span class="language-bash">也可不写文件夹，默认是在本目录层级构建</span><br>hexo init &lt;folder&gt;<br></code></pre></td></tr></table></figure><p>基本目录层级</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs shell">ubuntu@root:~/Desktop/Blog$ tree -L 1<br>.<br>├── _config.landscape.yml<br>├── _config.yml<br>├── node_modules<br>├── package.json<br>├── package-lock.json<br>├── scaffolds<br>├── source<br>└── themes<br><br>4 directories, 4 files<br></code></pre></td></tr></table></figure><h3 id="new"><a href="#new" class="headerlink" title="new"></a>new</h3><h3 id="hexo-clean"><a href="#hexo-clean" class="headerlink" title="hexo clean"></a>hexo clean</h3><h3 id="hexo-g"><a href="#hexo-g" class="headerlink" title="hexo g"></a>hexo g</h3><h3 id="hexo-s"><a href="#hexo-s" class="headerlink" title="hexo s"></a>hexo s</h3><h3 id="hexo-d"><a href="#hexo-d" class="headerlink" title="hexo d"></a>hexo d</h3><h2 id="fluid-主题配置"><a href="#fluid-主题配置" class="headerlink" title="fluid 主题配置"></a>fluid 主题配置</h2><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">npm install <span class="hljs-comment">--save hexo-theme-fluid</span><br></code></pre></td></tr></table></figure><p>在博客目录下创建 <code>_config.fluid.yml</code> 文件，将主题的 <a href="https://github.com/fluid-dev/hexo-theme-fluid/blob/master/_config.yml">_config.yml</a><a href="https://github.com/fluid-dev/hexo-theme-fluid/blob/master/_config.yml"> </a><a href="https://github.com/fluid-dev/hexo-theme-fluid/blob/master/_config.yml"> (opens new window)</a> 全部配置（或部分配置）复制过去。</p><p>根据自己的需要进行主题配置，<a href="https://hexo.fluid-dev.com/docs/guide/#%E5%85%B3%E4%BA%8E%E6%8C%87%E5%8D%97">fluid主题配置</a></p><h2 id="图片插件设置"><a href="#图片插件设置" class="headerlink" title="图片插件设置"></a>图片插件设置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">npm install https://github.com/CodeFalling/hexo-asset-image --save<br><br></code></pre></td></tr></table></figure><p>在博客目录<code>_config.yml</code>文件，</p>]]></content>
     
     
     <categories>
       
-      <category>golang</category>
+      <category>hexo</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>CSA</tag>
+      <tag>hexo</tag>
+      
+      <tag>fluid</tag>
+      
+      <tag>安装</tag>
       
     </tags>
     
@@ -599,27 +628,48 @@
   
   
   <entry>
-    <title>hexo安装及主题配置</title>
-    <link href="/2022/09/15/hexo/%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%AE%89%E8%A3%85/"/>
-    <url>/2022/09/15/hexo/%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%AE%89%E8%A3%85/</url>
+    <title>snap和apt</title>
+    <link href="/2022/09/15/linux/snap%E5%92%8Capt/"/>
+    <url>/2022/09/15/linux/snap%E5%92%8Capt/</url>
     
-    <content type="html"><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p><a href="https://hexo.io/zh-cn/docs/">Hexo</a> 是一个快速、简洁且高效的博客框架。Hexo 使用 <a href="http://daringfireball.net/projects/markdown/">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>安装nodejs(需要注意nodejs的版本要求)：<a href="../deploy/ubuntu%E5%AE%89%E8%A3%85nodejs">ubuntu安装nodejs</a></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">npm install -g hexo-cli<br></code></pre></td></tr></table></figure><h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs shell">ubuntu@root:~/Desktop/Blog$ hexo -v<br>INFO  Validating config<br>hexo: 5.4.2<br>hexo-cli: 4.3.0<br>os: linux 5.15.0-46-generic Ubuntu 20.04.4 LTS (Focal Fossa)<br>node: 14.20.0<br>v8: 8.4.371.23-node.87<br>uv: 1.42.0<br>zlib: 1.2.11<br>brotli: 1.0.9<br>ares: 1.18.1<br>modules: 83<br>nghttp2: 1.42.0<br>napi: 8<br>llhttp: 2.1.5<br>openssl: 1.1.1q<br>cldr: 40.0<br>icu: 70.1<br>tz: 2021a3<br>unicode: 14.0<br></code></pre></td></tr></table></figure><h2 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h2><h3 id="init"><a href="#init" class="headerlink" title="init"></a>init</h3><p>初始化</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkdir Blog<br>cd Blog<br><span class="hljs-meta prompt_">#</span><span class="language-bash">也可不写文件夹，默认是在本目录层级构建</span><br>hexo init &lt;folder&gt;<br></code></pre></td></tr></table></figure><p>基本目录层级</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs shell">ubuntu@root:~/Desktop/Blog$ tree -L 1<br>.<br>├── _config.landscape.yml<br>├── _config.yml<br>├── node_modules<br>├── package.json<br>├── package-lock.json<br>├── scaffolds<br>├── source<br>└── themes<br><br>4 directories, 4 files<br></code></pre></td></tr></table></figure><h3 id="new"><a href="#new" class="headerlink" title="new"></a>new</h3><h3 id="hexo-clean"><a href="#hexo-clean" class="headerlink" title="hexo clean"></a>hexo clean</h3><h3 id="hexo-g"><a href="#hexo-g" class="headerlink" title="hexo g"></a>hexo g</h3><h3 id="hexo-s"><a href="#hexo-s" class="headerlink" title="hexo s"></a>hexo s</h3><h3 id="hexo-d"><a href="#hexo-d" class="headerlink" title="hexo d"></a>hexo d</h3><h2 id="fluid-主题配置"><a href="#fluid-主题配置" class="headerlink" title="fluid 主题配置"></a>fluid 主题配置</h2><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">npm install <span class="hljs-comment">--save hexo-theme-fluid</span><br></code></pre></td></tr></table></figure><p>在博客目录下创建 <code>_config.fluid.yml</code> 文件，将主题的 <a href="https://github.com/fluid-dev/hexo-theme-fluid/blob/master/_config.yml">_config.yml</a><a href="https://github.com/fluid-dev/hexo-theme-fluid/blob/master/_config.yml"> </a><a href="https://github.com/fluid-dev/hexo-theme-fluid/blob/master/_config.yml"> (opens new window)</a> 全部配置（或部分配置）复制过去。</p><p>根据自己的需要进行主题配置，<a href="https://hexo.fluid-dev.com/docs/guide/#%E5%85%B3%E4%BA%8E%E6%8C%87%E5%8D%97">fluid主题配置</a></p><h2 id="图片插件设置"><a href="#图片插件设置" class="headerlink" title="图片插件设置"></a>图片插件设置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">npm install https://github.com/CodeFalling/hexo-asset-image --save<br><br></code></pre></td></tr></table></figure><p>在博客目录<code>_config.yml</code>文件，</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="snap"><a href="#snap" class="headerlink" title="snap"></a>snap</h2><p><strong>软件包和部署系统</strong>。通过该应用程序与系统无关，也就是说可以在任何支持snap的linux发行版上本地运行。</p><p>一种全新的软件包管理方式，它类似一个容器拥有一个应用程序所有的文件和库，各个应用程序之间完全独立。所以使用snap包的好处就是它解决了应用程序之间的依赖问题，使应用程序之间更容易管理。但是由此带来的问题就是它占用更多的磁盘空间。</p><p>类似于一个容器，它包含一个应用程序需要用到的所有文件和库（snap包包含一个私有的root文件系统，里面包含了依赖的软件包）。它们会被安装到单独的目录；各个应用程序之间相互隔离。使用snap有很多好处，首先它解决了软件包的依赖问题；其次，也使应用程序更容易管理。</p><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ol><li><code>sudo snap list</code>:查看已下载snap的软件。</li></ol><h2 id="apt"><a href="#apt" class="headerlink" title="apt"></a>apt</h2><p>软件包管理器，用于在基于 Debian 的系统上安装和删除软件包。APT 使检索、配置、升级、安装和删除包的过程自动化。</p><ul><li>你希望应用程序由你使用的发行版进行审核。</li><li>你担心节省存储空间。APT 安装的应用程序共享它们的依赖项。</li><li>你希望应用程序正确集成到GUI 环境中。</li></ul>]]></content>
     
     
     <categories>
       
-      <category>hexo</category>
+      <category>linux</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>hexo</tag>
+      <tag>linux</tag>
       
-      <tag>fluid</tag>
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>wget知识点详解</title>
+    <link href="/2022/09/15/linux/wget%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AF%A6%E8%A7%A3/"/>
+    <url>/2022/09/15/linux/wget%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AF%A6%E8%A7%A3/</url>
+    
+    <content type="html"><![CDATA[<h2 id="wget"><a href="#wget" class="headerlink" title="wget"></a>wget</h2><p>“world wide web”和”get”的结合，目前支持http、https以及ftp这三个TCP/IP协议下载。</p><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul><li>支持递归下载</li><li>支持代理服务器</li><li>恰当地转换页面中的连接</li><li>生成可在本地浏览的页面镜像</li></ul><h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><ol><li><p><code>wget</code>下载单文件</p></li><li><p><code>wget -O</code>：下载并以不同的文件名保存</p><p>将下载连接的文件保存为boost_1_80.tar.gz</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget -O boost_1_80.tar.gz https://boostorg.jfrog.io/artifactory/main/release/1.80.0/source/boost_1_80_0.tar.gz<br></code></pre></td></tr></table></figure></li><li><p><code>wget -c</code>:断点续传</p></li><li><p><code>wget -q </code>:quiet (no output)——下载内容但不显示任何内容</p></li><li><p><code>wget -P</code>：下载到指定目录</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget -P/tmp https://boostorg.jfrog.io/artifactory/main/release/1.80.0/source/boost_1_80_0.tar.gz<br></code></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    
+    <categories>
       
-      <tag>安装</tag>
+      <category>linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>linux</tag>
       
     </tags>
     
@@ -745,56 +795,6 @@
     <tags>
       
       <tag>vscode</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>snap和apt</title>
-    <link href="/2022/09/15/linux/snap%E5%92%8Capt/"/>
-    <url>/2022/09/15/linux/snap%E5%92%8Capt/</url>
-    
-    <content type="html"><![CDATA[<h2 id="snap"><a href="#snap" class="headerlink" title="snap"></a>snap</h2><p><strong>软件包和部署系统</strong>。通过该应用程序与系统无关，也就是说可以在任何支持snap的linux发行版上本地运行。</p><p>一种全新的软件包管理方式，它类似一个容器拥有一个应用程序所有的文件和库，各个应用程序之间完全独立。所以使用snap包的好处就是它解决了应用程序之间的依赖问题，使应用程序之间更容易管理。但是由此带来的问题就是它占用更多的磁盘空间。</p><p>类似于一个容器，它包含一个应用程序需要用到的所有文件和库（snap包包含一个私有的root文件系统，里面包含了依赖的软件包）。它们会被安装到单独的目录；各个应用程序之间相互隔离。使用snap有很多好处，首先它解决了软件包的依赖问题；其次，也使应用程序更容易管理。</p><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ol><li><code>sudo snap list</code>:查看已下载snap的软件。</li></ol><h2 id="apt"><a href="#apt" class="headerlink" title="apt"></a>apt</h2><p>软件包管理器，用于在基于 Debian 的系统上安装和删除软件包。APT 使检索、配置、升级、安装和删除包的过程自动化。</p><ul><li>你希望应用程序由你使用的发行版进行审核。</li><li>你担心节省存储空间。APT 安装的应用程序共享它们的依赖项。</li><li>你希望应用程序正确集成到GUI 环境中。</li></ul>]]></content>
-    
-    
-    <categories>
-      
-      <category>linux</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>linux</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>wget知识点详解</title>
-    <link href="/2022/09/15/linux/wget%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AF%A6%E8%A7%A3/"/>
-    <url>/2022/09/15/linux/wget%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AF%A6%E8%A7%A3/</url>
-    
-    <content type="html"><![CDATA[<h2 id="wget"><a href="#wget" class="headerlink" title="wget"></a>wget</h2><p>“world wide web”和”get”的结合，目前支持http、https以及ftp这三个TCP/IP协议下载。</p><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul><li>支持递归下载</li><li>支持代理服务器</li><li>恰当地转换页面中的连接</li><li>生成可在本地浏览的页面镜像</li></ul><h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><ol><li><p><code>wget</code>下载单文件</p></li><li><p><code>wget -O</code>：下载并以不同的文件名保存</p><p>将下载连接的文件保存为boost_1_80.tar.gz</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget -O boost_1_80.tar.gz https://boostorg.jfrog.io/artifactory/main/release/1.80.0/source/boost_1_80_0.tar.gz<br></code></pre></td></tr></table></figure></li><li><p><code>wget -c</code>:断点续传</p></li><li><p><code>wget -q </code>:quiet (no output)——下载内容但不显示任何内容</p></li><li><p><code>wget -P</code>：下载到指定目录</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget -P/tmp https://boostorg.jfrog.io/artifactory/main/release/1.80.0/source/boost_1_80_0.tar.gz<br></code></pre></td></tr></table></figure></li></ol>]]></content>
-    
-    
-    <categories>
-      
-      <category>linux</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>linux</tag>
       
     </tags>
     
