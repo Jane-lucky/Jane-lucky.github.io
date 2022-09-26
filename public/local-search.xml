@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>build-images自动化脚本学习（一）</title>
+    <link href="/2022/09/22/docker/%E6%9E%84%E5%BB%BA%E9%95%9C%E5%83%8F%E8%84%9A%E6%9C%AC/"/>
+    <url>/2022/09/22/docker/%E6%9E%84%E5%BB%BA%E9%95%9C%E5%83%8F%E8%84%9A%E6%9C%AC/</url>
+    
+    <content type="html"><![CDATA[<h1 id="镜像构建命令"><a href="#镜像构建命令" class="headerlink" title="镜像构建命令"></a>镜像构建命令</h1><p>脚本 版本 操作系统</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sh build-image.sh 4.5.0 alpine<br></code></pre></td></tr></table></figure><h1 id="镜像构建脚本样例（rocketmq）"><a href="#镜像构建脚本样例（rocketmq）" class="headerlink" title="镜像构建脚本样例（rocketmq）"></a>镜像构建脚本样例（rocketmq）</h1><p>文件目录</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@ecs-5e66 image-build]$ ll<br>total 28<br>-rw-r--r-- 1 root docker 1633 Sep 22 16:10 build-image-dashboard.sh<br>-rwxr-xr-x 1 root docker 1734 Sep 22 16:10 build-image.sh<br>-rw-r--r-- 1 root docker 3027 Sep 22 16:10 Dockerfile-alpine<br>-rw-r--r-- 1 root docker 3102 Sep 22 17:47 Dockerfile-centos<br>-rw-r--r-- 1 root docker 3861 Sep 22 16:10 Dockerfile-centos-dashboard<br>drwxr-xr-x 2 root docker 4096 Sep 22 16:10 scripts<br>-rwxr-xr-x 1 root docker 1726 Sep 22 16:10 update.sh<br>[root@ecs-5e66 image-build]$ cat build-image.sh<br><span class="hljs-meta prompt_">#</span><span class="language-bash">检查版本</span><br>checkVersion() &#123;<br>    echo &quot;Version = $1&quot;<br>        echo $1 |grep -E &quot;^[0-9]+\.[0-9]+\.[0-9]+&quot; &gt; /dev/null<br>    if [ $? = 0 ]; then<br>        return 1<br>    fi<br><br>        echo &quot;Version $1 illegal, it should be X.X.X format(e.g. 4.5.0), please check released versions in &#x27;https://archive.apache.org/dist/rocketmq/&#x27;&quot;<br>    exit -1<br>&#125;<br><br>if [ $# -lt 2 ]; then<br>    echo -e &quot;Usage: sh $0 Version BaseImage&quot;<br>    exit -1<br>fi<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">赋值命令行中的参数</span><br>ROCKETMQ_VERSION=$1<br>BASE_IMAGE=$2<br><br>checkVersion $ROCKETMQ_VERSION<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">Build rocketmq 构建</span><br>case &quot;$&#123;BASE_IMAGE&#125;&quot; in<br>    alpine)<br>        docker build --no-cache -f Dockerfile-alpine -t apache/rocketmq:$&#123;ROCKETMQ_VERSION&#125;-alpine --build-arg version=$&#123;ROCKETMQ_VERSION&#125; .<br>    ;;<br>    centos)<br>        docker build --no-cache -f Dockerfile-centos -t apache/rocketmq:$&#123;ROCKETMQ_VERSION&#125; --build-arg version=$&#123;ROCKETMQ_VERSION&#125; .<br>    ;;<br>    *)<br>        echo &quot;$&#123;BASE_IMAGE&#125; is not supported, supported base images: centos, alpine&quot;<br>        exit -1<br>    ;;<br>esac<br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>docker</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>docker</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>(三) RabbitMQ go教程——发布/订阅（publish/subscribe）</title>
     <link href="/2022/09/22/golang/RabbitMQ-go%E6%95%99%E7%A8%8B/publish/"/>
     <url>/2022/09/22/golang/RabbitMQ-go%E6%95%99%E7%A8%8B/publish/</url>
