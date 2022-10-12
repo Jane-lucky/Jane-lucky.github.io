@@ -78,7 +78,7 @@ func (ch *Channel) QueueDeclare(name string, durable, autoDelete, exclusive, noW
 # 连接-connection
 
 ```shell
-amqp.Dial("amqp://guest:guest@172.17.0.2:5672"
+amqp.Dial("amqp://guest:guest@172.17.0.2:5672"）
 ```
 
 # 管道创建-Channel
@@ -89,5 +89,20 @@ amqp.Dial("amqp://guest:guest@172.17.0.2:5672"
 Channel.PublishWithContext(ctx context.Context, exchange, key string, mandatory, immediate bool, msg Publishing)
 ```
 
+# 绑定——bind
 
+## 交换器绑定——ExchangeBind
 
+```go
+func (ch *Channel) ExchangeBind(destination, key, source string, noWait bool, args Table) error 
+```
+
+生产者发送消息至交换器(source)中，交换器source根据路由键找到与其匹配得另一个destination中，进而存储在destination绑定得队列queue中。
+
+## 队列绑定——QueueBind
+
+```go
+func (ch *Channel) QueueBind(name, key, exchange string, noWait bool, args Table) error
+```
+
+交换器类型是fanout, 不用指定路由键, 消息会发送到与此交换器绑定的所有队列

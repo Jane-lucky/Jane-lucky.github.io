@@ -1,0 +1,731 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="彤～">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Linux  查看磁盘信息fdisk传统的LInux硬盘分区工具，不支持大于2TB的分区  fdisk -l用于查看系统所有磁盘的信息，包括已挂载和未挂载的。 1234567891011121314151617181920212223242526272829303132333435363738394041[root@localhost ~]# fdisk -l#查询可以识别的硬盘和分区，Disk">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux物理存储及逻辑卷管理.md">
+<meta property="og:url" content="http://jane-lucky.github.io/2022/10/12/linux/%E7%89%A9%E7%90%86%E9%80%BB%E8%BE%91%E5%8D%B7%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="Jane&#39;s Blog">
+<meta property="og:description" content="Linux  查看磁盘信息fdisk传统的LInux硬盘分区工具，不支持大于2TB的分区  fdisk -l用于查看系统所有磁盘的信息，包括已挂载和未挂载的。 1234567891011121314151617181920212223242526272829303132333435363738394041[root@localhost ~]# fdisk -l#查询可以识别的硬盘和分区，Disk">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://jane-lucky.github.io/2022/10/12/linux/%E7%89%A9%E7%90%86%E9%80%BB%E8%BE%91%E5%8D%B7%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/image-20220825165132736.png">
+<meta property="og:image" content="http://jane-lucky.github.io/2022/10/12/linux/%E7%89%A9%E7%90%86%E9%80%BB%E8%BE%91%E5%8D%B7%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/image-20220826145753160.png">
+<meta property="og:image" content="http://jane-lucky.github.io/2022/10/12/linux/%E7%89%A9%E7%90%86%E9%80%BB%E8%BE%91%E5%8D%B7%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/image-20220826152857911.png">
+<meta property="article:published_time" content="2022-10-12T02:25:26.278Z">
+<meta property="article:modified_time" content="2022-10-12T02:33:43.239Z">
+<meta property="article:author" content="彤～">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://jane-lucky.github.io/2022/10/12/linux/%E7%89%A9%E7%90%86%E9%80%BB%E8%BE%91%E5%8D%B7%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/image-20220825165132736.png">
+  
+  
+  
+  <title>linux物理存储及逻辑卷管理.md - Jane&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jane-lucky.github.io","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Jane&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="linux物理存储及逻辑卷管理.md"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-10-12 10:25" pubdate>
+          October 12, 2022 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.7k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          48 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">linux物理存储及逻辑卷管理.md</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="Linux-查看磁盘信息"><a href="#Linux-查看磁盘信息" class="headerlink" title="Linux  查看磁盘信息"></a>Linux  查看磁盘信息</h2><h3 id="fdisk"><a href="#fdisk" class="headerlink" title="fdisk"></a>fdisk</h3><p>传统的LInux硬盘分区工具，不支持大于2TB的分区</p>
+<ol>
+<li><p><code>fdisk -l</code>用于查看系统所有磁盘的信息，包括已挂载和未挂载的。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# fdisk -l<br><span class="hljs-meta prompt_">#</span><span class="language-bash">查询可以识别的硬盘和分区，</span><br>Disk /dev/sda: 64 GiB, 68719476736 bytes, 134217728 sectors<br>Disk model: VBOX HARDDISK<br>Units: sectors of 1 * 512 = 512 bytes<br><span class="hljs-meta prompt_">#</span><span class="language-bash">每个柱面的大小</span><br>Sector size (logical/physical): 512 bytes / 512 bytes<br><span class="hljs-meta prompt_">#</span><span class="language-bash">每个扇区的大小</span><br>I/O size (minimum/optimal): 512 bytes / 512 bytes<br>Disklabel type: dos<br>Disk identifier: 0xec53cfb6<br><br>Device     Boot   Start       End   Sectors Size Id Type<br>/dev/sda1  *       2048   2099199   2097152   1G 83 Linux<br>/dev/sda2       2099200 134217727 132118528  63G 8e Linux LVM<br><br><br>Disk /dev/sdb: 5 GiB, 5368709120 bytes, 10485760 sectors<br>Disk model: VBOX HARDDISK<br>Units: sectors of 1 * 512 = 512 bytes<br>Sector size (logical/physical): 512 bytes / 512 bytes<br>I/O size (minimum/optimal): 512 bytes / 512 bytes<br><br><br>Disk /dev/mapper/openeuler-root: 39.66 GiB, 42580574208 bytes, 83165184 sectors<br>Units: sectors of 1 * 512 = 512 bytes<br>Sector size (logical/physical): 512 bytes / 512 bytes<br>I/O size (minimum/optimal): 512 bytes / 512 bytes<br><br><br>Disk /dev/mapper/openeuler-swap: 3.98 GiB, 4269801472 bytes, 8339456 sectors<br>Units: sectors of 1 * 512 = 512 bytes<br>Sector size (logical/physical): 512 bytes / 512 bytes<br>I/O size (minimum/optimal): 512 bytes / 512 bytes<br><br><br>Disk /dev/mapper/openeuler-home: 19.36 GiB, 20791164928 bytes, 40607744 sectors<br>Units: sectors of 1 * 512 = 512 bytes<br>Sector size (logical/physical): 512 bytes / 512 bytes<br>I/O size (minimum/optimal): 512 bytes / 512 bytes<br><br></code></pre></td></tr></table></figure></li>
+<li><p>分区操作：</p>
+<p><img src="/2022/10/12/linux/%E7%89%A9%E7%90%86%E9%80%BB%E8%BE%91%E5%8D%B7%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/image-20220825165132736.png" srcset="/img/loading.gif" lazyload alt="分区操作"></p>
+</li>
+</ol>
+<h3 id="mkfs"><a href="#mkfs" class="headerlink" title="mkfs"></a>mkfs</h3><p>mkfs命令是make filename的缩写，用来在特定的分区建立linux文件系统</p>
+<p>磁盘格式化，将分区格式化成不同的文件系统</p>
+<ul>
+<li><p>查看支持的文件类型</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# mkfs<br>mkfs         mkfs.cramfs  mkfs.ext2    mkfs.ext3    mkfs.ext4    mkfs.minix   mkfs.xfs<br></code></pre></td></tr></table></figure></li>
+<li><p>磁盘格式化</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# mkfs.ext4 /dev/sdb1<br>mke2fs 1.45.6 (20-Mar-2020)<br>Creating filesystem with 1310464 4k blocks and 327680 inodes<br>Filesystem UUID: 24b23662-dd7e-4d2a-8693-cbac942ece08<br>Superblock backups stored on blocks:<br>        32768, 98304, 163840, 229376, 294912, 819200, 884736<br><br>Allocating group tables: done<br>Writing inode tables: done<br>Creating journal (16384 blocks): done<br>Writing superblocks and filesystem accounting information: done<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="mount"><a href="#mount" class="headerlink" title="mount"></a>mount</h3><p>磁盘挂载，想要使用磁盘，需要先建立一个联系，也就是目录。</p>
+<p><img src="/2022/10/12/linux/%E7%89%A9%E7%90%86%E9%80%BB%E8%BE%91%E5%8D%B7%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/image-20220826145753160.png" srcset="/img/loading.gif" lazyload alt="磁盘挂载"></p>
+<h3 id="df（disk-free）"><a href="#df（disk-free）" class="headerlink" title="df（disk free）"></a>df（disk free）</h3><p>用来检查Linux服务器的文件系统的磁盘空间占用率——获取硬盘被占用了多少，目前还剩下多少空间信息。</p>
+<ol>
+<li><code>dh -h</code>查看系统挂载、磁盘空间大小和利用率。</li>
+</ol>
+<h3 id="du（disk-uasge"><a href="#du（disk-uasge" class="headerlink" title="du（disk uasge)"></a>du（disk uasge)</h3><p>显示每个文件和目录的磁盘使用空间。</p>
+<h3 id="parted"><a href="#parted" class="headerlink" title="parted"></a>parted</h3><p>常用的分区软件，可支持创建2T以上的磁盘分区，相对于fdisk，使用方便、也可动态调整分区大小。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost dev]# parted -h<br><span class="hljs-meta prompt_">#</span><span class="language-bash">device:磁盘设备名称。</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-built_in">command</span>：没有默认进入交互模式。</span><br>Usage: parted [OPTION]... [DEVICE [COMMAND [PARAMETERS]...]...]<br>Apply COMMANDs with PARAMETERS to DEVICE.  If no COMMAND(s) are given, run in<br>interactive mode.<br><br>OPTIONs:<br>  -h, --help                      displays this help message<br>  -l, --list                      lists partition layout on all block devices<br>  -m, --machine                   displays machine parseable output<br>  -s, --script                    never prompts for user intervention<br>  -v, --version                   displays the version<br>  -a, --align=[none|cyl|min|opt]  alignment for new partitions<br><br>[root@localhost dev]# parted -l<br>Model: ATA VBOX HARDDISK (scsi)<br>Disk /dev/sda: 68.7GB<br>Sector size (logical/physical): 512B/512B<br>Partition Table: msdos<br>Disk Flags:<br><br>Number  Start   End     Size    Type     File system  Flags<br> 1      1049kB  1075MB  1074MB  primary  ext4         boot<br> 2      1075MB  68.7GB  67.6GB  primary               lvm<br>[root@localhost ~]# parted /dev/sdb<br>GNU Parted 3.3<br>Using /dev/sdb<br>Welcome to GNU Parted! Type &#x27;help&#x27; to view a list of commands.<br>(parted)  mklabel msdos<br>Warning: The existing disk label on /dev/sdb will be destroyed and all data on this disk will be lost. Do you want to continue?<br>Yes/No? yes<br>(parted) quit<br>Information: You may need to update /etc/fstab.<br><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="磁盘分区"><a href="#磁盘分区" class="headerlink" title="磁盘分区"></a>磁盘分区</h2><p>磁盘分局将硬盘驱动划分为多个逻辑存储单元，这些成为<strong>分区</strong>。</p>
+<p>指的是磁盘分区表。</p>
+<p>分区好处：</p>
+<ul>
+<li>限制应用或用户的可用空间。</li>
+<li>允许从同一磁盘不同操作系统的多重启动。</li>
+<li>将操作系统和程序文件与用户文件分隔。</li>
+<li>创建用于操作系统虚拟内存交换的单独区域。</li>
+<li>限制磁盘空间使用情况，以提高诊断工具和备份影像的性能。</li>
+</ul>
+<h3 id="分区类型"><a href="#分区类型" class="headerlink" title="分区类型"></a>分区类型</h3><p><strong>一个硬盘只有一个扩展分区，除去主分区，其它空间都是分配给扩展分区</strong></p>
+<p>硬盘容量=主分区+扩展分区（各逻辑分区容量和）</p>
+<ul>
+<li><p>主分区</p>
+<p>主磁盘分区，不能再活粉其他类型的分区。</p>
+</li>
+<li><p>扩展分区、逻辑分区</p>
+<p>扩展分区不能直接使用，需要划分一个或多个逻辑分区后才能使用。</p>
+</li>
+</ul>
+<p><strong>分区：</strong>前4个分区用到的是数字1和数字4，逻辑分区从5开始</p>
+<h2 id="逻辑卷"><a href="#逻辑卷" class="headerlink" title="逻辑卷"></a>逻辑卷</h2><p>LVM-逻辑卷管理是linux环境中对磁盘分区进行管理的一种机制，是建立在硬盘和分区之上、文件系统之下的一个逻辑层，可提高磁盘分区管理的灵活性。</p>
+<h3 id="原理及优点"><a href="#原理及优点" class="headerlink" title="原理及优点"></a>原理及优点</h3><p>逻辑卷（lv）是将几个磁盘分区或者块设备（pv可以位于不同的磁盘分区里，大小可以不同）组织起来形成一个大的扩展分区（一个vg卷组至少已包含一个pv）。该扩展分区不能直接用，需要将其划分成逻辑卷才能使用，lv可以格式化不同的文件系统，挂载后直接使用。</p>
+<ul>
+<li>灵活的容量</li>
+<li>可伸缩的存储池</li>
+<li>在线数据再分配</li>
+<li>方便的设备命名</li>
+<li>磁盘条带化</li>
+<li>卷镜像和卷快照</li>
+</ul>
+<p><img src="/2022/10/12/linux/%E7%89%A9%E7%90%86%E9%80%BB%E8%BE%91%E5%8D%B7%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/image-20220826152857911.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="物理卷"><a href="#物理卷" class="headerlink" title="物理卷"></a>物理卷</h3><ol>
+<li>创建物理卷</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost ~]# pvcreate /dev/sdb<br>WARNING: dos signature detected on /dev/sdb at offset 510. Wipe it? [y/n]: y<br>  Wiping dos signature on /dev/sdb.<br>  Physical volume &quot;/dev/sdb&quot; successfully created.<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>查看物理卷 </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@bogon ~]# pvdisplay<br>  --- Physical volume ---<br>  PV Name               /dev/sda2<br>  VG Name               openeuler<br>  PV Size               &lt;63.00 GiB / not usable 3.00 MiB<br>  Allocatable           yes (but full)<br>  PE Size               4.00 MiB<br>  Total PE              16127<br>  Free PE               0<br>  Allocated PE          16127<br>  PV UUID               5Fo0gc-r6Rc-r3Mb-szSD-UXYd-Au3u-fnejHG<br><br>  --- Physical volume ---<br>  PV Name               /dev/sdb<br>  VG Name               openeuler<br>  PV Size               5.00 GiB / not usable 4.00 MiB<br>  Allocatable           yes<br>  PE Size               4.00 MiB<br>  Total PE              1279<br>  Free PE               767<br>  Allocated PE          512<br>  PV UUID               HFxCFH-9zVN-bNLe-MvPk-XsR3-WoR1-x0qzGP<br></code></pre></td></tr></table></figure></li>
+<li><p>删除物理卷——pvremove</p>
+</li>
+</ol>
+<h3 id="卷组"><a href="#卷组" class="headerlink" title="卷组"></a>卷组</h3><ol>
+<li><p>创建卷组</p>
+<p>openeuler:要创建的卷组名称</p>
+<p>/dev/sdb：要加入到卷组中的物理卷名称</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@bogon ~]# vgcreate openeuler /dev/sdb<br></code></pre></td></tr></table></figure></li>
+<li><p>查看卷组</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@bogon ~]# vgdisplay<br>  --- Volume group ---<br>  VG Name               openeuler<br>  System ID<br>  Format                lvm2<br>  Metadata Areas        2<br>  Metadata Sequence No  6<br>  VG Access             read/write<br>  VG Status             resizable<br>  MAX LV                0<br>  Cur LV                3<br>  Open LV               3<br>  Max PV                0<br>  Cur PV                2<br>  Act PV                2<br>  VG Size               67.99 GiB<br>  PE Size               4.00 MiB<br>  Total PE              17406<br>  Alloc PE / Size       16639 / &lt;65.00 GiB<br>  Free  PE / Size       767 / &lt;3.00 GiB<br>  VG UUID               TqFQNR-tYQb-Pe44-NlGo-rw7h-wohD-yYEEax<br></code></pre></td></tr></table></figure></li>
+<li><p>扩展卷组</p>
+<p>openeuler:要扩展的卷组的名称</p>
+<p>/dev/sdb：要加入到卷组中的物理卷名称</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">vgextend openeuler /dev/sdb<br></code></pre></td></tr></table></figure></li>
+<li><p>收缩卷组</p>
+<p>openeuler:要收缩的卷组的名称</p>
+<p>/dev/sdb：要收缩到卷组中的物理卷名称</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs autoit">[root<span class="hljs-symbol">@bogon</span> ~]<span class="hljs-meta"># vgreduce  openeuler /dev/sdb</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="逻辑卷-1"><a href="#逻辑卷-1" class="headerlink" title="逻辑卷"></a>逻辑卷</h3><ol>
+<li>查看卷组中是否存在多余的空间</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@localhost home]# vgs<br>  VG        #PV #LV #SN Attr   VSize  VFree<br>  openeuler   2   3   0 wz--n- 67.99g &lt;3.00g<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>扩容&amp;&amp;缩容</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">调整LVM逻辑卷的大小，可增大和缩小空间，但再调整过程中数据容易丢失。</span><br>lvresize -L +2048 /dev/openeuler/home<br><span class="hljs-meta prompt_">#</span><span class="language-bash">扩展逻辑卷</span><br>lvextend -L +100M /dev/openeuler/home<br><span class="hljs-meta prompt_">#</span><span class="language-bash">调整文件系统大小</span><br>resize2fs  /dev/openeuler/root<br></code></pre></td></tr></table></figure>
+
+<p><strong>扩容</strong></p>
+<ul>
+<li>确定是否有vg空间</li>
+<li>使用lvextend扩容</li>
+<li>调整文件系统的大小</li>
+</ul>
+<p><strong>缩容</strong></p>
+<ul>
+<li>确定缩容后目标的大小。确保有对应目标大小的空间可以容纳</li>
+<li>卸载文件系统</li>
+<li>缩减文件系统</li>
+<li>缩减逻辑卷</li>
+<li>重新挂载使用</li>
+</ul>
+</li>
+<li><p>查看逻辑卷</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@bogon ~]# lvdisplay /dev/openeuler/home<br>  --- Logical volume ---<br>  LV Path                /dev/openeuler/home<br>  LV Name                home<br>  VG Name                openeuler<br>  LV UUID                1yCVn0-8tGc-WfaM-ayVk-fyDr-7Zjm-rasO9o<br>  LV Write Access        read/write<br>  LV Creation host, time localhost, 2022-08-25 11:22:05 +0800<br>  LV Status              available<br><span class="hljs-meta prompt_">  # </span><span class="language-bash">open                 1</span><br>  LV Size                21.36 GiB<br>  Current LE             5469<br>  Segments               2<br>  Allocation             inherit<br>  Read ahead sectors     auto<br>  - currently set to     8192<br>  Block device           253:2<br></code></pre></td></tr></table></figure></li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/linux/" class="category-chain-item">linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/linux/">#linux</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>linux物理存储及逻辑卷管理.md</div>
+      <div>http://jane-lucky.github.io/2022/10/12/linux/物理逻辑卷相关知识/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>彤～</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>October 12, 2022</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/10/12/golang/go%E5%9F%BA%E7%A1%80/go%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="go 语言基础——基础&amp;函数">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">go 语言基础——基础&amp;函数</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/09/29/golang/RabbitMQ-go%E6%95%99%E7%A8%8B/channel.queueDeclare()%E6%96%B9%E6%B3%95%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/" title="Go 第三方库之 amqp">
+                        <span class="hidden-mobile">Go 第三方库之 amqp</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
