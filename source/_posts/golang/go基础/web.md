@@ -1,5 +1,9 @@
 ---
-title: http详解
+title: go 语言基础——web基础
+categories: 
+- [golang, go语言基础]
+tags:
+- golang
 ---
 
 # web工作
@@ -88,3 +92,7 @@ func main() {
    ```
 
    `sh.srv.Handler`就是我们刚才在调用函数`ListenAndServe`时候的第二个参数，我们前面例子传递的是nil，也就是为空，那么默认获取`handler = DefaultServeMux`,这个变量就是一个路由器，它用来匹配url跳转到其相应的handle函数，我们调用的代码里面第一句不是调用了`http.HandleFunc("/", sayhelloName)`。这个作用就是注册了请求/的路由规则，当请求uri为"/"，路由就会转到函数sayhelloName，DefaultServeMux会调用ServeHTTP方法，这个方法内部其实就是调用sayhelloName本身，最后通过写入response的信息反馈到客户端。
+
+# http包
+
+go为了实现高并发和高性能，使用goroutines来处理读写事件，也就是说，每一次的请求都会重新开启一个协程，使得请求保持独立，相互不会阻塞。

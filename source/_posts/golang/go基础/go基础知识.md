@@ -8,11 +8,108 @@ tags:
 
 
 
+# case、fallthrough
 
+可以使用 `fallthrough` 强制执行后面的 case 代码
+
+# 接口——interface
+
+一组method签名的组合，通过interface来定义对象的一组行为。
+
+如果某个对象实现了某个接口的所有方法，则此对象就实现了此接口。
+
+## interface值
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+type human struct {
+	name string
+	age  int
+}
+
+type Employee struct {
+	human
+	addr string
+}
+
+type Student struct {
+	human
+	shcool string
+}
+
+func (h *human) SayHi() {
+	fmt.Printf("Hi!I'm a Student.My name is %s\n", h.name)
+}
+
+func (h *human) sing(singname string) {
+	fmt.Printf("The sing name is %s\n", singname)
+}
+
+func (e *Employee) SayHi() {
+	fmt.Printf("Hi!I'm a employee.My name is %s\n", e.name)
+}
+
+type Men interface {
+	SayHi()
+	sing(name string)
+}
+
+func main() {
+	wang := Student{human{"王强", 18}, "高中"}
+	//li := Student{human{"李红", 12}, "小学"}
+	//tian := Student{human{"天天", 23}, "大公司"}
+	//wu := Student{human{"呜呜", 23}, "小公司"}
+
+	var m Men
+
+	m = &wang
+	fmt.Println("This is 王,")
+	m.sing("lalalla")
+	m.SayHi()
+}
+
+This is 王,
+The sing name is lalalla
+Hi!I'm a Student.My name is 王强
+```
+
+通过定义interface参数，让函数接收各种类型的参数
+
+以下代码实现了实现了Stringer这个接口参数，可以使任意格式的字符串打印。
+
+```go
+package main
+
+import (
+	"fmt"
+	"strconv"
+)
+
+type human struct {
+	name string
+	age  int
+}
+
+func (h human) String() string {
+	return "<" + h.name + "-" + strconv.Itoa(h.age) + ">"
+}
+
+func main() {
+	Bob := human{"jamsBob", 12}
+	fmt.Println("This human is : ", Bob)
+}
+```
+
+## 嵌入interface
+
+将接口1作为接口2的嵌入阻断，则说明接口2隐式包含了接口1的方法
 
 # 基础类型
-
-
 
 ## make和new
 

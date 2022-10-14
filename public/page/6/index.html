@@ -223,6 +223,264 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2022/09/15/golang/Golang%E5%8C%85/sync.Once/" target="_self">
+          sync.Once 源码
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/15/golang/Golang%E5%8C%85/sync.Once/" target="_self">
+        <div>
+          概念Go 标准库提供的使函数只执行一次的实现，常应用于单例模式。 原理保证变量仅被初始化一次，线程安全，支持并发。 源码因为源码很少，所以就直接全部复制上来了。 123456789101112131415161718192021222324252627282930package syncimport (	&quot;sync&#x2F;atomic&quot;)type Once struct &amp;#123;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-09-15 09:21" pubdate>
+              2022-09-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/golang/" class="category-chain-item">golang</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/golang/Golang%E5%8C%85/" class="category-chain-item">Golang包</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/sync/">#sync</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/09/15/golang/Golang%E5%8C%85/%E4%BA%92%E6%96%A5%E9%94%81-sync.Mutex/" target="_self">
+          互斥锁-sync.Mutex
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/15/golang/Golang%E5%8C%85/%E4%BA%92%E6%96%A5%E9%94%81-sync.Mutex/" target="_self">
+        <div>
+          概念go语言中的一种互斥锁，保证同步的一种工具。 实现协程对互斥资源的访问，其中，Lock()用于争夺锁资源，Unlock()用于释放锁资源并唤醒等待队列中的协程。在正常的使用情况下（如代码所示），只有进入临界区的协程会执行Unlock()。因此，同一时刻只有一个协程可以执行Unlock()方法。 作用 避免多个线程在同一个时刻操作同一数据块。 协调多个线程，避免在同一时刻执行同一个代码块  用法
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-09-15 09:21" pubdate>
+              2022-09-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/golang/" class="category-chain-item">golang</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/golang/Golang%E5%8C%85/" class="category-chain-item">Golang包</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/sync/">#sync</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/09/15/golang/gin%E6%A1%86%E6%9E%B6/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6&amp;Template/" target="_self">
+          上传文件&amp;&amp;Template
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/15/golang/gin%E6%A1%86%E6%9E%B6/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6&amp;Template/" target="_self">
+        <div>
+          HTML模板123456789r.LoadHTMLGlob(&quot;templates&#x2F;*&quot;)stu1 :&#x3D; &amp;Student&amp;#123;Name: &quot;Geektutu&quot;, Age: 20&amp;#125;stu2 :&#x3D; &amp;Student&amp;#123;Name: &quot;Jack&quot;, Age: 22&amp;#125;r.GET(&quot;&#x2F;arr
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-09-15 09:21" pubdate>
+              2022-09-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/golang/" class="category-chain-item">golang</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/golang/gin%E6%A1%86%E6%9E%B6/" class="category-chain-item">gin框架</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/09/15/golang/gin%E6%A1%86%E6%9E%B6/%E4%B8%AD%E9%97%B4%E4%BB%B6/" target="_self">
+          middleware——中间件
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/15/golang/gin%E6%A1%86%E6%9E%B6/%E4%B8%AD%E9%97%B4%E4%BB%B6/" target="_self">
+        <div>
+          middleware概念中间件处理处理程序是简单的http.Handler,它包装另一个http.Handler 作请求的一些预处理和或后处理，被称为中间件。 每个中间件只处理一件事情，完成后将其传递给另一个中间件或者最终处理程序，可以做到程序的解耦，减少程序的冗余和降低代码复用率。 应用常见的用例：请求如之记录、header操纵、http请求认证和Responseriter劫持等等。  记录对服
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-09-15 09:21" pubdate>
+              2022-09-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/golang/" class="category-chain-item">golang</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/golang/gin%E6%A1%86%E6%9E%B6/" class="category-chain-item">gin框架</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2022/09/15/golang/gin%E6%A1%86%E6%9E%B6/%E7%AC%AC%E4%B8%80%E4%B8%AAgin%E7%A8%8B%E5%BA%8F/" target="_self">
           第一个gin程序
         </a>

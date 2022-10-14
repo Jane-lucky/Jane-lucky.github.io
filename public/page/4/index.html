@@ -223,15 +223,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2022/09/15/hexo/%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%AE%89%E8%A3%85/" target="_self">
-          hexo安装及主题配置
+        <a href="/2022/09/15/docker/gitlab-14.0.5%E9%95%9C%E5%83%8F%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" target="_self">
+          gitlab-14.0.5镜像编译安装
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/15/hexo/%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%AE%89%E8%A3%85/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/15/docker/gitlab-14.0.5%E9%95%9C%E5%83%8F%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" target="_self">
         <div>
-          概念Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。 安装安装nodejs(需要注意nodejs的版本要求)：ubuntu安装nodejs 1npm install -g hexo-cli  验证1234567891011121314151617181920ubuntu@root:~&#x2F;Desktop&#x2F;
+          注:其中CE和EE的安装包括镜像构建方式相同 直接安装gitlab12curl -s https:&#x2F;&#x2F;packages.gitlab.com&#x2F;install&#x2F;repositories&#x2F;gitlab&#x2F;gitlab-ee&#x2F;script.deb.sh | bashapt-get install gitlab-ee&#x3D;14.0.5-ee.0  下载gitlab1wget --content-disposit
         </div>
       </a>
 
@@ -255,7 +255,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/hexo/" class="category-chain-item">hexo</a>
+  <a href="/categories/docker/" class="category-chain-item">docker</a>
   
   
 
@@ -270,11 +270,190 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/hexo/">#hexo</a>
+              <a href="/tags/gitlab/">#gitlab</a>
             
-              <a href="/tags/fluid/">#fluid</a>
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/09/15/docker/redis%205.0.6%E9%95%9C%E5%83%8F%E6%9E%84%E5%BB%BA/" target="_self">
+          redis 5.0.6 arm镜像构建
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/15/docker/redis%205.0.6%E9%95%9C%E5%83%8F%E6%9E%84%E5%BB%BA/" target="_self">
+        <div>
+          基础镜像 alpine源码获取 123wget https:&#x2F;&#x2F;github.com&#x2F;docker-library&#x2F;redis&#x2F;raw&#x2F;6ec0ad5628df2404509f776e9c70fbecf5364c10&#x2F;5.0&#x2F;alpine&#x2F;Dockerfilewget https:&#x2F;&#x2F;github.com&#x2F;docker-library&#x2F;redis&#x2F;raw&#x2F;6ec0ad5628df2404509f7
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-09-15 09:21" pubdate>
+              2022-09-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
             
-              <a href="/tags/%E5%AE%89%E8%A3%85/">#安装</a>
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/docker/" class="category-chain-item">docker</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/redis/">#redis</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/09/15/docker/%E6%90%AD%E5%BB%BAhttpd%E4%B8%B4%E6%97%B6%E6%BA%90/" target="_self">
+          临时源搭建
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/15/docker/%E6%90%AD%E5%BB%BAhttpd%E4%B8%B4%E6%97%B6%E6%BA%90/" target="_self">
+        <div>
+          docker HTTP搭建临时源12345678910111213141516171819202122[root@ecs-5e66 jdk-src]$ docker run -itd --name httptest -v $PWD:&#x2F;usr&#x2F;local&#x2F;apache2&#x2F;htdocs&#x2F; httpd:alpine6e4536e60d4971eb7cdeb11d22aeed64fa87d763c2403
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-09-15 09:21" pubdate>
+              2022-09-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/docker/" class="category-chain-item">docker</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/httpd/">#httpd</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/09/15/golang/CSA%20%E8%87%AA%E6%97%8B%E9%94%81/" target="_self">
+          CSA-自旋锁
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/15/golang/CSA%20%E8%87%AA%E6%97%8B%E9%94%81/" target="_self">
+        <div>
+          CAS比较和交换——原子操作：在多线程没有锁的状态下确保多个线程对一个值的更新。 自旋锁不断的判断比较。 持有的锁和等待竞争的锁不需要作内核态和用户态之间的转换，只需要循环等待持有锁的释放锁。避免不同状态转换的消耗。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-09-15 09:21" pubdate>
+              2022-09-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/golang/" class="category-chain-item">golang</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CSA/">#CSA</a>
             
           </div>
         
@@ -599,15 +778,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2022/09/15/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/ccache%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/" target="_self">
-          ccache安装及使用
+        <a href="/2022/09/15/hexo/%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%AE%89%E8%A3%85/" target="_self">
+          hexo安装及主题配置
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/15/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/ccache%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/15/hexo/%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%AE%89%E8%A3%85/" target="_self">
         <div>
-          简介在处理一些较大规模工程时，编译会花费较长的时间。ccache会在第一遍编译时时间较长，之后的编译会成倍的提速。 基本原理：通过头文件告诉缓存到源文件中而改进构建性能，因而通过减少每一步编译时添加头文件所需的时间而提高构建速度。 第一趟编译ccache缓存GCC的”-E”的输出，编译选项以及.o文件到$HOME&#x2F;.ccache。第二次编译尽量利用缓存，必要时更新缓存。 安装12345678910
+          概念Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。 安装安装nodejs(需要注意nodejs的版本要求)：ubuntu安装nodejs 1npm install -g hexo-cli  验证1234567891011121314151617181920ubuntu@root:~&#x2F;Desktop&#x2F;
         </div>
       </a>
 
@@ -631,7 +810,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" class="category-chain-item">编译安装</a>
+  <a href="/categories/hexo/" class="category-chain-item">hexo</a>
   
   
 
@@ -646,190 +825,11 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/ccache/">#ccache</a>
+              <a href="/tags/hexo/">#hexo</a>
             
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/09/15/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/kkFileView-4.0.0%E5%AE%89%E8%A3%85/" target="_self">
-          kkFileView-4.0.0编译安装
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/15/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/kkFileView-4.0.0%E5%AE%89%E8%A3%85/" target="_self">
-        <div>
-          获取源码 123git clone https:&#x2F;&#x2F;gitee.com&#x2F;kekingcn&#x2F;file-online-preview.gitcd file-online-preview&#x2F;git checkout v4.0.0  centos 7.6 安装安装依赖1234yum install git wget vim libreoffice java-11-openjdk maven -yjava -
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-09-15 09:21" pubdate>
-              2022-09-15
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
+              <a href="/tags/fluid/">#fluid</a>
             
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" class="category-chain-item">编译安装</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/kkFileView/">#kkFileView</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/09/15/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/minio%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" target="_self">
-          minio编译失败问题分析&amp;编译安装
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/15/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/minio%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" target="_self">
-        <div>
-          问题原因下载编译minio，编译出现报错 问题分析&amp;解决 查看是否go版本较低导致 可升级go版本， 注：可以cat go.mod查看mod的go版本，可匹配，如果安装的不匹配，git下载之后，需要执行go mod tidy根据环境修改mod文件。 以下为go 1.18安装步骤 123456789101112wget https:&#x2F;&#x2F;studygolang.com&#x2F;dl&#x2F;golang&#x2F;go
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-09-15 09:21" pubdate>
-              2022-09-15
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" class="category-chain-item">编译安装</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/minio/">#minio</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/09/15/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/ubuntu%E5%AE%89%E8%A3%85nodejs/" target="_self">
-          ubuntu 安装nodejs
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/15/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/ubuntu%E5%AE%89%E8%A3%85nodejs/" target="_self">
-        <div>
-          安装指定版本的nodejs12curl -sL https:&#x2F;&#x2F;deb.nodesource.com&#x2F;setup_14.x | sudo -E bash -sudo apt install nodejs
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-09-15 09:21" pubdate>
-              2022-09-15
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" class="category-chain-item">编译安装</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/nodejs/">#nodejs</a>
+              <a href="/tags/%E5%AE%89%E8%A3%85/">#安装</a>
             
           </div>
         
