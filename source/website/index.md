@@ -14,3 +14,5 @@ date: 2022-09-20 09:42:33
 [PMI网站](https://www.pmi.org):后期查询成绩，下载证书，查找PDU，PMIID，证书换审等
 
 [go web编程](https://learnku.com/docs/build-web-application-with-golang/061-session-and-cookie/3189)
+
+[gin教程](https://gin-gonic.com/docs/examples/bind-form-data-request-with-custom-struct/)
