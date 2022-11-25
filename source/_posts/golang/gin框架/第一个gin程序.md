@@ -113,6 +113,18 @@ curl -g "http://localhost:9999/post?ids[Jack]=001&ids[Tom]=002" -X POST -d 'name
 	Content-Type: text/html; charset=utf-8
 	Location: /index
 	Date: Mon, 29 Aug 2022 09:08:43 GMT
+Menu
+New
+Open
+Saved
+Save As
+Export
+Print
+Themes
+Preferences
+About
+Close
+
 	Content-Length: 41
 
 	<a href="/index">Moved Permanently</a>.
