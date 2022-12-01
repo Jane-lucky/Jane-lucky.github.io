@@ -1,0 +1,662 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="彤～">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="case、fallthrough可以使用 fallthrough 强制执行后面的 case 代码 接口——interface一组method签名的组合，通过interface来定义对象的一组行为。 如果某个对象实现了某个接口的所有方法，则此对象就实现了此接口。 interface值12345678910111213141516171819202122232425262728293031323334">
+<meta property="og:type" content="article">
+<meta property="og:title" content="go 语言基础——基础&amp;函数">
+<meta property="og:url" content="http://jane-lucky.github.io/2022/11/25/golang/go%E5%9F%BA%E7%A1%80/go%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="Jane&#39;s Blog">
+<meta property="og:description" content="case、fallthrough可以使用 fallthrough 强制执行后面的 case 代码 接口——interface一组method签名的组合，通过interface来定义对象的一组行为。 如果某个对象实现了某个接口的所有方法，则此对象就实现了此接口。 interface值12345678910111213141516171819202122232425262728293031323334">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-11-25T02:51:12.241Z">
+<meta property="article:modified_time" content="2022-11-25T02:51:12.241Z">
+<meta property="article:author" content="彤～">
+<meta property="article:tag" content="golang">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>go 语言基础——基础&amp;函数 - Jane&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jane-lucky.github.io","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Jane&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="go 语言基础——基础&amp;函数"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-11-25 10:51" pubdate>
+          November 25, 2022 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.4k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          37 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">go 语言基础——基础&amp;函数</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="case、fallthrough"><a href="#case、fallthrough" class="headerlink" title="case、fallthrough"></a>case、fallthrough</h1><p>可以使用 <code>fallthrough</code> 强制执行后面的 case 代码</p>
+<h1 id="接口——interface"><a href="#接口——interface" class="headerlink" title="接口——interface"></a>接口——interface</h1><p>一组method签名的组合，通过interface来定义对象的一组行为。</p>
+<p>如果某个对象实现了某个接口的所有方法，则此对象就实现了此接口。</p>
+<h2 id="interface值"><a href="#interface值" class="headerlink" title="interface值"></a>interface值</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;fmt&quot;</span><br>)<br><br><span class="hljs-keyword">type</span> human <span class="hljs-keyword">struct</span> &#123;<br>	name <span class="hljs-type">string</span><br>	age  <span class="hljs-type">int</span><br>&#125;<br><br><span class="hljs-keyword">type</span> Employee <span class="hljs-keyword">struct</span> &#123;<br>	human<br>	addr <span class="hljs-type">string</span><br>&#125;<br><br><span class="hljs-keyword">type</span> Student <span class="hljs-keyword">struct</span> &#123;<br>	human<br>	shcool <span class="hljs-type">string</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(h *human)</span></span> SayHi() &#123;<br>	fmt.Printf(<span class="hljs-string">&quot;Hi!I&#x27;m a Student.My name is %s\n&quot;</span>, h.name)<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(h *human)</span></span> sing(singname <span class="hljs-type">string</span>) &#123;<br>	fmt.Printf(<span class="hljs-string">&quot;The sing name is %s\n&quot;</span>, singname)<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(e *Employee)</span></span> SayHi() &#123;<br>	fmt.Printf(<span class="hljs-string">&quot;Hi!I&#x27;m a employee.My name is %s\n&quot;</span>, e.name)<br>&#125;<br><br><span class="hljs-keyword">type</span> Men <span class="hljs-keyword">interface</span> &#123;<br>	SayHi()<br>	sing(name <span class="hljs-type">string</span>)<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	wang := Student&#123;human&#123;<span class="hljs-string">&quot;王强&quot;</span>, <span class="hljs-number">18</span>&#125;, <span class="hljs-string">&quot;高中&quot;</span>&#125;<br>	<span class="hljs-comment">//li := Student&#123;human&#123;&quot;李红&quot;, 12&#125;, &quot;小学&quot;&#125;</span><br>	<span class="hljs-comment">//tian := Student&#123;human&#123;&quot;天天&quot;, 23&#125;, &quot;大公司&quot;&#125;</span><br>	<span class="hljs-comment">//wu := Student&#123;human&#123;&quot;呜呜&quot;, 23&#125;, &quot;小公司&quot;&#125;</span><br><br>	<span class="hljs-keyword">var</span> m Men<br><br>	m = &amp;wang<br>	fmt.Println(<span class="hljs-string">&quot;This is 王,&quot;</span>)<br>	m.sing(<span class="hljs-string">&quot;lalalla&quot;</span>)<br>	m.SayHi()<br>&#125;<br><br>This is 王,<br>The sing name is lalalla<br>Hi!I<span class="hljs-string">&#x27;m a Student.My name is 王强</span><br></code></pre></td></tr></table></figure>
+
+<p>通过定义interface参数，让函数接收各种类型的参数</p>
+<p>以下代码实现了实现了Stringer这个接口参数，可以使任意格式的字符串打印。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;fmt&quot;</span><br>	<span class="hljs-string">&quot;strconv&quot;</span><br>)<br><br><span class="hljs-keyword">type</span> human <span class="hljs-keyword">struct</span> &#123;<br>	name <span class="hljs-type">string</span><br>	age  <span class="hljs-type">int</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(h human)</span></span> String() <span class="hljs-type">string</span> &#123;<br>	<span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&lt;&quot;</span> + h.name + <span class="hljs-string">&quot;-&quot;</span> + strconv.Itoa(h.age) + <span class="hljs-string">&quot;&gt;&quot;</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	Bob := human&#123;<span class="hljs-string">&quot;jamsBob&quot;</span>, <span class="hljs-number">12</span>&#125;<br>	fmt.Println(<span class="hljs-string">&quot;This human is : &quot;</span>, Bob)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="嵌入interface"><a href="#嵌入interface" class="headerlink" title="嵌入interface"></a>嵌入interface</h2><p>将接口1作为接口2的嵌入阻断，则说明接口2隐式包含了接口1的方法</p>
+<h1 id="基础类型"><a href="#基础类型" class="headerlink" title="基础类型"></a>基础类型</h1><h2 id="make和new"><a href="#make和new" class="headerlink" title="make和new"></a>make和new</h2><p>两者均是分配内存的。</p>
+<p><strong>new：</strong></p>
+<ul>
+<li><p>只分配内存，不初始化内存</p>
+</li>
+<li><p>创建之后返回该类型内存地址的指针，同时将内存置为0。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">new</span><span class="hljs-params">(Type)</span></span> *Type<br></code></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>make：</strong></p>
+<ul>
+<li><p>即分配内存又初始化</p>
+</li>
+<li><p>用于slice、map、channel的初始化，返回值是创建类型的本身。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">make</span><span class="hljs-params">(t Type, size ...IntegerType)</span></span> Type<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="数组和slice"><a href="#数组和slice" class="headerlink" title="数组和slice"></a>数组和slice</h2><p>slice基于数组创建。其中数组在创建之后，大小固定，而slice创建后具有动态扩容的机制，会相比与数据更加灵活。</p>
+<p>数组在使用过程中是值传递，将一个数组赋值给另一个新变量之后，原数组的内容不变；而slice都是源数组在内存中的地址的一个引用。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;fmt&quot;</span><br>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">print</span><span class="hljs-params">(arr []<span class="hljs-type">int</span>)</span></span> &#123;<br>	arr[<span class="hljs-number">2</span>] = <span class="hljs-number">12</span><br>	fmt.Println(<span class="hljs-string">&quot;function arrS&quot;</span>)<br>	<span class="hljs-keyword">for</span> _, v := <span class="hljs-keyword">range</span> arr &#123;<br>		fmt.Printf(<span class="hljs-string">&quot;%d &quot;</span>, v)<br>	&#125;<br>	fmt.Println()<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">printArr</span><span class="hljs-params">(arr [3]<span class="hljs-type">int</span>)</span></span> &#123;<br>	arr[<span class="hljs-number">2</span>] = <span class="hljs-number">10</span><br>	fmt.Println(<span class="hljs-string">&quot;function arr&quot;</span>)<br>	fmt.Println(arr)<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	arr := [<span class="hljs-number">3</span>]<span class="hljs-type">int</span>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;<br>	printArr(arr)<br>	fmt.Println(<span class="hljs-string">&quot;arr after&quot;</span>)<br>	fmt.Println(arr)<br>	arrS := []<span class="hljs-type">int</span>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;<br>	<span class="hljs-built_in">print</span>(arrS)<br>	fmt.Println(<span class="hljs-string">&quot;arrS after&quot;</span>)<br>	fmt.Println(arrS)<br>&#125;<br><br>function arr<br>[<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">10</span>]<br>arr after<br>[<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>]<br>function arrS<br><span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">12</span> <span class="hljs-number">4</span> <span class="hljs-number">5</span> <br>arrS after<br>[<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">12</span> <span class="hljs-number">4</span> <span class="hljs-number">5</span>]<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="值传参和指针传参"><a href="#值传参和指针传参" class="headerlink" title="值传参和指针传参"></a>值传参和指针传参</h2><p><strong>值传递：</strong>实际上是copy的，当修改传入的该值时，并不会影响到实际的变量值。</p>
+<p><strong>指针传递：</strong>变量的内存存放于地址上，当以指针的形式传递时，传递的是地址的内容，如果修改指针内容会影响到实际的值。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><br><span class="hljs-comment">//传参和传指针</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">add</span><span class="hljs-params">(a <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> &#123;<br>	a += <span class="hljs-number">1</span><br>	<span class="hljs-keyword">return</span> a<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">addP</span><span class="hljs-params">(a *<span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> &#123;<br>	*a += *a<br>	<span class="hljs-keyword">return</span> *a<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br><br>	a := <span class="hljs-number">2</span><br>	fmt.Println(<span class="hljs-string">&quot;---------值传参----------&quot;</span>)<br>	fmt.Printf(<span class="hljs-string">&quot;function&#x27;s value is %d\n&quot;</span>, add(a))<br>	fmt.Printf(<span class="hljs-string">&quot;Actual value is %d\n&quot;</span>, a)<br><br>	fmt.Println(<span class="hljs-string">&quot;---------指针传参----------&quot;</span>)<br>	fmt.Printf(<span class="hljs-string">&quot;function&#x27;s value is %d\n&quot;</span>, addP(&amp;a))<br>	fmt.Printf(<span class="hljs-string">&quot;Actual value is %d\n&quot;</span>, a)<br>&#125;<br><br>---------值传参----------<br>function<span class="hljs-string">&#x27;s value is 3</span><br><span class="hljs-string">Actual value is 2</span><br><span class="hljs-string">---------指针传参----------</span><br><span class="hljs-string">function&#x27;</span>s value is <span class="hljs-number">4</span><br>Actual value is <span class="hljs-number">4</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="函数作为值、类型"><a href="#函数作为值、类型" class="headerlink" title="函数作为值、类型"></a>函数作为值、类型</h2><p>将相同类型的函数（参数传入相同、返回类型相同）作为函数的传递，增大灵活性</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><br><span class="hljs-comment">//函数作为传递</span><br><br><span class="hljs-keyword">type</span> testInt <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(<span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">addOdd</span><span class="hljs-params">(num <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> &#123;<br>	<span class="hljs-keyword">return</span> num + <span class="hljs-number">2</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">addEven</span><span class="hljs-params">(num <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> &#123;<br>	<span class="hljs-keyword">return</span> num + <span class="hljs-number">1</span><br>&#125;<br><br><span class="hljs-comment">//提高函数使用的灵活性</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">resultNum</span><span class="hljs-params">(num <span class="hljs-type">int</span>, f testInt)</span></span> (<span class="hljs-type">int</span>, <span class="hljs-type">string</span>) &#123;<br>	<span class="hljs-keyword">if</span> num%<span class="hljs-number">2</span> == <span class="hljs-number">0</span> &#123;<br>		<span class="hljs-keyword">return</span> addOdd(num), <span class="hljs-string">&quot;Excute Odd func&quot;</span><br>	&#125; <span class="hljs-keyword">else</span> &#123;<br>		<span class="hljs-keyword">return</span> addEven(num), <span class="hljs-string">&quot;Excute Even func&quot;</span><br>	&#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	num := <span class="hljs-number">1</span><br>	num1 := <span class="hljs-number">2</span><br>    <span class="hljs-comment">//调用该函数定义</span><br>	fmt.Println(resultNum(num, addOdd))<br>	fmt.Println(resultNum(num1, addEven))<br><br>&#125;<br><br><span class="hljs-number">2</span> Excute Even <span class="hljs-function"><span class="hljs-keyword">func</span></span><br><span class="hljs-number">4</span> Excute Odd <span class="hljs-function"><span class="hljs-keyword">func</span></span><br></code></pre></td></tr></table></figure>
+
+<h2 id="panic和recover"><a href="#panic和recover" class="headerlink" title="panic和recover"></a>panic和recover</h2><h3 id="panic"><a href="#panic" class="headerlink" title="panic"></a>panic</h3><p>内建函数，可以终端原有的控制流程，当程序发生错误的时候，制造一次宕机——程序运行终止。一般是碰到不可能发生的状况，panic是最好的处理方式。</p>
+<h3 id="recover"><a href="#recover" class="headerlink" title="recover"></a>recover</h3><p>恢复——panic之后的其他处理。当panic的时候会将参数传递给recover，如果recover没有收到，依旧为nil，那么表明并没有发生panic。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;fmt&quot;</span><br>)<br><br><span class="hljs-comment">//panic和recover</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	<span class="hljs-keyword">defer</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>		<span class="hljs-keyword">if</span> msg := <span class="hljs-built_in">recover</span>(); msg != <span class="hljs-literal">nil</span> &#123;<br>			fmt.Println(msg)<br>		&#125; <span class="hljs-keyword">else</span> &#123;<br>			fmt.Println(<span class="hljs-string">&quot;run success&quot;</span>)<br>		&#125;<br>	&#125;()<br><br>	fmt.Println(<span class="hljs-string">&quot;process A&quot;</span>)<br>	fmt.Println(<span class="hljs-string">&quot;process B&quot;</span>)<br>	<span class="hljs-built_in">panic</span>(<span class="hljs-string">&quot;panic&quot;</span>)<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/golang/" class="category-chain-item">golang</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/golang/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" class="category-chain-item">go语言基础</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/golang/">#golang</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>go 语言基础——基础&amp;函数</div>
+      <div>http://jane-lucky.github.io/2022/11/25/golang/go基础/go基础知识/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>彤～</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>November 25, 2022</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/11/25/golang/go%E5%9F%BA%E7%A1%80/web/" title="go 语言基础——web基础">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">go 语言基础——web基础</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/11/25/golang/gin%E6%A1%86%E6%9E%B6/%E7%AC%AC%E4%B8%80%E4%B8%AAgin%E7%A8%8B%E5%BA%8F/" title="第一个gin程序">
+                        <span class="hidden-mobile">第一个gin程序</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
