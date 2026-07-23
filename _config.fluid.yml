@@ -225,7 +225,7 @@ color:
 # Font
 font:
   font_size: 16px
-  font_family: 'Inter', 'Noto Serif SC', -apple-system, sans-serif
+  font_family: "Inter, Noto Serif SC, -apple-system, sans-serif"
   letter_spacing: 0.02em
   code_font_size: 85%
 
