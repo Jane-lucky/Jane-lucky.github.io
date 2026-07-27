@@ -1,7 +1,8 @@
 ---
 title: "🔥 每日热点趋势报告 | 2026年7月25日"
 date: 2026-07-25T09:00:00+08:00
-categories: [hotspot, daily-report]
+categories:
+- [热点追踪, 每日报告]
 tags: [AI, agent, LLM, 信息差, 热点追踪, GitHub, HackerNews]
 excerpt: "菲尔兹奖得主加入OpenAI、AI Agent沙箱化标准缺失、Gemini Spark全面开放、白宫指控Moonshot、Agent工具链爆发——7月25日热点趋势报告"
 ---

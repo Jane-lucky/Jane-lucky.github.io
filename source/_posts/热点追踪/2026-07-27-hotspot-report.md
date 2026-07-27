@@ -1,7 +1,8 @@
 ---
-title: 🔥 每日热点趋势报告 | 2026-07-27
+title: 🔥 每日热点趋势报告 | 2026年7月27日
 date: 2026-07-27 09:00:00
-categories: [hotspot, ai, tech]
+categories:
+- [热点追踪, 每日报告]
 tags: [AI-Agent, 信息差, 热点追踪, GitHub-Trending, 开源, 安全, 金融AI]
 ---
 

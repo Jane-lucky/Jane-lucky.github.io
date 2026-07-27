@@ -1,7 +1,8 @@
 ---
-title: 🔥 每日热点趋势报告 | 2026-07-24
+title: 🔥 每日热点趋势报告 | 2026年7月24日
 date: 2026-07-24 09:00:00
-categories: hotspot-report
+categories:
+- [热点追踪, 每日报告]
 tags: [AI, Agent, 热点追踪, 信息差, 趋势报告]
 ---
 

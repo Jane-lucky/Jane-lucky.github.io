@@ -1,7 +1,8 @@
 ---
-title: 🔥 每日热点趋势报告 | 2026-07-26
+title: 🔥 每日热点趋势报告 | 2026年7月26日
 date: 2026-07-26 09:00:00
-categories: [hotspot, ai, tech]
+categories:
+- [热点追踪, 每日报告]
 tags: [AI Agent, 安全, 基础设施, Coding Agent, WiFi CSI, 芯片管制]
 ---
 
