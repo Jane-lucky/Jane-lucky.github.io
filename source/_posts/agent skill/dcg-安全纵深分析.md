@@ -1,7 +1,7 @@
 ---
 title: dcg 安全纵深分析：它防得住什么，防不住什么
 categories:
-- 知识点汇总
+- agent skill
 tags:
 - AI安全
 - AI Agent

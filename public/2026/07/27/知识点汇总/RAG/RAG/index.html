@@ -1,0 +1,818 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="彤～">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="RAG一句话概括大模型记不住所有东西，所以在回答之前，先从外部知识库里把相关内容找出来，喂给它，再让它回答——这就是 RAG。  为什么需要它？回到一个底层事实：大模型的知识是静态的、有限的、会过时的。 拆开看三个硬限制： 1. 训练数据有截止日期大模型的知识来自训练数据，训练完成的那一刻，它的知识就冻结了。  GPT-4 的训练数据有截止日期 → 截止之后发生的事它不知道 你问”最新的 iPho">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RAG">
+<meta property="og:url" content="http://jane-lucky.github.io/2026/07/27/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/RAG/RAG/index.html">
+<meta property="og:site_name" content="Jane&#39;s Blog">
+<meta property="og:description" content="RAG一句话概括大模型记不住所有东西，所以在回答之前，先从外部知识库里把相关内容找出来，喂给它，再让它回答——这就是 RAG。  为什么需要它？回到一个底层事实：大模型的知识是静态的、有限的、会过时的。 拆开看三个硬限制： 1. 训练数据有截止日期大模型的知识来自训练数据，训练完成的那一刻，它的知识就冻结了。  GPT-4 的训练数据有截止日期 → 截止之后发生的事它不知道 你问”最新的 iPho">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-07-27T09:17:50.604Z">
+<meta property="article:modified_time" content="2026-07-27T09:17:50.604Z">
+<meta property="article:author" content="彤～">
+<meta property="article:tag" content="思维模型">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="RAG">
+<meta property="article:tag" content="大模型">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>RAG - Jane&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jane-lucky.github.io","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Jane&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="RAG"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-07-27 17:17" pubdate>
+          July 27, 2026 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.7k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          31 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">RAG</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="RAG"><a href="#RAG" class="headerlink" title="RAG"></a>RAG</h1><h2 id="一句话概括"><a href="#一句话概括" class="headerlink" title="一句话概括"></a>一句话概括</h2><p><strong>大模型记不住所有东西，所以在回答之前，先从外部知识库里把相关内容找出来，喂给它，再让它回答——这就是 RAG。</strong></p>
+<hr>
+<h2 id="为什么需要它？"><a href="#为什么需要它？" class="headerlink" title="为什么需要它？"></a>为什么需要它？</h2><p>回到一个底层事实：<strong>大模型的知识是静态的、有限的、会过时的。</strong></p>
+<p>拆开看三个硬限制：</p>
+<h3 id="1-训练数据有截止日期"><a href="#1-训练数据有截止日期" class="headerlink" title="1. 训练数据有截止日期"></a>1. 训练数据有截止日期</h3><p>大模型的知识来自训练数据，训练完成的那一刻，它的知识就冻结了。</p>
+<ul>
+<li>GPT-4 的训练数据有截止日期 → 截止之后发生的事它不知道</li>
+<li>你问”最新的 iPhone 是哪款” → 它可能回答 iPhone 15，因为训练时 iPhone 16 还没发布</li>
+</ul>
+<p><strong>模型不会自己上网查资料。</strong> 它只知道训练时见过的东西。</p>
+<h3 id="2-训练数据没有你的私有信息"><a href="#2-训练数据没有你的私有信息" class="headerlink" title="2. 训练数据没有你的私有信息"></a>2. 训练数据没有你的私有信息</h3><ul>
+<li>你们公司的内部文档、业务规则、代码仓库</li>
+<li>你个人的笔记、邮件、聊天记录</li>
+<li>特定领域的专有知识（医疗病例、法律判例、金融数据）</li>
+</ul>
+<p><strong>这些从来没进过训练集，模型根本不知道它们存在。</strong></p>
+<h3 id="3-模型会”幻觉”（Hallucination）"><a href="#3-模型会”幻觉”（Hallucination）" class="headerlink" title="3. 模型会”幻觉”（Hallucination）"></a>3. 模型会”幻觉”（Hallucination）</h3><p>当模型不知道答案但又被要求回答时，它不会说”我不知道”——它会<strong>编一个看起来合理但实际错误的答案</strong>。</p>
+<ul>
+<li>问一个不存在的 API 用法 → 它会编一个看起来很像真的接口文档</li>
+<li>问一个过时的政策 → 它会用旧知识拼凑，可能和现行政策矛盾</li>
+</ul>
+<p><strong>模型天生倾向于”回答”而不是”承认不知道”。</strong></p>
+<hr>
+<p>这三个限制加起来，意味着：<strong>如果你让大模型直接回答事实性问题，你永远不知道它是在回忆训练数据、还是在编。</strong></p>
+<p>RAG 就是解决这个问题的。</p>
+<hr>
+<h2 id="它到底是什么？"><a href="#它到底是什么？" class="headerlink" title="它到底是什么？"></a>它到底是什么？</h2><p>从第一性原理拆开：</p>
+<h3 id="R-Retrieval（检索）"><a href="#R-Retrieval（检索）" class="headerlink" title="R = Retrieval（检索）"></a>R = Retrieval（检索）</h3><p>在模型回答之前，<strong>先从外部知识库中找到和问题相关的信息</strong>。</p>
+<p>这一步的本质是：<strong>把”模型需要知道什么”和”模型已经知道什么”之间的差距，用外部数据补上。</strong></p>
+<h3 id="A-Augmented（增强）"><a href="#A-Augmented（增强）" class="headerlink" title="A = Augmented（增强）"></a>A = Augmented（增强）</h3><p>把检索到的信息<strong>拼接到模型的输入中</strong>，作为回答的依据。</p>
+<p>模型现在不仅有自己的训练知识，还有你刚刚喂给它的最新、最相关的信息。它的回答质量因此”增强”了。</p>
+<h3 id="G-Generation（生成）"><a href="#G-Generation（生成）" class="headerlink" title="G = Generation（生成）"></a>G = Generation（生成）</h3><p>模型基于增强后的输入，<strong>生成最终回答</strong>。</p>
+<p>关键区别：</p>
+<ul>
+<li><strong>没有 RAG</strong>：模型只靠训练数据生成 → 可能过时、可能幻觉</li>
+<li><strong>有 RAG</strong>：模型基于检索到的事实生成 → 有据可依、可溯源</li>
+</ul>
+<h3 id="合起来"><a href="#合起来" class="headerlink" title="合起来"></a>合起来</h3><p><strong>RAG = 先检索相关信息，再增强输入，最后生成回答。让大模型的输出从”凭记忆编”变成”有据可依”。</strong></p>
+<hr>
+<h2 id="怎么做？四步法"><a href="#怎么做？四步法" class="headerlink" title="怎么做？四步法"></a>怎么做？四步法</h2><h3 id="第一步：建知识库（Indexing）"><a href="#第一步：建知识库（Indexing）" class="headerlink" title="第一步：建知识库（Indexing）"></a>第一步：建知识库（Indexing）</h3><p>把你的文档、数据变成可检索的格式：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs awk">原始文档<br>  │<br>  ▼<br>切分成小块（Chunking）<br>  │  <span class="hljs-string">&quot;一篇100页的文档&quot;</span> → 切成<span class="hljs-number">200</span>个段落块<br>  │<br>  ▼<br>向量化（Embedding）<br>  │  每个块 → 一个高维向量（如<span class="hljs-number">1536</span>维）<br>  │  语义相近的文本 → 向量距离近<br>  │<br>  ▼<br>存入向量数据库<br>     Chroma <span class="hljs-regexp">/ Pinecone /</span> Milvus / Weaviate ...<br></code></pre></td></tr></table></figure>
+
+<p><strong>为什么需要向量化？</strong> 因为”语义相似”不能用关键词匹配——“如何退款”和”退货流程”字面不同但语义相关，向量能捕捉这种关系。</p>
+<h3 id="第二步：检索（Retrieval）"><a href="#第二步：检索（Retrieval）" class="headerlink" title="第二步：检索（Retrieval）"></a>第二步：检索（Retrieval）</h3><p>用户提问时，从知识库中找最相关的内容：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs mathematica">用户问题：<span class="hljs-string">&quot;公司的差旅报销标准是什么？&quot;</span><br>  │<br>  ▼<br>问题向量化（同一个 <span class="hljs-variable">Embedding</span> 模型）<br>  │<br>  ▼<br>在向量数据库中做相似度搜索<br>  │  找到 <span class="hljs-built_in">Top</span><span class="hljs-operator">-</span><span class="hljs-built_in">K</span> 个最相似的文档块<br>  │  <span class="hljs-built_in">K</span> 通常取 <span class="hljs-number">3</span><span class="hljs-operator">~</span><span class="hljs-number">10</span><br>  │<br>  ▼<br>返回检索结果<br>     <span class="hljs-string">&quot;差旅报销标准：国内出差每日住宿上限500元...&quot;</span><br>     <span class="hljs-string">&quot;交通补贴：高铁二等座实报实销...&quot;</span><br>     <span class="hljs-string">&quot;审批流程：单次出差超过3天需部门经理审批...&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="第三步：增强（Augmentation）"><a href="#第三步：增强（Augmentation）" class="headerlink" title="第三步：增强（Augmentation）"></a>第三步：增强（Augmentation）</h3><p>把检索结果拼接到提示词中：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs markdown">给模型的输入：<br><br>【参考信息】<br><span class="hljs-bullet">1.</span> 差旅报销标准：国内出差每日住宿上限500元...<br><span class="hljs-bullet">2.</span> 交通补贴：高铁二等座实报实销...<br><span class="hljs-bullet">3.</span> 审批流程：单次出差超过3天需部门经理审批...<br><br>【用户问题】<br>公司的差旅报销标准是什么？<br><br>请基于参考信息回答，如果参考信息中没有相关内容，请说明。<br></code></pre></td></tr></table></figure>
+
+<p><strong>关键：告诉模型”基于参考信息回答”——这能降低幻觉率，但不是银弹。模型并不总是遵守指令，特别是当参考信息和它的训练知识冲突时，它可能选择忽略参考信息。</strong></p>
+<h3 id="第四步：生成（Generation）"><a href="#第四步：生成（Generation）" class="headerlink" title="第四步：生成（Generation）"></a>第四步：生成（Generation）</h3><p>模型基于增强后的输入生成回答：</p>
+<blockquote>
+<p>根据公司规定，差旅报销标准如下：</p>
+<ul>
+<li>住宿：国内出差每日上限500元</li>
+<li>交通：高铁二等座实报实销</li>
+<li>审批：单次出差超过3天需部门经理审批</li>
+</ul>
+</blockquote>
+<p>回答有据可依，每个点都能追溯到知识库中的原文。</p>
+<hr>
+<h2 id="RAG-vs-微调（Fine-tuning）"><a href="#RAG-vs-微调（Fine-tuning）" class="headerlink" title="RAG vs 微调（Fine-tuning）"></a>RAG vs 微调（Fine-tuning）</h2><p>这是最常见的对比，很多人搞混：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>RAG</th>
+<th>微调</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>做什么</strong></td>
+<td>给模型喂外部信息</td>
+<td>改模型的内部权重</td>
+</tr>
+<tr>
+<td><strong>知识来源</strong></td>
+<td>外部知识库（实时可更新）</td>
+<td>训练数据（更新需重新训练）</td>
+</tr>
+<tr>
+<td><strong>适合场景</strong></td>
+<td>事实性问答、知识查询</td>
+<td>风格模仿、格式遵循、领域语感</td>
+</tr>
+<tr>
+<td><strong>更新成本</strong></td>
+<td>低（改知识库就行）</td>
+<td>高（重新训练）</td>
+</tr>
+<tr>
+<td><strong>可溯源</strong></td>
+<td>✅ 能追溯到原文</td>
+<td>❌ 知识融进了权重，无法溯源</td>
+</tr>
+<tr>
+<td><strong>幻觉控制</strong></td>
+<td>好（有依据才回答）</td>
+<td>一般（还是会编）</td>
+</tr>
+<tr>
+<td><strong>成本</strong></td>
+<td>中（向量数据库+检索）</td>
+<td>高（GPU训练费用）</td>
+</tr>
+</tbody></table>
+<p><strong>简单判断：</strong></p>
+<ul>
+<li>需要”知道最新信息” → RAG</li>
+<li>需要”用特定风格说话” → 微调</li>
+<li>两者都要 → RAG + 微调（不冲突）</li>
+</ul>
+<hr>
+<h2 id="检索策略：不是搜到就行"><a href="#检索策略：不是搜到就行" class="headerlink" title="检索策略：不是搜到就行"></a>检索策略：不是搜到就行</h2><p>检索质量直接决定 RAG 的效果。搜到垃圾，模型就基于垃圾回答——Garbage In, Garbage Out。</p>
+<h3 id="基础：向量相似度搜索"><a href="#基础：向量相似度搜索" class="headerlink" title="基础：向量相似度搜索"></a>基础：向量相似度搜索</h3><p>用余弦相似度找最接近的文档块。简单有效，但有盲区：</p>
+<ul>
+<li><strong>语义模糊</strong>：”苹果”是水果还是公司？向量分不清</li>
+<li><strong>长尾问题</strong>：冷门问题在知识库中匹配度低，可能搜不到</li>
+<li><strong>多跳推理</strong>：”A公司的CEO之前在哪家公司？”需要先找CEO是谁，再找他的履历——单次检索搞不定</li>
+</ul>
+<h3 id="进阶策略"><a href="#进阶策略" class="headerlink" title="进阶策略"></a>进阶策略</h3><table>
+<thead>
+<tr>
+<th>策略</th>
+<th>原理</th>
+<th>解决什么问题</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>混合检索</strong></td>
+<td>向量搜索 + 关键词搜索（BM25），取交集或融合</td>
+<td>向量搜不准时，关键词兜底</td>
+</tr>
+<tr>
+<td><strong>重排序（Reranking）</strong></td>
+<td>先粗检索Top-50，再用交叉编码器精排Top-5</td>
+<td>粗检索有噪音，精排提质量</td>
+</tr>
+<tr>
+<td><strong>查询改写</strong></td>
+<td>把用户问题改写成更适合检索的形式</td>
+<td>用户问得太口语化，检索效果差</td>
+</tr>
+<tr>
+<td><strong>多跳检索</strong></td>
+<td>先搜一次，根据结果生成新查询，再搜</td>
+<td>需要串联多个知识片段的问题</td>
+</tr>
+<tr>
+<td><strong>元数据过滤</strong></td>
+<td>按时间、来源、类别等过滤后再检索</td>
+<td>缩小搜索范围，提高精度</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="常见误区"><a href="#常见误区" class="headerlink" title="常见误区"></a>常见误区</h2><h3 id="❌-误区一：RAG-接搜索引擎"><a href="#❌-误区一：RAG-接搜索引擎" class="headerlink" title="❌ 误区一：RAG = 接搜索引擎"></a>❌ 误区一：RAG = 接搜索引擎</h3><p>不是。搜索引擎返回的是网页链接，你还得自己看；RAG 返回的是<strong>结构化的文本片段</strong>，直接喂给模型用。而且 RAG 的知识库是你自己的数据，不是全网。</p>
+<h3 id="❌-误区二：RAG-能完全消除幻觉"><a href="#❌-误区二：RAG-能完全消除幻觉" class="headerlink" title="❌ 误区二：RAG 能完全消除幻觉"></a>❌ 误区二：RAG 能完全消除幻觉</h3><p>不能。RAG 大幅降低幻觉率，但不能归零——模型仍然可能：</p>
+<ul>
+<li>误解检索到的信息</li>
+<li>检索结果本身有错</li>
+<li>检索没找到相关内容，模型还是靠自己的”记忆”编</li>
+</ul>
+<h3 id="❌-误区三：检索到的越多越好"><a href="#❌-误区三：检索到的越多越好" class="headerlink" title="❌ 误区三：检索到的越多越好"></a>❌ 误区三：检索到的越多越好</h3><p>不是。塞太多无关信息会<strong>稀释有效信息的权重</strong>，模型反而被干扰。Top-3~5 通常比 Top-20 效果好。质量 &gt; 数量。</p>
+<h3 id="❌-误区四：RAG-和微调是二选一"><a href="#❌-误区四：RAG-和微调是二选一" class="headerlink" title="❌ 误区四：RAG 和微调是二选一"></a>❌ 误区四：RAG 和微调是二选一</h3><p>不是。它们解决不同问题，可以叠加——微调让模型学会”用公司风格说话”，RAG 让它”基于公司最新数据回答”。</p>
+<hr>
+<h2 id="它的代价"><a href="#它的代价" class="headerlink" title="它的代价"></a>它的代价</h2><ul>
+<li><strong>知识库维护成本</strong>：数据更新了要重新索引，文档格式变了要重新切分，这是一个持续运营的工作</li>
+<li><strong>检索延迟</strong>：每次问答多了一步检索，响应时间从 ~1s 变成 ~2-3s</li>
+<li><strong>切分策略难调</strong>：这是 RAG 实践中最头疼的问题。块太大 → 检索不精准，噪音多；块太小 → 丢失上下文，语义不完整。常见策略：<ul>
+<li>按固定长度切（简单但粗暴，可能切断句子）</li>
+<li>按语义段落切（质量高但实现复杂）</li>
+<li>按文档结构切（按标题/章节，保留逻辑完整性）</li>
+<li>没有万能参数，得根据数据特点反复调</li>
+</ul>
+</li>
+<li><strong>向量数据库成本</strong>：存储和检索都要资源，数据量大时成本不低</li>
+<li><strong>Embedding 模型选择</strong>：向量化质量直接决定检索效果。不同模型差异很大——OpenAI 的 text-embedding-3-small 便宜但精度一般，text-embedding-3-large 精度高但贵；开源的 bge-large、gte-multilingual 在中文场景表现不错。选错 Embedding 模型，后面全白搭</li>
+<li><strong>检索质量瓶颈</strong>：如果知识库本身质量差、覆盖不全，RAG 的天花板就在那里——再好的检索策略也搜不到不存在的东西</li>
+</ul>
+<p><strong>什么时候该用？</strong> 需要基于特定知识回答、知识频繁更新、需要可溯源的场景。<strong>什么时候别用？</strong> 创意写作、闲聊、通用知识问答——这些不需要外部知识库。</p>
+<hr>
+<h2 id="一张图总结"><a href="#一张图总结" class="headerlink" title="一张图总结"></a>一张图总结</h2><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs mathematica">用户提问<br>  │<br>  ▼<br>问题向量化<br>  │<br>  ▼<br>在向量数据库中检索 <span class="hljs-built_in">Top</span><span class="hljs-operator">-</span><span class="hljs-built_in">K</span> 相关文档块<br>  │<br>  ▼<br>拼接：检索结果 <span class="hljs-operator">+</span> 用户问题 → 增强后的提示词<br>  │<br>  ▼<br>大模型基于增强输入生成回答<br>  │<br>  ▼<br>回答（有据可依，可溯源到知识库原文）<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="谁在用？"><a href="#谁在用？" class="headerlink" title="谁在用？"></a>谁在用？</h2><ul>
+<li><strong>企业知识问答</strong>：内部文档、规章制度、产品手册的智能问答</li>
+<li><strong>客服系统</strong>：基于产品FAQ和工单历史回答用户问题</li>
+<li><strong>法律辅助</strong>：基于法规和判例回答法律咨询</li>
+<li><strong>医疗辅助</strong>：基于医学文献和临床指南辅助诊断</li>
+<li><strong>代码助手</strong>：基于项目代码库和文档回答开发问题（如 Cursor、Copilot Chat）</li>
+<li><strong>研究助手</strong>：基于论文库回答学术问题</li>
+</ul>
+<hr>
+<h2 id="最后一句"><a href="#最后一句" class="headerlink" title="最后一句"></a>最后一句</h2><p><strong>RAG 的本质不是让模型变聪明，而是让模型在回答之前先查资料——就像开卷考试比闭卷考试靠谱，不是因为学生变聪明了，而是因为答案就在手边。</strong></p>
+<p>但注意：开卷考试也可能抄错——如果检索到的资料本身有错，模型会更有信心地输出错误答案，这比”我不知道”更危险。<strong>RAG 的可靠性 = 检索质量 × 模型遵从度</strong>，两个因子都要关注。</p>
+<p>关键不在模型有多强，在于你喂给它的资料有多准。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/RAG/" class="category-chain-item">RAG</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%80%9D%E7%BB%B4%E6%A8%A1%E5%9E%8B/">#思维模型</a>
+      
+        <a href="/tags/AI/">#AI</a>
+      
+        <a href="/tags/RAG/">#RAG</a>
+      
+        <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">#大模型</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>RAG</div>
+      <div>http://jane-lucky.github.io/2026/07/27/知识点汇总/RAG/RAG/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>彤～</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>July 27, 2026</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/07/27/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/RAG/RAG%E5%AE%9E%E6%88%98%E4%B8%8E%E4%B8%BB%E6%B5%81%E6%96%B9%E6%A1%88/" title="RAG实战与主流方案">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">RAG实战与主流方案</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/07/27/agent%20skill/Superpowers%E6%8A%80%E8%83%BD/" title="Superpowers技能">
+                        <span class="hidden-mobile">Superpowers技能</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
