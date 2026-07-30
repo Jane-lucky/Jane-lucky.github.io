@@ -1,0 +1,670 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="彤～">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="🔧 Hexo 博客文章日期被全部刷新的解决方法问题现象每次在 Hexo 博客发布一篇新文章后，git 记录里所有文章的 HTML 文件都显示为”今天修改”。上 GitHub 一看，每篇文章的修改时间都变成了今天，完全分不清哪些是新写的、哪些是以前的旧文章。 原因分析Hexo 使用 hexo generate 命令生成静态 HTML 文件，输出到 public&#x2F; 目录。在这个目录下：  每一篇文章">
+<meta property="og:type" content="article">
+<meta property="og:title" content="🔧 Hexo 博客文章日期被全部刷新的解决方法">
+<meta property="og:url" content="http://jane-lucky.github.io/2026/07/30/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/2026-07-30-hexo-git-date-fix/index.html">
+<meta property="og:site_name" content="Jane&#39;s Blog">
+<meta property="og:description" content="🔧 Hexo 博客文章日期被全部刷新的解决方法问题现象每次在 Hexo 博客发布一篇新文章后，git 记录里所有文章的 HTML 文件都显示为”今天修改”。上 GitHub 一看，每篇文章的修改时间都变成了今天，完全分不清哪些是新写的、哪些是以前的旧文章。 原因分析Hexo 使用 hexo generate 命令生成静态 HTML 文件，输出到 public&#x2F; 目录。在这个目录下：  每一篇文章">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-07-30T01:30:00.000Z">
+<meta property="article:modified_time" content="2026-07-30T01:26:53.596Z">
+<meta property="article:author" content="彤～">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Git">
+<meta property="article:tag" content="GitHub Pages">
+<meta property="article:tag" content="踩坑记录">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>🔧 Hexo 博客文章日期被全部刷新的解决方法 - Jane&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jane-lucky.github.io","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Jane&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="🔧 Hexo 博客文章日期被全部刷新的解决方法"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-07-30 09:30" pubdate>
+          July 30, 2026 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.6k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          14 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">🔧 Hexo 博客文章日期被全部刷新的解决方法</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="🔧-Hexo-博客文章日期被全部刷新的解决方法"><a href="#🔧-Hexo-博客文章日期被全部刷新的解决方法" class="headerlink" title="🔧 Hexo 博客文章日期被全部刷新的解决方法"></a>🔧 Hexo 博客文章日期被全部刷新的解决方法</h1><h2 id="问题现象"><a href="#问题现象" class="headerlink" title="问题现象"></a>问题现象</h2><p>每次在 Hexo 博客发布一篇新文章后，git 记录里所有文章的 HTML 文件都显示为”今天修改”。上 GitHub 一看，每篇文章的修改时间都变成了今天，完全分不清哪些是新写的、哪些是以前的旧文章。</p>
+<h2 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h2><p>Hexo 使用 <code>hexo generate</code> 命令生成静态 HTML 文件，输出到 <code>public/</code> 目录。在这个目录下：</p>
+<ul>
+<li>每一篇文章会被重新渲染为独立的 HTML 文件</li>
+<li>每篇文章的日期基于源码的 front-matter <code>date</code> 字段，<strong>在生成的 HTML 里确实是正确的</strong></li>
+<li>但问题是，<strong>每次 <code>hexo generate</code> 会重新生成全部文件</strong>——所有归档页、首页、分类页、标签页、每篇文章的 HTML，文件本身的修改时间戳都会更新</li>
+</ul>
+<p>如果你的 <code>public/</code> 目录<strong>之前被 git 跟踪过</strong>（哪怕后来加了 <code>.gitignore</code>），git 会继续跟踪这些已经在库里的文件。所以当你 <code>git add</code> 并 <code>git commit</code> 时：</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs lasso">新文章.md          ✅ 正常变化<br><span class="hljs-keyword">public</span>/归档<span class="hljs-number">1.</span>html  ❌ 也被 git 抓到变了<br><span class="hljs-keyword">public</span>/归档<span class="hljs-number">2.</span>html  ❌ 也被 git 抓到变了<br><span class="hljs-params">...</span><span class="hljs-number">242</span>个文件全变了   😱<br></code></pre></td></tr></table></figure>
+
+<p>GitHub 的界面显示的是最后一次 commit 的时间，于是<strong>所有文章看起来都变成了今天发布的</strong>。</p>
+<h2 id="真相"><a href="#真相" class="headerlink" title="真相"></a>真相</h2><p><strong>文章本身的日期（front-matter 里的 <code>date</code> 字段）并没有丢失</strong>。hexo generate 生成的 HTML 里依然是正确的原始日期。问题出在 git 记录了 <code>public/</code> 目录下文件的时间戳变化，让你在 GitHub 上看到混乱的历史。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="Step-1：确认-gitignore-已有-public"><a href="#Step-1：确认-gitignore-已有-public" class="headerlink" title="Step 1：确认 .gitignore 已有 public/"></a>Step 1：确认 <code>.gitignore</code> 已有 <code>public/</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看 .gitignore 是否已配置</span><br><span class="hljs-built_in">cat</span> .gitignore<br></code></pre></td></tr></table></figure>
+
+<p>应该包含：</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">node_modules/<br><span class="hljs-built_in">public</span>/<br>db.json<br>.DS_Store<br>*.<span class="hljs-keyword">log</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Step-2：把已跟踪的-public-从-git-中移除"><a href="#Step-2：把已跟踪的-public-从-git-中移除" class="headerlink" title="Step 2：把已跟踪的 public/ 从 git 中移除"></a>Step 2：把已跟踪的 <code>public/</code> 从 git 中移除</h3><p>尽管 <code>.gitignore</code> 已经写了 <code>public/</code>，但<strong>如果之前已经提交过 public 目录下的文件，git 会继续跟踪它们</strong>。需要用 <code>git rm --cached</code> 解除跟踪（不会删除本地文件）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 从 git 跟踪中移除 public 目录（不删本地文件）</span><br>git <span class="hljs-built_in">rm</span> -r --cached public/<br><br><span class="hljs-comment"># 也移除 db.json</span><br>git <span class="hljs-built_in">rm</span> --cached db.json<br><br><span class="hljs-comment"># 提交清理</span><br>git commit -m <span class="hljs-string">&quot;chore: untrack public/ and db.json from git&quot;</span><br>git push<br></code></pre></td></tr></table></figure>
+
+<h3 id="Step-3：以后正确的发布流程"><a href="#Step-3：以后正确的发布流程" class="headerlink" title="Step 3：以后正确的发布流程"></a>Step 3：以后正确的发布流程</h3><p>以后每次更新博客，按这个流程走：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs gradle"><span class="hljs-number">1</span>️⃣ 写 <span class="hljs-regexp">/ 修改文章  →  source/</span>_posts/ 下的 .md 文件<br>   <br><span class="hljs-number">2</span>️⃣ 本地生成 HTML →  hexo generate<br>   （<span class="hljs-keyword">public</span>/ 会重建，但 git 不会跟踪它了）<br>   <br><span class="hljs-number">3</span>️⃣ 提交源码      →  git add . &amp;&amp; git commit -m <span class="hljs-string">&quot;add new post&quot;</span><br>   （只提交 .md 源文件和配置变更）<br>   <br><span class="hljs-number">4</span>️⃣ 推送源分支    →  git <span class="hljs-keyword">push</span> origin <span class="hljs-keyword">source</span><br>   <br><span class="hljs-number">5</span>️⃣ 部署到线上    →  hexo deploy<br>   （自动把 <span class="hljs-keyword">public</span>/ 推送到 deploy 分支，GitHub Pages 读这个分支）<br></code></pre></td></tr></table></figure>
+
+<h3 id="关键区别"><a href="#关键区别" class="headerlink" title="关键区别"></a>关键区别</h3><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>之前（错误）</th>
+<th>之后（正确）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>git commit</code> 会提交什么</td>
+<td>.md 源文件 + <strong>全部 public/ 文件</strong></td>
+<td>只提交 .md 源文件和配置</td>
+</tr>
+<tr>
+<td>git 历史</td>
+<td>每次 commit 所有文章日期都变</td>
+<td>只有真正改过的文件</td>
+</tr>
+<tr>
+<td>线上部署</td>
+<td>靠手动推 public/</td>
+<td>靠 <code>hexo deploy</code> 推 deploy 分支</td>
+</tr>
+</tbody></table>
+<h2 id="额外提示"><a href="#额外提示" class="headerlink" title="额外提示"></a>额外提示</h2><ul>
+<li>如果不想每次手动 <code>hexo generate</code> + <code>hexo deploy</code>，可以写一个简单的脚本或 GitHub Actions 自动执行</li>
+<li>存档页、分类页、标签页每次生成都会更新——这是正常的，只要不被 git 跟踪就没问题</li>
+<li>如果你的 GitHub Pages 从 <code>source</code> 分支读取（而不是 <code>deploy</code> 分支），需要检查分支设置</li>
+</ul>
+<hr>
+<p><strong>踩坑时间：2026-07-30</strong><br><strong>修复耗时：~5 分钟</strong><br><strong>GitHub Pages + Hexo + git 的不离不弃组合拳，值得记录一篇 📝</strong></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" class="category-chain-item">问题解决</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Hexo/">#Hexo</a>
+      
+        <a href="/tags/Git/">#Git</a>
+      
+        <a href="/tags/GitHub-Pages/">#GitHub Pages</a>
+      
+        <a href="/tags/%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/">#踩坑记录</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>🔧 Hexo 博客文章日期被全部刷新的解决方法</div>
+      <div>http://jane-lucky.github.io/2026/07/30/问题解决/2026-07-30-hexo-git-date-fix/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>彤～</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>July 30, 2026</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/07/30/%E7%83%AD%E7%82%B9%E8%BF%BD%E8%B8%AA/2026-07-30-hotspot-report/" title="🔥 每日热点趋势报告 | 2026-07-30">
+                        <span class="hidden-mobile">🔥 每日热点趋势报告 | 2026-07-30</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
