@@ -1,5 +1,6 @@
 ---
 title: CSV数据同步pg
+date: 2022-09-15 09:23:08
 categories: 
 - [CICD, drone]
 tags:

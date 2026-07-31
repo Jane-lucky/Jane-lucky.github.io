@@ -1,5 +1,6 @@
 ---
 title: shell脚本获取habor仓库信息
+date: 2022-09-15 09:23:08
 categories: 
 - [CICD, drone]
 tags:
