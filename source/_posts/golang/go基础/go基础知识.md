@@ -1,5 +1,6 @@
 ---
 title: go 语言基础——基础&函数
+date: 2022-10-12 15:14:50
 categories: 
 - [golang, go语言基础]
 tags:

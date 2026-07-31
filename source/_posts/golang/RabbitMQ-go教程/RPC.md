@@ -1,5 +1,6 @@
 ---
 title: (六) RabbitMQ go教程——远程过程调用（RPC）
+date: 2022-09-28 18:30:48
 categories: 
 - [golang, RabbitMQ-go教程]
 tags:

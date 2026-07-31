@@ -1,5 +1,6 @@
 ---
 title: (一) RabbitMQ go教程——Hello World
+date: 2022-09-21 09:11:27
 categories: 
 - [golang, RabbitMQ-go教程]
 tags:

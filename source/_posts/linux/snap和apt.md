@@ -1,5 +1,6 @@
 ---
 title: snap和apt
+date: 2022-09-15 09:23:08
 categories: 
 - linux
 tags:

@@ -1,5 +1,6 @@
 ---
 title: ubuntu 安装nodejs
+date: 2022-09-15 09:23:08
 categories: 
 - 编译安装
 tags:

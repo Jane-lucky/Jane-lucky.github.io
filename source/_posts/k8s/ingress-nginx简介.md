@@ -1,5 +1,6 @@
 ---
 title: ingress-nginx基础概念
+date: 2022-10-20 14:21:13
 categories: 
 - k8s
 tags:

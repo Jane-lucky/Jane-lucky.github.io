@@ -1,5 +1,6 @@
 ---
 title: 第一个gin程序
+date: 2022-09-15 09:23:08
 categories: 
 - [golang, gin框架]
 ---

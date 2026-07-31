@@ -1,5 +1,6 @@
 ---
 title: RAG实战与主流方案
+date: 2026-07-27 17:17:58
 categories:
 - RAG
 tags:

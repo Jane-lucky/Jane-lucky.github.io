@@ -1,5 +1,6 @@
 ---
 title: (五) RabbitMQ go教程——主题（topics）
+date: 2022-09-28 18:30:48
 categories: 
 - [golang, RabbitMQ-go教程]
 tags:

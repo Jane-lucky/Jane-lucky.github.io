@@ -1,5 +1,6 @@
 ---
 title: vim的常用操作
+date: 2022-09-20 09:48:36
 categories: 
 - linux
 tags:

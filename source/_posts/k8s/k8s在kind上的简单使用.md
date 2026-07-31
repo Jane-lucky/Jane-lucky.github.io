@@ -1,5 +1,6 @@
 ---
 title: k8s在kind上的简单使用
+date: 2022-09-15 09:23:08
 categories: 
 - k8s
 tags:

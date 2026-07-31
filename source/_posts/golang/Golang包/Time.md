@@ -1,5 +1,6 @@
 ---
 title: time包方法详解
+date: 2022-09-15 09:23:08
 categories: 
 - [golang, Golang包]
 ---

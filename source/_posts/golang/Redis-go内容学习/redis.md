@@ -1,5 +1,6 @@
 ---
 title: (一) redis go学习——基础操作
+date: 2022-10-14 15:57:17
 categories: 
 - [golang, redis-go学习]
 tags:

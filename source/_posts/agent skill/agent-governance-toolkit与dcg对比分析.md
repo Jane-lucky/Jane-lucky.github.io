@@ -1,5 +1,6 @@
 ---
 title: agent-governance-toolkit 与 dcg：全面治理框架 vs 单点命令防线
+date: 2026-07-31 10:20:00
 categories:
 - agent skill
 tags:

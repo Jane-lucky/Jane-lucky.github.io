@@ -1,5 +1,6 @@
 ---
 title: 修改linux命令提示符
+date: 2022-09-20 09:48:36
 categories: 
 - linux
 tags:

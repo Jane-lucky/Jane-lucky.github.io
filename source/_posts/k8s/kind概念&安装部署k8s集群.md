@@ -1,5 +1,6 @@
 ---
 title: kind概念&安装部署k8s集群
+date: 2022-09-15 09:23:08
 categories: 
 - k8s
 tags:

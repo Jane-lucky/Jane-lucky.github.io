@@ -1,5 +1,6 @@
 ---
 title: harbor镜像内容自动化同步metabese
+date: 2022-09-15 09:23:08
 categories: 
 - [CICD, drone]
 tags:

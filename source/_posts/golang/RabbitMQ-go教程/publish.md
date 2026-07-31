@@ -1,5 +1,6 @@
 ---
 title: (三) RabbitMQ go教程——发布/订阅（publish/subscribe）
+date: 2022-09-22 15:03:36
 categories: 
 - [golang, RabbitMQ-go教程]
 tags:

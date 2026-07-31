@@ -1,5 +1,6 @@
 ---
 title: Superpowers技能
+date: 2026-07-27 15:00:12
 categories:
 - agent skill
 tags:

@@ -1,5 +1,6 @@
 ---
 title: RabbitMQ服务搭建
+date: 2022-09-21 09:11:27
 categories: 
 - [golang, RabbitMQ-go教程]
 tags:

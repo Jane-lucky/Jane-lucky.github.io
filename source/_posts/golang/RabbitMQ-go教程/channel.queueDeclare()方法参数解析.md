@@ -1,5 +1,6 @@
 ---
 title: Go 第三方库之 amqp
+date: 2022-10-10 15:09:45
 categories: 
 - [golang, RabbitMQ-go教程]
 tags:

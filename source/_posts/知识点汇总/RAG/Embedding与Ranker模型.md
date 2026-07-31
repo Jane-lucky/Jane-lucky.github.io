@@ -1,5 +1,6 @@
 ---
 title: Embedding与Ranker模型
+date: 2026-07-27 17:52:09
 categories:
 - 知识点汇总
 tags:

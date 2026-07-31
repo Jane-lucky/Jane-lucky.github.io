@@ -1,5 +1,6 @@
 ---
 title: k8s基础
+date: 2022-09-19 18:23:14
 categories: 
 - k8s
 tags:

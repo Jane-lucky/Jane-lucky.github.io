@@ -1,5 +1,6 @@
 ---
 title: ingress-nginx安装部署
+date: 2022-10-20 14:21:13
 categories: 
 - k8s
 tags:

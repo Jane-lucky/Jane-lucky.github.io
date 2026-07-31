@@ -1,5 +1,6 @@
 ---
 title: crictl 对 Kubernetes 节点进行调试
+date: 2022-09-15 09:23:08
 categories: 
 - k8s
 tags:
