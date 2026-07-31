@@ -12,7 +12,7 @@ tags:
 
 在该示例中，会分别写一个生产者一个消费者，其中生产者发送简单的消息，消费者获取信息并打印。
 
-![python-one](Hello-world/python-one.png)
+![python-one]((一) RabbitMQ go教程——Hello World/python-one.png)
 
 # send.go
 
@@ -161,4 +161,4 @@ panic: Receiced a message: Hello World
 
 如果要检查队列，可以使用`rabbitmqctl list_queues`
 
-查看[第二节](http://jane-lucky.github.io/2022/09/20/golang/RabbitMQ-go教程/Hello-world/)创建简单的工作队列
+查看[第二节](http://jane-lucky.github.io/2022/09/20/golang/RabbitMQ-go教程/(一) RabbitMQ go教程——Hello World/)创建简单的工作队列

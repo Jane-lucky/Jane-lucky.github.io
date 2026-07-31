@@ -1,5 +1,5 @@
 ---
-title: (三) RabbitMQ go教程——发布/订阅（publish/subscribe）
+title: (三) RabbitMQ go教程——发布-订阅（publish-subscribe）
 date: 2022-09-22 15:03:36
 categories: 
 - [golang, RabbitMQ-go教程]
@@ -24,7 +24,7 @@ tags:
 
 消息模型的核心是生产者从来不直接向队列中发送任何消息，事实上，几乎所有的生产者都不知道消息会被传递到队列中。生产者会将消息发送至转换体中，它是一个十分简单的内容——一边接从所有的生产者中接收到消息，以便将消息推送到队列中。转换者必须明确的知道如何处理接收的消息。
 
-![exchanges](publish/exchanges.png)
+![exchanges]((三) RabbitMQ go教程——发布-订阅（publish-subscribe）/exchanges.png)
 
 转换的变量主要有`direct`、`topic`、`headers`、`fanout`
 
@@ -68,7 +68,7 @@ q, err := ch.QueueDeclare(
 
 # 绑定
 
-![bindings](publish/bindings.png)
+![bindings]((三) RabbitMQ go教程——发布-订阅（publish-subscribe）/bindings.png)
 
 定义了一个`fanout`的转换体和队列，现在需要告诉转换体发送消息到队列中，该操作成为**绑定**
 
@@ -254,7 +254,7 @@ func bodyFrom(args []string) string {
 
 
 
-![runResult](publish/runResult.png)
+![runResult]((三) RabbitMQ go教程——发布-订阅（publish-subscribe）/runResult.png)
 
 ```shell
 root@2f82bf702d30:/# rabbitmqctl list_exchanges

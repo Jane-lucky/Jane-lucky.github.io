@@ -24,7 +24,7 @@ tags:
 
 绑定的key也应该是同样的形式，`topic`和`direct`、`fanout`是存在相同的特征的，不同的只是匹配模式不同
 
-![python-five](主题topic/python-five.png)
+![python-five]((五) RabbitMQ go教程——主题（topics）/python-five.png)
 
 `topic`通过配置字符串的方式来进行消息队列的传输，
 

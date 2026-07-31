@@ -71,7 +71,7 @@ go run send.go Fourth message....
 go run send.go Fifth message.....
 ```
 
-![1663727458340](工作队列/1663727458340.png)
+![1663727458340]((二) RabbitMQ go教程——工作队列（work queues）/1663727458340.png)
 
 # 二
 

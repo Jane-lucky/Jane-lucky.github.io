@@ -14,7 +14,7 @@ tags:
 
 公开从集群外部到集群内服务的http和https路由。流量路由有Ingress组员上定义的规则控制。
 
-![Ingress](ingress-nginx简介/image-20221020111254258.png)
+![Ingress](ingress-nginx基础概念/image-20221020111254258.png)
 
 ## 规则
 
@@ -55,13 +55,13 @@ spec:
 
 根据请求的http URI将来自同一IP地址的路由到多个service。
 
-![image-20221020112742780](ingress-nginx简介/image-20221020112742780.png)
+![image-20221020112742780](ingress-nginx基础概念/image-20221020112742780.png)
 
 ### 基于名称的虚拟托管
 
 针对多个主机名的http流量路由由到同一个IP地址上。
 
-![image-20221020113006395](ingress-nginx简介/image-20221020113006395.png)
+![image-20221020113006395](ingress-nginx基础概念/image-20221020113006395.png)
 
 如，以下 Ingress 会将请求 `first.bar.com` 的流量路由到 `service1`，将请求 `second.bar.com` 的流量路由到 `service2`，而所有其他流量都会被路由到 `service3`。
 

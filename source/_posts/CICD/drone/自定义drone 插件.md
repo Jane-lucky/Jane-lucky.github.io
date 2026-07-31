@@ -1,5 +1,5 @@
 ---
-title: 自定义droe 插件
+title: 自定义drone 插件
 date: 2022-09-15 09:23:08
 categories: 
 - [CICD, drone]

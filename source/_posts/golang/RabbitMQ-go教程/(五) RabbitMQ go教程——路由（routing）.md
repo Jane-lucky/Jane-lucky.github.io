@@ -239,4 +239,4 @@ ubuntu@root:~/go/src/gotest/send$ go run send.go error
 
 ```
 
-![runtime](路由/runtime.png)
+![runtime]((五) RabbitMQ go教程——路由（routing）/runtime.png)
