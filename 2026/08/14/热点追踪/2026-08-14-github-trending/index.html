@@ -1,0 +1,878 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="彤～">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="今日GitHub Trending精选聚焦AI Agent工具链与端侧AI两大爆发方向，精选5个技术深度高、实用性强的开源项目。这些项目代表了AI辅助开发、Agent编排、端侧推理等前沿方向，值得开发者深入探索。  1. cc-switch - 编程Agent统一桌面助手项目地址：https:&#x2F;&#x2F;github.com&#x2F;farion1231&#x2F;cc-switch星标数：127,204 ⭐语言：Rust">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GitHub Trending 精选（2026-08-14）">
+<meta property="og:url" content="http://jane-lucky.github.io/2026/08/14/%E7%83%AD%E7%82%B9%E8%BF%BD%E8%B8%AA/2026-08-14-github-trending/index.html">
+<meta property="og:site_name" content="Jane&#39;s Blog">
+<meta property="og:description" content="今日GitHub Trending精选聚焦AI Agent工具链与端侧AI两大爆发方向，精选5个技术深度高、实用性强的开源项目。这些项目代表了AI辅助开发、Agent编排、端侧推理等前沿方向，值得开发者深入探索。  1. cc-switch - 编程Agent统一桌面助手项目地址：https:&#x2F;&#x2F;github.com&#x2F;farion1231&#x2F;cc-switch星标数：127,204 ⭐语言：Rust">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-08-14T10:00:00.000Z">
+<meta property="article:modified_time" content="2026-08-14T10:24:49.252Z">
+<meta property="article:author" content="彤～">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="GitHub">
+<meta property="article:tag" content="Trending">
+<meta property="article:tag" content="开源项目">
+<meta property="article:tag" content="开发者工具">
+<meta property="article:tag" content="Rust">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>GitHub Trending 精选（2026-08-14） - Jane&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jane-lucky.github.io","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Jane&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="GitHub Trending 精选（2026-08-14）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-08-14 18:00" pubdate>
+          August 14, 2026 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.8k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          41 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">GitHub Trending 精选（2026-08-14）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>今日GitHub Trending精选聚焦AI Agent工具链与端侧AI两大爆发方向，精选5个技术深度高、实用性强的开源项目。这些项目代表了AI辅助开发、Agent编排、端侧推理等前沿方向，值得开发者深入探索。</p>
+<hr>
+<h2 id="1-cc-switch-编程Agent统一桌面助手"><a href="#1-cc-switch-编程Agent统一桌面助手" class="headerlink" title="1. cc-switch - 编程Agent统一桌面助手"></a>1. cc-switch - 编程Agent统一桌面助手</h2><p><strong>项目地址</strong>：<a target="_blank" rel="noopener" href="https://github.com/farion1231/cc-switch">https://github.com/farion1231/cc-switch</a><br><strong>星标数</strong>：127,204 ⭐<br><strong>语言</strong>：Rust<br><strong>简介</strong>：跨平台桌面All-in-One助手，统一管理Claude Code、Codex、OpenCode、OpenClaw、Grok Build和Hermes Agent。</p>
+<h3 id="趋势介绍"><a href="#趋势介绍" class="headerlink" title="趋势介绍"></a>趋势介绍</h3><p>cc-switch解决了AI编程Agent碎片化的问题——开发者经常在Claude Code、Codex、OpenCode等多个Agent之间切换，每个都有独立的配置和工作流。cc-switch用Rust构建了一个统一桌面入口，一键切换Agent、共享上下文和配置，成为”AI编程工具的瑞士军刀”。近期因支持6大主流Agent和极快的切换速度而爆发。</p>
+<h3 id="主要特性"><a href="#主要特性" class="headerlink" title="主要特性"></a>主要特性</h3><ul>
+<li><strong>6大Agent统一管理</strong>：Claude Code、Codex、OpenCode、OpenClaw、Grok Build、Hermes Agent</li>
+<li><strong>一键切换</strong>：毫秒级Agent切换，保持工作上下文</li>
+<li><strong>共享配置</strong>：统一的API密钥、模型设置、项目配置</li>
+<li><strong>Rust高性能</strong>：启动快、内存占用极低</li>
+<li><strong>跨平台</strong>：macOS、Windows、Linux统一体验</li>
+<li><strong>工作空间隔离</strong>：每个项目独立Agent配置和记忆</li>
+</ul>
+<h3 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装</span><br>curl -sSL https://get.cc-switch.dev | sh<br><br><span class="hljs-comment"># 启动桌面应用</span><br>cc-switch<br><br><span class="hljs-comment"># 指定默认Agent</span><br>cc-switch config --default codex<br><br><span class="hljs-comment"># 在项目中切换Agent</span><br>cc-switch use claude-code<br></code></pre></td></tr></table></figure>
+
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><ul>
+<li><strong>多Agent工作流</strong>：用Codex做初版代码，Claude Code做深度重构，OpenClaw做部署</li>
+<li><strong>团队统一工具</strong>：团队统一使用cc-switch，每人可选自己偏好的Agent</li>
+<li><strong>A/B对比</strong>：同一任务用不同Agent执行，对比效果选择最优</li>
+</ul>
+<hr>
+<h2 id="2-headroom-LLM输入压缩引擎"><a href="#2-headroom-LLM输入压缩引擎" class="headerlink" title="2. headroom - LLM输入压缩引擎"></a>2. headroom - LLM输入压缩引擎</h2><p><strong>项目地址</strong>：<a target="_blank" rel="noopener" href="https://github.com/headroomlabs-ai/headroom">https://github.com/headroomlabs-ai/headroom</a><br><strong>星标数</strong>：66,297 ⭐<br><strong>语言</strong>：Python<br><strong>简介</strong>：在工具输出、日志、文件和RAG片段到达LLM之前压缩，编码Agent减少20% token，通用场景减少60-95%。</p>
+<h3 id="趋势介绍-1"><a href="#趋势介绍-1" class="headerlink" title="趋势介绍"></a>趋势介绍</h3><p>headroom直击AI Agent的核心痛点——token浪费。当Agent调用工具获取大量输出、读取长日志、检索RAG文档时，大量token被浪费在无关信息上。headroom在信息到达LLM之前智能压缩，保留语义关键内容，显著降低成本和延迟。近期因”编码Agent减少20% token”的实测数据而引发关注。</p>
+<h3 id="主要特性-1"><a href="#主要特性-1" class="headerlink" title="主要特性"></a>主要特性</h3><ul>
+<li><strong>语义压缩</strong>：不是简单截断，而是保留关键语义信息</li>
+<li><strong>多源支持</strong>：工具输出、日志文件、RAG chunks、代码片段</li>
+<li><strong>编码Agent优化</strong>：针对代码场景特殊优化，减少20% token</li>
+<li><strong>通用压缩</strong>：非代码场景减少60-95% token</li>
+<li><strong>流式处理</strong>：支持流式输入，不阻塞Agent执行</li>
+<li><strong>可配置压缩率</strong>：根据任务需求调整压缩强度</li>
+</ul>
+<h3 id="如何使用-1"><a href="#如何使用-1" class="headerlink" title="如何使用"></a>如何使用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装</span><br>pip install headroom<br><br><span class="hljs-comment"># 基础使用</span><br>from headroom import compress<br>compressed = compress(tool_output, target_ratio=0.3)<br><br><span class="hljs-comment"># 与LangChain集成</span><br>from headroom.integrations import langchain_compress<br>chain = langchain_compress(your_chain, ratio=0.3)<br></code></pre></td></tr></table></figure>
+
+<h3 id="应用场景-1"><a href="#应用场景-1" class="headerlink" title="应用场景"></a>应用场景</h3><ul>
+<li><strong>长日志分析</strong>：压缩千行日志为关键信息，Agent仍能准确定位问题</li>
+<li><strong>RAG优化</strong>：压缩检索结果，更多文档塞进上下文窗口</li>
+<li><strong>成本控制</strong>：大规模Agent部署时，token成本降低20-95%</li>
+</ul>
+<hr>
+<h2 id="3-RuView-WiFi信号空间感知"><a href="#3-RuView-WiFi信号空间感知" class="headerlink" title="3. RuView - WiFi信号空间感知"></a>3. RuView - WiFi信号空间感知</h2><p><strong>项目地址</strong>：<a target="_blank" rel="noopener" href="https://github.com/ruvnet/RuView">https://github.com/ruvnet/RuView</a><br><strong>星标数</strong>：89,999 ⭐<br><strong>语言</strong>：Rust<br><strong>简介</strong>：将普通WiFi信号转化为实时空间智能、生命体征监测和存在检测。</p>
+<h3 id="趋势介绍-2"><a href="#趋势介绍-2" class="headerlink" title="趋势介绍"></a>趋势介绍</h3><p>RuView是一个令人惊叹的项目——不需要摄像头、不需要穿戴设备，只用你家现有的WiFi路由器信号，就能实现房间内的人员定位、呼吸心率监测和活动识别。核心技术是WiFi CSI（信道状态信息）的相位变化分析，用Rust实现实时处理。近期因”零硬件成本智能家居”的定位而爆火。</p>
+<h3 id="主要特性-2"><a href="#主要特性-2" class="headerlink" title="主要特性"></a>主要特性</h3><ul>
+<li><strong>零额外硬件</strong>：仅用现有WiFi路由器，无需摄像头或传感器</li>
+<li><strong>隐私保护</strong>：不采集图像，只分析WiFi信号变化</li>
+<li><strong>实时定位</strong>：亚米级室内定位精度</li>
+<li><strong>生命体征</strong>：通过呼吸引起的信号微变监测心率</li>
+<li><strong>存在检测</strong>：判断房间是否有人，自动控制灯光/空调</li>
+<li><strong>Rust高性能</strong>：实时处理WiFi CSI数据，延迟&lt;100ms</li>
+</ul>
+<h3 id="如何使用-2"><a href="#如何使用-2" class="headerlink" title="如何使用"></a>如何使用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装（需要支持CSI的WiFi网卡）</span><br>cargo install ruview<br><br><span class="hljs-comment"># 配置监听接口</span><br>ruview --interface wlan0 --room living-room<br><br><span class="hljs-comment"># 启动监测服务</span><br>ruview serve --port 8080<br></code></pre></td></tr></table></figure>
+
+<h3 id="应用场景-2"><a href="#应用场景-2" class="headerlink" title="应用场景"></a>应用场景</h3><ul>
+<li><strong>智能家居</strong>：人来灯亮、人走灯灭，无需任何传感器</li>
+<li><strong>老人看护</strong>：非接触式呼吸心率监测，异常自动报警</li>
+<li><strong>安防系统</strong>：无摄像头入侵检测，隐私友好</li>
+<li><strong>办公空间</strong>：会议室占用检测，优化空间利用率</li>
+</ul>
+<hr>
+<h2 id="4-multica-多Agent任务分配器"><a href="#4-multica-多Agent任务分配器" class="headerlink" title="4. multica - 多Agent任务分配器"></a>4. multica - 多Agent任务分配器</h2><p><strong>项目地址</strong>：<a target="_blank" rel="noopener" href="https://github.com/multica-ai/multica">https://github.com/multica-ai/multica</a><br><strong>星标数</strong>：45,942 ⭐<br><strong>语言</strong>：Go<br><strong>简介</strong>：将Issue分配给Claude Code、Codex、Cursor等17+编程Agent，像分配给队友一样——开源可自托管。</p>
+<h3 id="趋势介绍-3"><a href="#趋势介绍-3" class="headerlink" title="趋势介绍"></a>趋势介绍</h3><p>multica把AI编程Agent当”虚拟队友”来管理。你可以给一个GitHub Issue分配给Claude Code处理，另一个给Codex，还能设置依赖关系和审查流程。这解决了”多个Agent如何协作”的编排问题，是AI Agent从单兵作战走向团队协作的关键基础设施。</p>
+<h3 id="主要特性-3"><a href="#主要特性-3" class="headerlink" title="主要特性"></a>主要特性</h3><ul>
+<li><strong>17+Agent支持</strong>：Claude Code、Codex、Cursor、OpenClaw等</li>
+<li><strong>Issue级分配</strong>：直接从GitHub Issue分配给指定Agent</li>
+<li><strong>依赖编排</strong>：设置Agent间任务依赖，自动触发下游</li>
+<li><strong>审查流程</strong>：Agent产出自动进入PR review流程</li>
+<li><strong>自托管</strong>：Go编写，Docker一键部署</li>
+<li><strong>仪表盘</strong>：实时查看各Agent状态和任务进度</li>
+</ul>
+<h3 id="如何使用-3"><a href="#如何使用-3" class="headerlink" title="如何使用"></a>如何使用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Docker部署</span><br>docker run -d -p 3000:3000 multica/multica<br><br><span class="hljs-comment"># 或从源码</span><br>go install github.com/multica-ai/multica@latest<br><br><span class="hljs-comment"># 分配Issue给Agent</span><br>multica assign --issue 42 --agent claude-code --repo my-project<br></code></pre></td></tr></table></figure>
+
+<h3 id="应用场景-3"><a href="#应用场景-3" class="headerlink" title="应用场景"></a>应用场景</h3><ul>
+<li><strong>大规模并行开发</strong>：多个Agent同时处理不同Issue</li>
+<li><strong>流水线式开发</strong>：Codex写初版 → Claude Code重构 → OpenClaw测试</li>
+<li><strong>团队+Agent混合</strong>：人类审查Agent产出，Agent辅助人类开发</li>
+</ul>
+<hr>
+<h2 id="5-odysseus-自托管AI工作空间"><a href="#5-odysseus-自托管AI工作空间" class="headerlink" title="5. odysseus - 自托管AI工作空间"></a>5. odysseus - 自托管AI工作空间</h2><p><strong>项目地址</strong>：<a target="_blank" rel="noopener" href="https://github.com/odysseus-dev/odysseus">https://github.com/odysseus-dev/odysseus</a><br><strong>星标数</strong>：85,354 ⭐<br><strong>语言</strong>：Python<br><strong>简介</strong>：自托管AI工作空间，一站式运行模型、管理Agent、处理数据。</p>
+<h3 id="趋势介绍-4"><a href="#趋势介绍-4" class="headerlink" title="趋势介绍"></a>趋势介绍</h3><p>odysseus定位为”自托管的AI一切”——在一个Docker容器里运行LLM、管理Agent、处理文档、执行工作流。与Open WebUI等单功能工具不同，odysseus提供完整的工作空间概念，包含文件管理、Agent编排、模型路由和知识库。近期因”一个命令启动完整AI环境”而受到自托管爱好者追捧。</p>
+<h3 id="主要特性-4"><a href="#主要特性-4" class="headerlink" title="主要特性"></a>主要特性</h3><ul>
+<li><strong>一键启动</strong>：Docker Compose启动完整AI环境</li>
+<li><strong>多模型路由</strong>：自动在本地/云端模型间切换</li>
+<li><strong>Agent编排</strong>：可视化构建多Agent工作流</li>
+<li><strong>文档处理</strong>：内置RAG、OCR、格式转换</li>
+<li><strong>知识库</strong>：个人/团队知识库，AI辅助索引和检索</li>
+<li><strong>API兼容</strong>：OpenAI兼容API，现有工具无缝接入</li>
+</ul>
+<h3 id="如何使用-4"><a href="#如何使用-4" class="headerlink" title="如何使用"></a>如何使用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 一键启动</span><br>git <span class="hljs-built_in">clone</span> https://github.com/odysseus-dev/odysseus<br><span class="hljs-built_in">cd</span> odysseus<br>docker compose up -d<br><br><span class="hljs-comment"># 访问 http://localhost:8080</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="应用场景-4"><a href="#应用场景-4" class="headerlink" title="应用场景"></a>应用场景</h3><ul>
+<li><strong>企业AI平台</strong>：私有化部署，数据不出内网</li>
+<li><strong>个人AI工作站</strong>：本地运行模型，隐私保护</li>
+<li><strong>团队协作</strong>：共享知识库和Agent配置</li>
+</ul>
+<hr>
+<h2 id="分语言趋势速览"><a href="#分语言趋势速览" class="headerlink" title="分语言趋势速览"></a>分语言趋势速览</h2><h3 id="Python-Top-5"><a href="#Python-Top-5" class="headerlink" title="Python Top 5"></a>Python Top 5</h3><table>
+<thead>
+<tr>
+<th>项目</th>
+<th align="right">⭐</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NousResearch/hermes-agent</td>
+<td align="right">230,385</td>
+<td>成长型AI代理</td>
+</tr>
+<tr>
+<td>Significant-Gravitas/AutoGPT</td>
+<td align="right">186,618</td>
+<td>通用AI Agent</td>
+</tr>
+<tr>
+<td>huggingface/transformers</td>
+<td align="right">164,102</td>
+<td>模型定义框架</td>
+</tr>
+<tr>
+<td>langflow-ai/langflow</td>
+<td align="right">153,228</td>
+<td>AI工作流构建</td>
+</tr>
+<tr>
+<td>open-webui/open-webui</td>
+<td align="right">148,759</td>
+<td>友好AI界面</td>
+</tr>
+</tbody></table>
+<h3 id="TypeScript-Top-5"><a href="#TypeScript-Top-5" class="headerlink" title="TypeScript Top 5"></a>TypeScript Top 5</h3><table>
+<thead>
+<tr>
+<th>项目</th>
+<th align="right">⭐</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>freeCodeCamp/freeCodeCamp</td>
+<td align="right">454,006</td>
+<td>编程学习平台</td>
+</tr>
+<tr>
+<td>openclaw/openclaw</td>
+<td align="right">386,271</td>
+<td>个人AI助手</td>
+</tr>
+<tr>
+<td>n8n-io/n8n</td>
+<td align="right">200,599</td>
+<td>工作流自动化</td>
+</tr>
+<tr>
+<td>anomalyco/opencode</td>
+<td align="right">197,338</td>
+<td>开源编程代理</td>
+</tr>
+<tr>
+<td>microsoft/vscode</td>
+<td align="right">188,689</td>
+<td>代码编辑器</td>
+</tr>
+</tbody></table>
+<h3 id="Go-Top-5"><a href="#Go-Top-5" class="headerlink" title="Go Top 5"></a>Go Top 5</h3><table>
+<thead>
+<tr>
+<th>项目</th>
+<th align="right">⭐</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>golang/go</td>
+<td align="right">135,763</td>
+<td>Go语言本身</td>
+</tr>
+<tr>
+<td>kubernetes/kubernetes</td>
+<td align="right">124,511</td>
+<td>容器编排</td>
+</tr>
+<tr>
+<td>fatedier/frp</td>
+<td align="right">108,813</td>
+<td>内网穿透</td>
+</tr>
+<tr>
+<td>gohugoio/hugo</td>
+<td align="right">89,443</td>
+<td>静态站点生成</td>
+</tr>
+<tr>
+<td>infiniflow/ragflow</td>
+<td align="right">88,249</td>
+<td>RAG引擎</td>
+</tr>
+</tbody></table>
+<h3 id="Rust-Top-5"><a href="#Rust-Top-5" class="headerlink" title="Rust Top 5"></a>Rust Top 5</h3><table>
+<thead>
+<tr>
+<th>项目</th>
+<th align="right">⭐</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>farion1231/cc-switch</td>
+<td align="right">127,204</td>
+<td>Agent统一助手</td>
+</tr>
+<tr>
+<td>rustdesk/rustdesk</td>
+<td align="right">120,413</td>
+<td>远程桌面</td>
+</tr>
+<tr>
+<td>rust-lang/rust</td>
+<td align="right">115,501</td>
+<td>Rust语言本身</td>
+</tr>
+<tr>
+<td>tauri-apps/tauri</td>
+<td align="right">110,224</td>
+<td>桌面应用框架</td>
+</tr>
+<tr>
+<td>denoland/deno</td>
+<td align="right">108,259</td>
+<td>JS/TS运行时</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="趋势洞察"><a href="#趋势洞察" class="headerlink" title="趋势洞察"></a>趋势洞察</h2><ol>
+<li><strong>Agent工具链爆发</strong>：cc-switch、multica等项目表明，AI编程Agent已从”单工具”进入”多Agent编排”阶段，基础设施层正在成型</li>
+<li><strong>Token效率成刚需</strong>：headroom的走红说明，随着Agent调用链变长，token成本和延迟成为首要优化目标</li>
+<li><strong>非视觉感知兴起</strong>：RuView用WiFi信号替代摄像头，代表”隐私友好感知”的技术方向</li>
+<li><strong>自托管持续升温</strong>：odysseus、multica等自托管方案表明，企业和开发者对数据主权的重视持续加深</li>
+<li><strong>Rust统治Agent基础设施</strong>：cc-switch、RuView等核心基础设施选择Rust，性能和可靠性是关键</li>
+</ol>
+<hr>
+<p><strong>参考链接</strong>：</p>
+<ul>
+<li>cc-switch: <a target="_blank" rel="noopener" href="https://github.com/farion1231/cc-switch">https://github.com/farion1231/cc-switch</a></li>
+<li>headroom: <a target="_blank" rel="noopener" href="https://github.com/headroomlabs-ai/headroom">https://github.com/headroomlabs-ai/headroom</a></li>
+<li>RuView: <a target="_blank" rel="noopener" href="https://github.com/ruvnet/RuView">https://github.com/ruvnet/RuView</a></li>
+<li>multica: <a target="_blank" rel="noopener" href="https://github.com/multica-ai/multica">https://github.com/multica-ai/multica</a></li>
+<li>odysseus: <a target="_blank" rel="noopener" href="https://github.com/odysseus-dev/odysseus">https://github.com/odysseus-dev/odysseus</a></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%83%AD%E7%82%B9%E8%BF%BD%E8%B8%AA/" class="category-chain-item">热点追踪</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%83%AD%E7%82%B9%E8%BF%BD%E8%B8%AA/GitHub%E8%B6%8B%E5%8A%BF/" class="category-chain-item">GitHub趋势</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/AI/">#AI</a>
+      
+        <a href="/tags/GitHub/">#GitHub</a>
+      
+        <a href="/tags/Trending/">#Trending</a>
+      
+        <a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/">#开源项目</a>
+      
+        <a href="/tags/%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7/">#开发者工具</a>
+      
+        <a href="/tags/Rust/">#Rust</a>
+      
+        <a href="/tags/Python/">#Python</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>GitHub Trending 精选（2026-08-14）</div>
+      <div>http://jane-lucky.github.io/2026/08/14/热点追踪/2026-08-14-github-trending/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>彤～</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>August 14, 2026</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/08/13/%E7%83%AD%E7%82%B9%E8%BF%BD%E8%B8%AA/2026-08-13-github-trending/" title="GitHub Trending 精选（2026-08-13）">
+                        <span class="hidden-mobile">GitHub Trending 精选（2026-08-13）</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

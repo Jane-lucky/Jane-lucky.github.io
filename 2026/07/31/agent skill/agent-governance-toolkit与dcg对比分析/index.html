@@ -1,0 +1,804 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="彤～">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="agent-governance-toolkit 与 dcg：全面治理框架 vs 单点命令防线一句话概括agent-governance-toolkit（AGT）是微软出品的 AI Agent 全面治理框架，管的是”工具调用层的策略、身份、审计”；dcg（destructive_command_guard）是一个高性能命令守卫，管的是”破坏性 shell&#x2F;git 命令执行前拦截”。一个是企业级安保">
+<meta property="og:type" content="article">
+<meta property="og:title" content="agent-governance-toolkit 与 dcg：全面治理框架 vs 单点命令防线">
+<meta property="og:url" content="http://jane-lucky.github.io/2026/07/31/agent%20skill/agent-governance-toolkit%E4%B8%8Edcg%E5%AF%B9%E6%AF%94%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="Jane&#39;s Blog">
+<meta property="og:description" content="agent-governance-toolkit 与 dcg：全面治理框架 vs 单点命令防线一句话概括agent-governance-toolkit（AGT）是微软出品的 AI Agent 全面治理框架，管的是”工具调用层的策略、身份、审计”；dcg（destructive_command_guard）是一个高性能命令守卫，管的是”破坏性 shell&#x2F;git 命令执行前拦截”。一个是企业级安保">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-07-31T02:20:00.000Z">
+<meta property="article:modified_time" content="2026-08-03T06:59:43.724Z">
+<meta property="article:author" content="彤～">
+<meta property="article:tag" content="AI Agent">
+<meta property="article:tag" content="AI安全">
+<meta property="article:tag" content="dcg">
+<meta property="article:tag" content="安全工具分析">
+<meta property="article:tag" content="agent-governance-toolkit">
+<meta property="article:tag" content="微软">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>agent-governance-toolkit 与 dcg：全面治理框架 vs 单点命令防线 - Jane&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jane-lucky.github.io","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Jane&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="agent-governance-toolkit 与 dcg：全面治理框架 vs 单点命令防线"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-07-31 10:20" pubdate>
+          July 31, 2026 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.4k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          29 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">agent-governance-toolkit 与 dcg：全面治理框架 vs 单点命令防线</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="agent-governance-toolkit-与-dcg：全面治理框架-vs-单点命令防线"><a href="#agent-governance-toolkit-与-dcg：全面治理框架-vs-单点命令防线" class="headerlink" title="agent-governance-toolkit 与 dcg：全面治理框架 vs 单点命令防线"></a>agent-governance-toolkit 与 dcg：全面治理框架 vs 单点命令防线</h1><h2 id="一句话概括"><a href="#一句话概括" class="headerlink" title="一句话概括"></a>一句话概括</h2><p><strong>agent-governance-toolkit（AGT）是微软出品的 AI Agent 全面治理框架，管的是”工具调用层的策略、身份、审计”；dcg（destructive_command_guard）是一个高性能命令守卫，管的是”破坏性 shell/git 命令执行前拦截”。一个是企业级安保体系，一个是安检门——定位不同，但可以互补。</strong></p>
+<hr>
+<h2 id="两个工具分别是什么？"><a href="#两个工具分别是什么？" class="headerlink" title="两个工具分别是什么？"></a>两个工具分别是什么？</h2><h3 id="agent-governance-toolkit（AGT）"><a href="#agent-governance-toolkit（AGT）" class="headerlink" title="agent-governance-toolkit（AGT）"></a>agent-governance-toolkit（AGT）</h3><p>微软出品的开源治理工具包，定位是 <strong>Policy enforcement（策略执行）、zero-trust identity（零信任身份）、execution sandboxing（执行沙箱）、reliability engineering（可靠性工程）</strong>，官方宣称覆盖 OWASP Agentic Top 10 全部 10 项风险。</p>
+<ul>
+<li>安装：<code>pip install agent-governance-toolkit[full]</code></li>
+<li>核心用法：用 <code>govern()</code> 包装任意工具函数，每次调用都经过策略引擎检查</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> agentmesh.governance <span class="hljs-keyword">import</span> govern<br><br>safe_tool = govern(my_tool, policy=<span class="hljs-string">&quot;policy.yaml&quot;</span>)  <span class="hljs-comment"># 每次调用都检查、记录、强制</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># policy.yaml</span><br><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">governance.toolkit/v1</span><br><span class="hljs-attr">name:</span> <span class="hljs-string">production-policy</span><br><span class="hljs-attr">default_action:</span> <span class="hljs-string">allow</span><br><span class="hljs-attr">rules:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">block-destructive</span><br>    <span class="hljs-attr">condition:</span> <span class="hljs-string">&quot;action.type in [&#x27;drop&#x27;, &#x27;delete&#x27;, &#x27;truncate&#x27;]&quot;</span><br>    <span class="hljs-attr">action:</span> <span class="hljs-string">deny</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">require-approval-for-send</span><br>    <span class="hljs-attr">condition:</span> <span class="hljs-string">&quot;action.type == &#x27;send_email&#x27;&quot;</span><br>    <span class="hljs-attr">action:</span> <span class="hljs-string">require_approval</span><br>    <span class="hljs-attr">approvers:</span> [<span class="hljs-string">&quot;security-team&quot;</span>]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>多语言 SDK：TypeScript / .NET / Rust / Go</li>
+<li>支持 MCP server 集成，Claude Code 可装为插件</li>
+<li>关键特性：策略引擎（YAML 规则）、人工审批流（require_approval + approvers）、防篡改审计日志、零信任身份（回答”哪个 agent 干的”）</li>
+</ul>
+<h3 id="destructive-command-guard（dcg）"><a href="#destructive-command-guard（dcg）" class="headerlink" title="destructive_command_guard（dcg）"></a>destructive_command_guard（dcg）</h3><p>Dicklesworthstone 开源的命令守卫，定位是 <strong>“在破坏性命令执行之前拦截它们”</strong> 的高性能 Hook。支持 Claude Code、Codex CLI、Gemini CLI、Copilot CLI、Cursor、Grok、OpenCode、Aider 等主流 AI 编程工具。</p>
+<ul>
+<li>安装：<code>curl -fsSL &quot;.../install.sh&quot; | bash -s -- --easy-mode</code></li>
+<li>底层 Rust + SIMD 加速，亚毫秒延迟</li>
+<li>开箱即用：默认阻止 <code>git reset --hard</code>、<code>rm -rf ./src</code>、<code>DROP TABLE users</code> 等</li>
+<li>50+ 安全规则包：数据库、Kubernetes、Docker、AWS/GCP/Azure、Terraform 等</li>
+<li>智能上下文检测：<code>grep &quot;rm -rf&quot;</code>（查数据）不拦，<code>rm -rf /</code>（执行）拦</li>
+<li>Heredoc/内联脚本扫描：能发现 <code>python -c &quot;os.remove(...)&quot;</code> 这类隐藏破坏</li>
+</ul>
+<hr>
+<h2 id="核心区别对比"><a href="#核心区别对比" class="headerlink" title="核心区别对比"></a>核心区别对比</h2><table>
+<thead>
+<tr>
+<th>维度</th>
+<th><strong>agent-governance-toolkit (AGT)</strong></th>
+<th><strong>destructive_command_guard (dcg)</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>出品方</td>
+<td>微软（Microsoft）</td>
+<td>Dicklesworthstone（个人开源）</td>
+</tr>
+<tr>
+<td>定位</td>
+<td>AI Agent 全面治理框架</td>
+<td>AI 编码代理的命令级安全钩子</td>
+</tr>
+<tr>
+<td>拦截层级</td>
+<td><strong>工具调用层</strong>（应用代码内，可管任意工具：send_email、query_database、drop_table）</td>
+<td><strong>Shell/Git 命令层</strong>（进程执行前的 hook）</td>
+</tr>
+<tr>
+<td>实现</td>
+<td>Python 库 + TS/.NET/Rust/Go SDK</td>
+<td>Rust 高性能二进制</td>
+</tr>
+<tr>
+<td>覆盖范围</td>
+<td>OWASP Agentic Top 10 全部 10 项</td>
+<td>只覆盖”破坏性命令”这一类</td>
+</tr>
+<tr>
+<td>身份追踪</td>
+<td>✅ 零信任身份（能回答”哪个 agent 干的”）</td>
+<td>❌ 无</td>
+</tr>
+<tr>
+<td>审计能力</td>
+<td>✅ 防篡改审计日志（策略、请求、放行/拒绝原因全记录）</td>
+<td>❌ 仅终端输出拒绝面板</td>
+</tr>
+<tr>
+<td>审批流</td>
+<td>✅ <code>require_approval</code> + 指定审批人</td>
+<td>❌ 直接拦截 + 建议替代命令</td>
+</tr>
+<tr>
+<td>部署方式</td>
+<td>代码集成（pip + 包装工具函数）</td>
+<td>零配置（curl 安装 + 自动配置 agent hooks）</td>
+</tr>
+<tr>
+<td>性能开销</td>
+<td>每次工具调用走策略引擎</td>
+<td>亚毫秒（SIMD 加速）</td>
+</tr>
+<tr>
+<td>上手难度</td>
+<td>需要写策略、改代码</td>
+<td>装完即用</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="设计哲学差异"><a href="#设计哲学差异" class="headerlink" title="设计哲学差异"></a>设计哲学差异</h2><h3 id="AGT：不跟-prompt-较劲"><a href="#AGT：不跟-prompt-较劲" class="headerlink" title="AGT：不跟 prompt 较劲"></a>AGT：不跟 prompt 较劲</h3><p>AGT 的核心理念是：**”请遵守规则”只是对一个随机性系统的礼貌请求**。微软引用 OWASP LLM01:2025 和 ICLR 2025 论文（对 GPT-4o、Claude 3 等模型的自适应攻击成功率 100%）说明：模型层的防御本质上是概率性的，不可靠。</p>
+<p>所以 AGT 选择在<strong>确定性应用代码</strong>中拦截每一次工具调用——策略引擎拒绝的动作不是”不太可能发生”，而是<strong>结构性不可能发生</strong>。这是”请求 agent 表现好”与”让 agent 无法作恶”之间的本质区别。</p>
+<h3 id="dcg：抓住唯一有效的干预窗口"><a href="#dcg：抓住唯一有效的干预窗口" class="headerlink" title="dcg：抓住唯一有效的干预窗口"></a>dcg：抓住唯一有效的干预窗口</h3><p>dcg 的切入点是运行时命令拦截：命令已经生成但还没执行，这中间有几百微秒的空隙。它不试图理解 agent 的”意图”，只做模式匹配——命令是否匹配危险模式库，匹配就拦。</p>
+<p>它的设计约束很明确：</p>
+<table>
+<thead>
+<tr>
+<th>硬约束</th>
+<th>dcg 的应对</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>不能拖慢 agent 工作流</td>
+<td>Rust + SIMD，亚毫秒延迟</td>
+</tr>
+<tr>
+<td>不能误伤正常操作</td>
+<td>智能上下文检测（区分”查 rm -rf”和”执行 rm -rf”）</td>
+</tr>
+<tr>
+<td>不能有漏网之鱼</td>
+<td>50+ 规则包 + heredoc/内联脚本扫描</td>
+</tr>
+<tr>
+<td>不能依赖 LLM 自觉</td>
+<td>进程级 Hook，与模型无关</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h2><h3 id="选-AGT-当主力"><a href="#选-AGT-当主力" class="headerlink" title="选 AGT 当主力"></a>选 AGT 当主力</h3><ul>
+<li><strong>多 Agent 系统</strong>：多个 agent 共享 API key，出事需要定位”哪个 agent 干的”</li>
+<li><strong>需要监管合规</strong>：审计人员要防篡改的决策记录</li>
+<li><strong>工具面广</strong>：不止 shell，还要管 send_email、数据库、Web 请求等</li>
+<li><strong>需要人工审批流</strong>：高危操作必须指定审批人签字</li>
+<li><strong>已用 Python/TS/.NET 技术栈</strong>，愿意做代码集成</li>
+</ul>
+<h3 id="选-dcg-当主力"><a href="#选-dcg-当主力" class="headerlink" title="选 dcg 当主力"></a>选 dcg 当主力</h3><ul>
+<li><strong>个人开发者 / 小团队</strong>：用 Claude Code、Codex 等 AI 编程工具，怕手滑删库</li>
+<li><strong>要零配置</strong>：装完自动接入所有已装 agent 的 hooks</li>
+<li><strong>只要守住命令破坏这一条线</strong>：git reset –hard、rm -rf、DROP TABLE</li>
+<li><strong>对延迟敏感</strong>：亚毫秒级，完全无感</li>
+<li><strong>不想改业务代码</strong></li>
+</ul>
+<hr>
+<h2 id="两者能组合吗？"><a href="#两者能组合吗？" class="headerlink" title="两者能组合吗？"></a>两者能组合吗？</h2><p><strong>能，而且是推荐的组合方式。</strong></p>
+<ul>
+<li><strong>dcg 做系统级硬防线</strong>：无论 agent 是什么、prompt 怎么被注入，Shell 执行层永远有一道物理闸门。它不依赖任何框架，是最后一道保险。</li>
+<li><strong>AGT 做治理中台</strong>：在工具调用层统一策略、身份、审计、审批，覆盖 dcg 管不到的工具（邮件、数据库、Web）和管不了的问题（谁干的、为什么放行、如何追溯）。</li>
+</ul>
+<p>一个形象的比喻：dcg 是楼下的保安，AGT 是整栋楼的安防中控——保安负责拦住带刀的人，中控负责门禁、监控、审批和事后追溯。两者各司其职，不冲突。</p>
+<blockquote>
+<p>注意：如果你的 AgentGuard 方案已经用 dcg 作为系统级硬规则，要补的正是 AGT 提供的”身份 + 审计 + 审批”这三块。</p>
+</blockquote>
+<hr>
+<h2 id="结论与选型建议"><a href="#结论与选型建议" class="headerlink" title="结论与选型建议"></a>结论与选型建议</h2><table>
+<thead>
+<tr>
+<th>你的情况</th>
+<th>建议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>个人用 AI 编程工具，怕误删</td>
+<td>装 dcg 就够了</td>
+</tr>
+<tr>
+<td>企业多 Agent 系统，要合规审计</td>
+<td>上 AGT</td>
+</tr>
+<tr>
+<td>已有 dcg，想补身份/审计/审批</td>
+<td>AGT 是天然补位</td>
+</tr>
+<tr>
+<td>想要”命令防线 + 治理中台”双保险</td>
+<td>dcg + AGT 组合</td>
+</tr>
+</tbody></table>
+<p><strong>一句话总结：dcg 解决”这条命令能不能执行”，AGT 解决”这个 agent 该不该做这件事、做了有没有记录”。问题层级不同，不是替代关系，是纵深防御的不同层。</strong></p>
+<hr>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/microsoft/agent-governance-toolkit">microsoft/agent-governance-toolkit</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Dicklesworthstone/destructive_command_guard">Dicklesworthstone/destructive_command_guard</a></li>
+<li><a href="/2026/07/29/agent%20skill/dcg-%E5%AE%89%E5%85%A8%E7%BA%B5%E6%B7%B1%E5%88%86%E6%9E%90/">dcg 安全纵深分析：它防得住什么，防不住什么</a></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/agent-skill/" class="category-chain-item">agent skill</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/AI-Agent/">#AI Agent</a>
+      
+        <a href="/tags/AI%E5%AE%89%E5%85%A8/">#AI安全</a>
+      
+        <a href="/tags/dcg/">#dcg</a>
+      
+        <a href="/tags/%E5%AE%89%E5%85%A8%E5%B7%A5%E5%85%B7%E5%88%86%E6%9E%90/">#安全工具分析</a>
+      
+        <a href="/tags/agent-governance-toolkit/">#agent-governance-toolkit</a>
+      
+        <a href="/tags/%E5%BE%AE%E8%BD%AF/">#微软</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>agent-governance-toolkit 与 dcg：全面治理框架 vs 单点命令防线</div>
+      <div>http://jane-lucky.github.io/2026/07/31/agent skill/agent-governance-toolkit与dcg对比分析/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>彤～</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>July 31, 2026</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/08/01/%E6%AF%8F%E6%97%A5%E7%83%AD%E7%82%B9/2026-08-01-hotspot-report/" title="🔥 每日热点趋势报告 | 2026-08-01">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">🔥 每日热点趋势报告 | 2026-08-01</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/07/31/%E6%AF%8F%E6%97%A5%E7%83%AD%E7%82%B9/2026-07-31-hotspot-report/" title="🔥 每日热点趋势报告 | 2026-07-31">
+                        <span class="hidden-mobile">🔥 每日热点趋势报告 | 2026-07-31</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
