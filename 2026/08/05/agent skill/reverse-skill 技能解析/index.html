@@ -1,0 +1,767 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="彤～">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="reverse-skill 技能解析：为什么逆向可以是工程，而不是玄学一句话概括reverse-skill 把”逆向一个加密&#x2F;混淆的网页 JS”这件事，从凭感觉试错，变成一条有门禁、有状态、可交接的工程流水线——它解决的核心问题不是”看不懂代码”，而是”不知道自己卡在哪一步、缺什么证据、下一步该干什么”。  它是什么reverse-skill（715494637&#x2F;reverse-skill）是一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="reverse-skill 技能解析：为什么逆向可以是工程，而不是玄学">
+<meta property="og:url" content="http://jane-lucky.github.io/2026/08/05/agent%20skill/reverse-skill%20%E6%8A%80%E8%83%BD%E8%A7%A3%E6%9E%90/index.html">
+<meta property="og:site_name" content="Jane&#39;s Blog">
+<meta property="og:description" content="reverse-skill 技能解析：为什么逆向可以是工程，而不是玄学一句话概括reverse-skill 把”逆向一个加密&#x2F;混淆的网页 JS”这件事，从凭感觉试错，变成一条有门禁、有状态、可交接的工程流水线——它解决的核心问题不是”看不懂代码”，而是”不知道自己卡在哪一步、缺什么证据、下一步该干什么”。  它是什么reverse-skill（715494637&#x2F;reverse-skill）是一个">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-08-05T10:05:00.000Z">
+<meta property="article:modified_time" content="2026-08-28T10:08:00.975Z">
+<meta property="article:author" content="彤～">
+<meta property="article:tag" content="AI Agent">
+<meta property="article:tag" content="技能">
+<meta property="article:tag" content="JS逆向">
+<meta property="article:tag" content="反爬">
+<meta property="article:tag" content="工程化">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>reverse-skill 技能解析：为什么逆向可以是工程，而不是玄学 - Jane&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jane-lucky.github.io","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Jane&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="reverse-skill 技能解析：为什么逆向可以是工程，而不是玄学"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-08-05 10:05" pubdate>
+          August 5, 2026 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.6k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          22 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">reverse-skill 技能解析：为什么逆向可以是工程，而不是玄学</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="reverse-skill-技能解析：为什么逆向可以是工程，而不是玄学"><a href="#reverse-skill-技能解析：为什么逆向可以是工程，而不是玄学" class="headerlink" title="reverse-skill 技能解析：为什么逆向可以是工程，而不是玄学"></a>reverse-skill 技能解析：为什么逆向可以是工程，而不是玄学</h1><h2 id="一句话概括"><a href="#一句话概括" class="headerlink" title="一句话概括"></a>一句话概括</h2><p><strong>reverse-skill 把”逆向一个加密/混淆的网页 JS”这件事，从凭感觉试错，变成一条有门禁、有状态、可交接的工程流水线——它解决的核心问题不是”看不懂代码”，而是”不知道自己卡在哪一步、缺什么证据、下一步该干什么”。</strong></p>
+<hr>
+<h2 id="它是什么"><a href="#它是什么" class="headerlink" title="它是什么"></a>它是什么</h2><p>reverse-skill（<a target="_blank" rel="noopener" href="https://github.com/715494637/reverse-skill">715494637/reverse-skill</a>）是一个面向 Web JS 逆向分析的 AI Agent 技能包。核心入口是 <code>jsr-reverse</code>，一套按既定流程运行的逆向作战手册。</p>
+<p>它交付的资源：</p>
+<ul>
+<li><strong>一套 7 阶段强制流程</strong>：<code>任务归一化 → 证据采集 → 定位 → 恢复 → 运行时 → 验证 → 交付</code></li>
+<li><strong>复杂度分级（L1~L4）</strong>：先判断活有多大，再校准投入</li>
+<li><strong>阶段门禁 + 状态契约</strong>：每个阶段有进入条件、必交付物、退出条件、失败输出</li>
+<li><strong>19 篇专题 reference</strong>：AST 反混淆、JSVMP 恢复、运行时诊断、请求链记录、瑞数恢复锚点等，按需只读相关篇目</li>
+<li><strong>交接工件</strong>：<code>reverse-records/请求链路.md</code>，专为”会话会断、人会忘”设计</li>
+<li><strong>配套工具</strong>：js-reverse-mcp（驱动真实浏览器插桩取证的 MCP 服务）</li>
+</ul>
+<hr>
+<h2 id="第一性原理：逆向真正难的是什么"><a href="#第一性原理：逆向真正难的是什么" class="headerlink" title="第一性原理：逆向真正难的是什么"></a>第一性原理：逆向真正难的是什么</h2><p>很多人以为逆向的难点是”代码看不懂”。但你盯着一坨混淆 JS 看三小时，往往不是读不懂，而是<strong>不知道现在卡在哪一步</strong>：</p>
+<ul>
+<li>目标是加密参数，可它到底在哪被写入的？没人证明，只是猜。</li>
+<li>本地跑出来的结果和浏览器不一样，是环境差异、时序问题，还是指纹风控分支？</li>
+<li>做了一半，睡一觉/换了会话，进度全丢，又要从头翻代码。</li>
+</ul>
+<p>reverse-skill 的第一性原理拆法很直接：<strong>逆向的本质是一个”证据链闭合”的过程，而不是一次”看懂代码”的灵光一闪。</strong> 既然它是一段多阶段、长耗时的推理，那它就该被当成工程来管——有阶段、有门禁、有状态、有留痕。</p>
+<p>这套逻辑，和”对抗式审查”其实是同一个思想：不轻信”我觉得是这样”，只接受”有证据证明是这样”。</p>
+<hr>
+<h2 id="核心：7-阶段工作流脊柱"><a href="#核心：7-阶段工作流脊柱" class="headerlink" title="核心：7 阶段工作流脊柱"></a>核心：7 阶段工作流脊柱</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">任务归一化 → 证据采集 → 定位 → 恢复 → 运行时 → 验证 → 交付<br></code></pre></td></tr></table></figure>
+
+<p>每个阶段都强制回答”凭什么”：</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>要回答的问题</th>
+<th>必交付物</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>任务归一化</td>
+<td>目标是什么、触发方式、成功标准</td>
+<td>任务卡</td>
+</tr>
+<tr>
+<td>证据采集</td>
+<td>有没有可信的真实样本</td>
+<td>样本包</td>
+</tr>
+<tr>
+<td>定位</td>
+<td>参数到底在哪被写入（writer/sink）</td>
+<td>请求链路.md</td>
+</tr>
+<tr>
+<td>恢复</td>
+<td>混淆壳剥到什么程度能读懂逻辑</td>
+<td>恢复记录</td>
+</tr>
+<tr>
+<td>运行时</td>
+<td>浏览器和本地为什么结果不一样</td>
+<td>运行态清单</td>
+</tr>
+<tr>
+<td>验证</td>
+<td>本地算法 == 浏览器真实行为？</td>
+<td>验证记录</td>
+</tr>
+<tr>
+<td>交付</td>
+<td>交付什么、禁止交付什么、残余风险</td>
+<td>交付清单</td>
+</tr>
+</tbody></table>
+<p><strong>关键规则：做完一半不许硬往下冲，做错了要回退到差异所在的阶段。</strong> 这一条直接掐死了逆向里最常见的失败模式——“我猜了个大概就往下写代码，结果错得很远”。</p>
+<hr>
+<h2 id="复杂度分级：先判断这活有多大"><a href="#复杂度分级：先判断这活有多大" class="headerlink" title="复杂度分级：先判断这活有多大"></a>复杂度分级：先判断这活有多大</h2><table>
+<thead>
+<tr>
+<th>级别</th>
+<th>场景</th>
+<th>要走几个阶段</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>L1</strong></td>
+<td>参数是明文拼接，无混淆、无环境依赖</td>
+<td>定位 → 验证</td>
+</tr>
+<tr>
+<td><strong>L2</strong></td>
+<td>单层混淆 / webpack 包 + 一次加密调用</td>
+<td>加恢复</td>
+</tr>
+<tr>
+<td><strong>L3</strong></td>
+<td>JSVMP / WASM / worker 桥 + 环境依赖 + 反调试</td>
+<td>全流程</td>
+</tr>
+<tr>
+<td><strong>L4</strong></td>
+<td>对抗级：瑞数(RS)、多跳 cookie、动态代码、指纹风控</td>
+<td>全流程 + 多轮迭代</td>
+</tr>
+</tbody></table>
+<p>分级不是用来”绕过流程”的，而是用来<strong>校准每次投入</strong>：L1 的活别杀鸡用牛刀，L4 的活别指望一次跑通。而且规则写死了一条：<strong>级别只能往上修正，不能没证据就往下调。</strong></p>
+<hr>
+<h2 id="工程化的精髓：状态契约-证据门禁"><a href="#工程化的精髓：状态契约-证据门禁" class="headerlink" title="工程化的精髓：状态契约 + 证据门禁"></a>工程化的精髓：状态契约 + 证据门禁</h2><p>这是整个技能最值钱的部分，也最值得抄作业：</p>
+<p><strong>五种状态，杜绝”半成品硬冲”</strong><br><code>就绪 / 部分完成 / 阻塞 / 失败 / 不可交付</code></p>
+<ul>
+<li>缺目标、缺样本 → 只能是 <code>阻塞</code>，不能假装开工</li>
+<li>做过一半、证据没闭环 → 只能是 <code>部分完成</code>，禁止向后冒进</li>
+<li>验证不通过 → 只能是 <code>失败</code>，回退到差异所在的阶段</li>
+</ul>
+<p><strong>证据门禁（Evidence Gate）</strong>：只要目标请求还没从真实样本确认、上游依赖链还是在猜、多种假设没有记录来裁决——就先别选阶段，先把证据补齐。</p>
+<p>一句话：<strong>它不信任”感觉”，只接受”证据”。</strong> 这正是对抗式审查的要义——每一条结论都要能指出它的依据，否则就是未证实。</p>
+<hr>
+<h2 id="为-LLM-会话压缩而生的交接工件"><a href="#为-LLM-会话压缩而生的交接工件" class="headerlink" title="为 LLM 会话压缩而生的交接工件"></a>为 LLM 会话压缩而生的交接工件</h2><p>逆向任务经常跨天，LLM 会话一压缩，之前的判断全模糊了。reverse-skill 的解法很朴素：**把所有阶段结论写成 <code>reverse-records/请求链路.md</code>**（请求区块 + 运行时补充 + 恢复补充 + 验证补充），断在哪就从哪续。</p>
+<p>续接时，新会话只需要一句话：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">参考：reverse-records/请求链路.md<br>&#123;原始任务输入&#125;<br></code></pre></td></tr></table></figure>
+
+<p>模型读完交接文档，就能归一化目标、固定样本、接着补证据继续推进。<strong>这是为”AI 会忘事”这个客观缺陷设计的制度性补偿，而不是靠模型自觉。</strong></p>
+<p>这也解释了为什么这个 repo 里反直觉地堆了大量 docs：它不是工具，是一套<strong>能让任何 agent（甚至任何人）接手不掉链子的流程规范</strong>。</p>
+<hr>
+<h2 id="配套工具"><a href="#配套工具" class="headerlink" title="配套工具"></a>配套工具</h2><p><strong>js-reverse-mcp</strong>：独立的 MCP 服务，让 AI 能驱动真实 Chrome 插桩调试——断点上下文求值、脚本源码导出、请求调用栈、WebSocket 分析、浏览器状态重放。反检测默认走 Patchright 协议层 stealth，对强反爬站点可切 CloakBrowser 源码层指纹模式。</p>
+<hr>
+<h2 id="对抗式审查：这套设计的可借鉴点与边界"><a href="#对抗式审查：这套设计的可借鉴点与边界" class="headerlink" title="对抗式审查：这套设计的可借鉴点与边界"></a>对抗式审查：这套设计的可借鉴点与边界</h2><p><strong>值得借鉴的：</strong></p>
+<ul>
+<li>把”长链路推理”显式拆成有门禁的阶段，是任何复杂 Agent 任务（不只逆向）都该学的结构</li>
+<li>“证据驱动 + 状态契约”直接对抗 LLM 的过度自信和会话遗忘</li>
+<li>分级校准投入，避免小马拉大车或大炮打蚊子</li>
+</ul>
+<p><strong>边界与风险：</strong></p>
+<ul>
+<li>高度垂直：只解决 Web JS 逆向，不适用于移动端、非 JS 场景</li>
+<li>流程本身有学习成本：小任务硬套全流程会显得笨重</li>
+<li>这是一个对抗反爬领域的技能，实际用于真实站点时要特别注意目标的使用条款与合规边界——<strong>方法论可以学，用途要守界</strong></li>
+</ul>
+<hr>
+<h2 id="对我们的启示"><a href="#对我们的启示" class="headerlink" title="对我们的启示"></a>对我们的启示</h2><p>reverse-skill 最打动我的，是它体现的思维方式：<strong>不把复杂任务寄希望于”跑一次就成功”，而是设计成”每一步都有证据、断了能续上、错了能回退”。</strong> 这和我一直在整理的「第一性原理 + 对抗式审查」是同一套内核——先拆到最底层，再用证据闭合每一条推理。</p>
+<p>工具本身很垂直，但”用工程化驯服玄学任务”的思路，值得任何一个做 AI Agent、写复杂自动化的人抄走。</p>
+<hr>
+<h2 id="参考来源"><a href="#参考来源" class="headerlink" title="参考来源"></a>参考来源</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/715494637/reverse-skill">715494637/reverse-skill（GitHub）</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/zhizhuodemao/js-reverse-mcp">zhizhuodemao/js-reverse-mcp（GitHub）</a></li>
+<li>技能仓库内 <code>jsr-reverse/SKILL.md</code>、<code>docs/sop/reverse-engineering/</code> 相关文档</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/agent-skill/" class="category-chain-item">agent skill</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/AI-Agent/">#AI Agent</a>
+      
+        <a href="/tags/%E6%8A%80%E8%83%BD/">#技能</a>
+      
+        <a href="/tags/JS%E9%80%86%E5%90%91/">#JS逆向</a>
+      
+        <a href="/tags/%E5%8F%8D%E7%88%AC/">#反爬</a>
+      
+        <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/">#工程化</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>reverse-skill 技能解析：为什么逆向可以是工程，而不是玄学</div>
+      <div>http://jane-lucky.github.io/2026/08/05/agent skill/reverse-skill 技能解析/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>彤～</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>August 5, 2026</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/08/06/%E7%83%AD%E7%82%B9%E8%BF%BD%E8%B8%AA/2026-08-06-hotspot-report/" title="每日热点趋势报告 2026-08-06">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">每日热点趋势报告 2026-08-06</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/08/05/%E6%AF%8F%E6%97%A5%E7%83%AD%E7%82%B9/2026-08-05-hotspot-report/" title="每日热点趋势报告 2026-08-05">
+                        <span class="hidden-mobile">每日热点趋势报告 2026-08-05</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

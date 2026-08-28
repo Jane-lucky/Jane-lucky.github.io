@@ -1,0 +1,705 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="彤～">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="HTML PPT 技能解析：为什么演示文稿可以是一堆静态文件一句话概括html-ppt 把演示文稿拆成”内容、外观、行为”三个独立维度，用纯静态 HTML 实现——换主题、换布局、加动画都不需要碰内容，也不依赖任何构建工具或专用编辑器。  它是什么html-ppt 是一个开源技能（lewislulu&#x2F;html-ppt-skill，MIT 协议），用于生成专业外观的 HTML 演示文稿。 它交付的资">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML PPT 技能解析：为什么演示文稿可以是一堆静态文件">
+<meta property="og:url" content="http://jane-lucky.github.io/2026/08/03/agent%20skill/HTML%20PPT%20%E6%8A%80%E8%83%BD%E8%A7%A3%E6%9E%90/index.html">
+<meta property="og:site_name" content="Jane&#39;s Blog">
+<meta property="og:description" content="HTML PPT 技能解析：为什么演示文稿可以是一堆静态文件一句话概括html-ppt 把演示文稿拆成”内容、外观、行为”三个独立维度，用纯静态 HTML 实现——换主题、换布局、加动画都不需要碰内容，也不依赖任何构建工具或专用编辑器。  它是什么html-ppt 是一个开源技能（lewislulu&#x2F;html-ppt-skill，MIT 协议），用于生成专业外观的 HTML 演示文稿。 它交付的资">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-08-03T14:36:00.000Z">
+<meta property="article:modified_time" content="2026-08-28T10:08:00.974Z">
+<meta property="article:author" content="彤～">
+<meta property="article:tag" content="AI Agent">
+<meta property="article:tag" content="技能">
+<meta property="article:tag" content="HTML">
+<meta property="article:tag" content="PPT">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>HTML PPT 技能解析：为什么演示文稿可以是一堆静态文件 - Jane&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jane-lucky.github.io","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Jane&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="HTML PPT 技能解析：为什么演示文稿可以是一堆静态文件"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-08-03 14:36" pubdate>
+          August 3, 2026 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.6k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          22 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">HTML PPT 技能解析：为什么演示文稿可以是一堆静态文件</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="HTML-PPT-技能解析：为什么演示文稿可以是一堆静态文件"><a href="#HTML-PPT-技能解析：为什么演示文稿可以是一堆静态文件" class="headerlink" title="HTML PPT 技能解析：为什么演示文稿可以是一堆静态文件"></a>HTML PPT 技能解析：为什么演示文稿可以是一堆静态文件</h1><h2 id="一句话概括"><a href="#一句话概括" class="headerlink" title="一句话概括"></a>一句话概括</h2><p><strong>html-ppt 把演示文稿拆成”内容、外观、行为”三个独立维度，用纯静态 HTML 实现——换主题、换布局、加动画都不需要碰内容，也不依赖任何构建工具或专用编辑器。</strong></p>
+<hr>
+<h2 id="它是什么"><a href="#它是什么" class="headerlink" title="它是什么"></a>它是什么</h2><p>html-ppt 是一个开源技能（<a target="_blank" rel="noopener" href="https://github.com/lewislulu/html-ppt-skill">lewislulu/html-ppt-skill</a>，MIT 协议），用于生成专业外观的 HTML 演示文稿。</p>
+<p>它交付的资源清单：</p>
+<ul>
+<li><strong>36 套主题</strong>（<code>assets/themes/*.css</code>）：minimal-white、editorial-serif、tokyo-night、dracula、catppuccin、neo-brutalism、glassmorphism、cyberpunk-neon、xiaohongshu-white、academic-paper、pitch-deck-vc 等</li>
+<li><strong>31 种单页布局</strong>（<code>templates/single-page/*.html</code>）：标题页、大纲、KPI 网格、时间线、对比、图文卡片等，全部带演示数据</li>
+<li><strong>14 套完整 deck 模板</strong>（<code>templates/full-decks/</code>）：8 套从真实 deck 提取（小红书编辑风、知识库蓝图纸、赛博终端、Obsidian 渐变等），6 套场景脚手架（pitch-deck、product-launch、tech-sharing、weekly-report、xhs-post 3:4、course-module）</li>
+<li><strong>27 个 CSS 入场动画 + 20 个 Canvas 特效</strong>：粒子爆发、彩带炮、烟花、矩阵雨、知识图谱（力导向）、神经网络脉冲、打字机、计数爆炸等</li>
+<li><strong>键盘运行时</strong>（<code>assets/runtime.js</code>）：翻页、全屏、演讲者备注、总览网格、主题实时循环、<code>#/N</code> 深链直达</li>
+<li><strong>无头 Chrome 渲染脚本</strong>：一键导出 PNG</li>
+</ul>
+<p>使用方式是一行命令脚手架，之后全是复制粘贴式的组装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">./scripts/new-deck.sh my-talk     <span class="hljs-comment"># 脚手架</span><br>./scripts/render.sh index.html 12 <span class="hljs-comment"># 导出 12 张 PNG</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="它的设计逻辑"><a href="#它的设计逻辑" class="headerlink" title="它的设计逻辑"></a>它的设计逻辑</h2><p>把问题拆到最底层看，演示文稿的本质需求只有四个：</p>
+<ol>
+<li><strong>内容</strong>——讲什么，页面的信息结构</li>
+<li><strong>呈现</strong>——长什么样，视觉风格</li>
+<li><strong>演讲</strong>——怎么放，翻页、备注、节奏</li>
+<li><strong>分发</strong>——怎么给出去，导出、分享、归档</li>
+</ol>
+<p>传统工具（PowerPoint / Keynote）的问题在于：<strong>内容被锁在私有格式里，生成和消费被绑死在特定软件上</strong>。换工具 = 迁移地狱；版本管理 = 二进制 diff；自动化生成 = 几乎没有 API；网页分享 = 导出成图片或 PDF，丢了交互。</p>
+<p>底层矛盾是：演示文稿是”<strong>一次生成、多次线性消费</strong>“的产物——观众只会一页页往下看，交互面极窄（翻页、全屏、看备注），却被迫背上”应用级”的复杂度。</p>
+<p>html-ppt 的解耦方案是把三个维度彻底分开：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>载体</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>内容</td>
+<td>HTML <code>&lt;section class=&quot;slide&quot;&gt;</code></td>
+<td>纯语义结构，无样式耦合</td>
+</tr>
+<tr>
+<td>外观</td>
+<td>CSS 变量 token + 主题文件</td>
+<td>换肤 = 换一个 <code>&lt;link&gt;</code></td>
+</tr>
+<tr>
+<td>行为</td>
+<td>runtime.js + 声明式属性</td>
+<td>作者不写 JS，只写 <code>data-anim</code></td>
+</tr>
+</tbody></table>
+<p>三个关键设计：</p>
+<p><strong>1. Token 体系让换肤变成换文件。</strong> 所有颜色、圆角、阴影都来自 <code>base.css</code> 定义的 CSS 变量，主题文件只是覆盖这些变量。于是”换一套视觉”从”改几十处样式”坍缩成”改一行 <code>&lt;link&gt;</code>“。</p>
+<p><strong>2. 布局与数据解耦，组装代替创作。</strong> 31 个布局文件是”结构 + 演示数据”，使用时复制结构、替换数据。这承认了一个事实：绝大多数幻灯片是常见版式的排列组合，不需要从零发明版式。</p>
+<p><strong>3. 动画声明式化，效果与元素解耦。</strong> 入场动画写成 <code>data-anim=&quot;fade-up&quot;</code>，Canvas 特效写成 <code>&lt;div data-fx=&quot;knowledge-graph&quot;&gt;</code>，由运行时统一调度、进页自动触发、离页自动清理。内容作者不需要理解动画实现。</p>
+<p>为什么”纯静态”可行？因为演示是线性消费场景，运行时只需要做四件事：翻页、全屏、备注、总览。这四件事加起来约等于一个键盘事件监听器。静态文件因此获得了传统格式给不了的东西：<strong>git 可 diff、任意静态服务器可托管、CI 里可自动生成、永不依赖某个软件版本</strong>。</p>
+<hr>
+<h2 id="它的边界"><a href="#它的边界" class="headerlink" title="它的边界"></a>它的边界</h2><p>资源数量（36 主题 / 31 布局 / 14 模板 / 47 种动画）容易让人产生”什么都能做”的错觉。实测下来的边界：</p>
+<p><strong>复杂时间轴动画</strong>：声明式动画只覆盖入场效果。多元素协同、关键帧编排、滚动驱动这类需求，它力不从心——那是专业前端框架（GSAP、Framer Motion）的领域。</p>
+<p><strong>多人实时协作</strong>：没有。它是单作者产物，协作只能走 git。</p>
+<p><strong>移动端 / 触屏演示</strong>：键盘优先的设计在触屏上体验打折。虽然可以点按翻页，但主题循环、备注浮层这些快捷键在平板上不可用。</p>
+<p><strong>离线分发</strong>：字体走 CDN，离线时回退到系统字体，排版可能漂移。导出 PNG 可以规避，但损失了交互。</p>
+<p><strong>跨平台渲染脚本</strong>：<code>render.sh</code> 写死了 macOS 的 Chrome 路径，Linux / Windows 需要自行修改。</p>
+<p><strong>演讲者视图</strong>：备注是页面内浮层（按 S 呼出），不是传统工具那种独立窗口的双屏模式。</p>
+<p><strong>规模性能</strong>：所有 slide 常驻 DOM，运行时只切换显隐。几十页没问题，几百页极端场景需要关注。</p>
+<hr>
+<h2 id="什么时候该用它"><a href="#什么时候该用它" class="headerlink" title="什么时候该用它"></a>什么时候该用它</h2><ul>
+<li><strong>技术分享 / 工程师场景</strong>：内容即代码，和代码走同一套 git 工作流</li>
+<li><strong>博客配图、小红书图文</strong>：3:4 模板 + 静态导出，产出路径最短</li>
+<li><strong>需要自动化生成的 deck</strong>：CI 里渲染、批量换肤、按数据出报告页，静态文件是唯一好接的格式</li>
+<li><strong>AI Agent 生成演示文稿</strong>：对模型来说，输出 HTML 比操作 PowerPoint 可靠得多——没有二进制格式，没有 API 权限问题，生成即成品</li>
+</ul>
+<h2 id="什么时候别用"><a href="#什么时候别用" class="headerlink" title="什么时候别用"></a>什么时候别用</h2><ul>
+<li>需要复杂动画编排或像素级排版控制</li>
+<li>需要团队在线协作编辑</li>
+<li>必须和 Office 生态互通（客户要 .pptx 源文件）</li>
+<li>受众是非技术用户且需要离线可编辑</li>
+</ul>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>html-ppt 的价值不在于”又一个做 PPT 的工具”，而在于它选对了抽象层级：**把演示文稿从”软件文件”降维成”网页”**。内容与外观解耦、布局与数据解耦、动画与元素解耦，换来的是换肤零成本、组装零门槛、分发零依赖。</p>
+<p>它当然不是万能的——复杂动画、协作编辑、Office 生态是它的明确边界。但在”技术分享、自动化生成、图文内容”这三个场景里，静态 HTML 是比传统 PPT 更顺手的形态。尤其对 AI Agent 而言，输出 HTML 是唯一一条”生成即成品”的路。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/agent-skill/" class="category-chain-item">agent skill</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/AI-Agent/">#AI Agent</a>
+      
+        <a href="/tags/%E6%8A%80%E8%83%BD/">#技能</a>
+      
+        <a href="/tags/HTML/">#HTML</a>
+      
+        <a href="/tags/PPT/">#PPT</a>
+      
+        <a href="/tags/%E5%89%8D%E7%AB%AF/">#前端</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>HTML PPT 技能解析：为什么演示文稿可以是一堆静态文件</div>
+      <div>http://jane-lucky.github.io/2026/08/03/agent skill/HTML PPT 技能解析/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>彤～</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>August 3, 2026</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/08/04/%E7%83%AD%E7%82%B9%E8%BF%BD%E8%B8%AA/2026-08-04-hotspot-report/" title="每日热点趋势报告 2026-08-04">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">每日热点趋势报告 2026-08-04</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/08/03/%E6%AF%8F%E6%97%A5%E7%83%AD%E7%82%B9/2026-08-03-hotspot-report/" title="🔥 每日热点趋势报告 | 2026-08-03">
+                        <span class="hidden-mobile">🔥 每日热点趋势报告 | 2026-08-03</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
